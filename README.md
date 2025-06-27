@@ -5,4 +5,4 @@ This repository hosts:
 
 You can buy the product here: https://www.tindie.com/products/makerspacelt/airsoft-bomb-prop-kms-ant/
 
-More information: https://armory.makerspace.lt/
+More information: http://armory.makerspace.lt/
