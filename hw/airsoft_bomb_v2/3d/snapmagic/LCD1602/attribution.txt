@@ -1,0 +1,3 @@
+https://www.snapeda.com/parts/LCD1602/Kaga/view-part/
+
+model mirored to represent a part with differently located pins
