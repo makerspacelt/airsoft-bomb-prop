@@ -1,0 +1,368 @@
+globals:
+# Global values
+- id: defusal_bomb_time
+  type: int
+  initial_value: "0"
+- id: defusal_delay_time
+  type: int
+  initial_value: "0"
+- id: exploded
+  type: bool
+  initial_value: "false"
+
+# Values for game with passowrd
+- id: set_password
+  type: std::string
+  initial_value: ""
+- id: attempted_password
+  type: std::string
+  initial_value: ""
+- id: is_armed
+  type: bool
+  initial_value: "false"
+- id: defusal_timer_last_update_ms
+  type: int
+  initial_value: "0"
+- id: failed_code_count
+  type: int
+  initial_value: "0"
+
+# Values for game without passowrd
+- id: progress_value
+  type: float
+  initial_value: "0.0"
+
+
+sensor:
+  - platform: template
+    id: defuse_timer
+    update_interval: 250ms
+    lambda: |-
+      if (id(current_game_mode) != 0) {
+        return {};
+      }
+
+      // Timer that reduces the time left on the game when the bomb is armed
+      int prev_value = id(defuse_timer).state;
+
+      if (isnan(prev_value) || id(defusal_timer_last_update_ms) == 0) {
+        id(defusal_timer_last_update_ms) = millis();
+        return 0;
+      }
+
+      if (id(gm_finished)) {
+        return prev_value;
+      }
+
+      int time_passed = millis() - id(defusal_timer_last_update_ms);
+      int next_value = prev_value - time_passed;
+      if (next_value < 0) {
+        next_value = 0;
+      }
+      
+      id(defusal_timer_last_update_ms) = millis();
+      if (prev_value == 0 & next_value == 0) {
+        return {};
+      }
+
+      ESP_LOGI("GM_DEFUSAL", "Bomb timer left %d", next_value);
+      return next_value;
+
+
+script:
+  - id: gm_defusal_display_update
+    parameters:
+      disp: lcd_base::LCDDisplay&
+    then:
+      - lambda: |-
+          if (!id(settings_initiated)) {
+            // Settings display and selection
+            if (id(current_menu) == 0) {
+              disp.printf(0, 0, "> Delay min: %d", id(defusal_delay_time));
+              disp.printf(0, 1, "  Bomb  min: %d", id(defusal_bomb_time));
+            } else if (id(current_menu) == 1) {
+              disp.printf(0, 0, "  Delay min: %d", id(defusal_delay_time));
+              disp.printf(0, 1, "> Bomb  min: %d", id(defusal_bomb_time));
+            } else if (id(current_menu) == 2) {
+              disp.printf(0, 0, "  Bomb  min: %d", id(defusal_bomb_time));
+              disp.printf(0, 1, "> Code: %s", id(set_password).c_str());
+            } else if (id(current_menu) == 3) {
+              disp.printf(0, 0, "  Code: %s", id(set_password).c_str());
+              disp.printf(0, 1, "> START");
+            }
+          } else {
+              // Gameplay display
+              if (id(prep_for_game_timer).state != 0) {
+                // Displays time before game actuals starts
+                disp.printf(0, 0, " PREP FOR GAME");
+                disp.printf(0, 1, "     %s", format_time_remaining(id(prep_for_game_timer).state).c_str());
+              } else {
+                if (id(set_password).length() > 0) {
+                  // Game that is configured with password
+                  if (id(gm_defusal_bad_code_alert).is_running()) {
+                    // This sections displays the situation when bad password is attempted while either arming or disarming
+                    disp.printf(0, 0, "BAD CODE");
+                    if (id(is_armed)) {
+                      // Displays actual time that is left for the bomb to explode
+                      disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                    } else {
+                      // Displays time that was configured in the settings
+                      disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defusal_bomb_time) * 60 * 1000).c_str());
+                    }
+                  } else if (!id(gm_finished) & !id(is_armed)) {
+                    disp.printf(0, 0, "READY");
+                    disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defusal_bomb_time) * 60 * 1000).c_str());
+                  } else if (!id(gm_finished) & id(is_armed)) {
+                    disp.printf(0, 0, "ARMED");
+                    disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                  } else if (id(gm_finished) & id(exploded)) {
+                    disp.printf(0, 0, "EXPLODED");
+                    disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                  } else if (id(gm_finished) & !id(exploded)) {
+                    disp.printf(0, 0, "DISARMED");
+                    disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                  }
+                } else {
+                  // Game without password
+                  float user_proggress = id(progress_value);
+                  //ESP_LOGI("GM_DEFUSAL", "Pressed percentage %f", user_proggress);
+
+                  if (id(gm_finished)) {
+                    if (id(exploded)) {
+                      disp.printf(0, 0, "EXPLODED");
+                      disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                    } else {
+                      disp.printf(0, 0, "DISARMED");
+                      disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                    }
+                  } else {
+                    if (user_proggress == 0) {
+                      // No button is pressed, displaying current state
+                      if (id(is_armed)) {
+                          disp.printf(0, 0, "ARMED");
+                          disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defuse_timer).state).c_str());
+                        } else {
+                          disp.printf(0, 0, "READY");
+                          disp.printf(0, 1, "TIME LEFT: %s", format_time_remaining(id(defusal_bomb_time) * 60 * 1000).c_str());
+                      }
+                    } else {
+                      // Arm/disarm is happening
+                      if (id(is_armed)) {
+                        disp.printf(0, 0, "DISARMING %s", format_time_remaining(id(defuse_timer).state).c_str());
+                        disp.printf(0, 1, "%f", user_proggress);
+                      } else {
+                        disp.printf(0, 0, "     ARMING");
+                        disp.printf(0, 1, "%f", user_proggress);
+                      }
+                    }
+                  }
+                }
+              }
+          }
+
+  - id: gm_defusal_handle_key_pressed
+    parameters:
+      key: std::string
+    then:
+      - lambda: |-
+          if (!id(settings_initiated)) {
+            id(gm_defusal_handle_key_pressed_menu).execute(key);
+          } else {
+            id(gm_defusal_handle_key_pressed_game).execute(key);
+          }
+  - id: gm_defusal_handle_key_pressed_game
+    parameters:
+      key: std::string
+    then:
+      - lambda: |-
+          if (id(prep_for_game_timer).state != 0) {
+              return;
+          } else {
+            if (id(set_password).length() != 0) {
+              // Passcode is used in the game
+              if (std::isdigit(key[0])) {
+                std::string next_password_attempt = id(attempted_password) + key;
+                if (next_password_attempt.length() > 6) {
+                  next_password_attempt = id(attempted_password);
+                } 
+                id(attempted_password) = next_password_attempt;
+                ESP_LOGI("GM_DEFUSAL", "Next password attempt = %s", next_password_attempt.c_str());
+              } else if(key == "*") {
+                // Clear combination
+                id(attempted_password) = "";
+                ESP_LOGI("GM_DEFUSAL", "Clear password attempt");
+              } else if(key == "#") {
+                // Validate combination
+                // TODO: If password is empty do nothing while defusing
+                  if (id(attempted_password) == id(set_password)) {
+                    // Password valid
+                    ESP_LOGI("GM_DEFUSAL", "Password valid");
+                    if (id(is_armed)) {
+                      // Finish the game
+                      id(gm_finished) = true;
+                      id(gm_finished_ms) = millis();
+                    } else {
+                      // Arm bomb
+                      id(is_armed) = true;
+                      id(attempted_password) = "";
+                      id(defuse_timer).publish_state(id(defusal_bomb_time) * 60 * 1000);
+                    }
+                  } else {
+                    // Password invalid
+                    id(gm_defusal_bad_code_alert).execute();
+                    id(attempted_password) = "";
+                    ESP_LOGI("GM_DEFUSAL", "Password not valid");
+
+                    if (id(is_armed)) {
+                      // Reduce timer
+                      id(failed_code_count) = id(failed_code_count) + 1;
+                      if (id(failed_code_count) == 1) {
+                        id(defuse_timer).publish_state(id(defuse_timer).state / 2);
+                      } else if (id(failed_code_count) == 2) {
+                        if (id(defuse_timer).state > 15000) {
+                          id(defuse_timer).publish_state(15000);
+                        }
+                      } else if (id(failed_code_count) == 3) {
+                        id(defuse_timer).publish_state(0);
+                      }
+                    }
+
+                  }
+              }
+            } else {
+              // Game without passcode. Using only Red/yellow buttons
+              // Since it is not based on key pressed, most of the logic is in the main [gm_defusal_clock]
+            }
+          }
+  - id: gm_defusal_handle_key_pressed_menu
+    parameters:
+        key: std::string
+    then:
+      - lambda: |-
+          int next_menu = id(current_menu);
+
+          if (key == "A") {
+            // Move menu up
+            next_menu = next_menu - 1;
+            if (next_menu < 0) {
+              next_menu = 3;
+            }
+            id(current_menu) = next_menu;
+          } else if(key == "B") {
+            // Move menu down
+            next_menu = next_menu + 1;
+            if (next_menu > 3) {
+              next_menu = 0;
+            }
+            id(current_menu) = next_menu;
+          } else if(key == "C") {
+            // Clear selection or start the game
+            if (next_menu == 0) {
+              id(defusal_delay_time) = 0;
+            } else if (next_menu == 1) {
+              id(defusal_bomb_time) = 0;
+            } else if (next_menu == 2) {
+              id(set_password) = "";
+            } else if (next_menu == 3) {
+              // Start the game
+              id(exploded) = false;
+              id(failed_code_count) = 0; // Resets the state from previous game
+              id(gm_start_game).execute(id(defusal_delay_time));
+              ESP_LOGI("GM_DEFUSAL", "Starting the game");
+            }
+          }
+
+          if (std::isdigit(key[0])) {
+            // If digit is pressed check if anything needs to be done
+            // If menu with number input is slected process the number
+
+            if (next_menu == 0) {
+              id(defusal_delay_time) = append_digit(key, id(defusal_delay_time));
+            } else if (next_menu == 1) {
+              id(defusal_bomb_time) = append_digit(key, id(defusal_bomb_time));
+            } else if (next_menu == 2) {
+              std::string next_set_password = id(set_password) + key;
+              if (next_set_password.length() > 6) {
+                next_set_password = id(set_password);
+              }
+              id(set_password) = next_set_password;
+            }
+          }
+
+  - id: gm_defusal_clock
+    then:
+      - lambda: |-
+          bool game_finished = id(gm_finished);
+          if (!game_finished & id(is_armed) & id(defuse_timer).state == 0) {
+            // This block handles the case when defuse timer expired to zero and bomb exploded for both games with password and w/
+            ESP_LOGI("GM_DEFUSAL", "Game end detected");
+            id(gm_finished) = true;
+            id(exploded) = true;
+            id(gm_finished_ms) = millis();
+          }
+
+          if(id(gm_started) & id(set_password).length() == 0) {
+            // Game without password
+            int duration_pressed_ms = 0;
+
+            // Does not matter which button is pressed for arming/disarming
+            if (id(r_button_press_duration) > id(y_button_press_duration)) {
+              duration_pressed_ms = id(r_button_press_duration);
+            } else {
+              duration_pressed_ms = id(y_button_press_duration);
+            }
+
+            
+            if (duration_pressed_ms == 0) {
+              id(progress_value) = 0;
+            }
+
+            if (duration_pressed_ms > 0) {
+              id(update_screen).execute();
+              float duration_target_s = 0;
+              if (id(is_armed)) {
+                duration_target_s = 5;
+              } else {
+                duration_target_s = 10;
+              }
+              float percentage = 100 - (duration_target_s - duration_pressed_ms / 1000.0) / duration_target_s * 100.0;
+              if (percentage > 100) {
+                percentage = 100;
+              }
+              id(progress_value) = percentage;
+
+              //ESP_LOGI("GM_DEFUSAL", "Pressed duration %d", duration_pressed_ms);
+              //ESP_LOGI("GM_DEFUSAL", "Pressed target %f", duration_target_s);
+              //ESP_LOGI("GM_DEFUSAL", "Pressed percentage %f", percentage);
+
+              if (percentage == 100 and !game_finished) {
+                if (id(is_armed)) {
+                  ESP_LOGI("GM_DEFUSAL", "Game end detected by buttons");
+                  // Finish the game
+                  id(gm_finished) = true;
+                  id(gm_finished_ms) = millis();
+                } else {
+                  // Arm bomb
+                  ESP_LOGI("GM_DEFUSAL", "Arming the bomb");
+                  id(is_armed) = true;
+                  id(defuse_timer).publish_state(id(defusal_bomb_time) * 60 * 1000);
+
+                  // Reset button durations so the bomb would be instantly defused
+                  id(reset_yellow_btn_timer).execute();
+                  id(reset_red_btn_timer).execute();
+                }
+              }
+            }
+
+          }
+
+  - id: gm_defusal_bad_code_alert
+    mode: queued
+    then:
+      - delay: 3s
+  - id: update_screen
+    mode: queued
+    then:
+      - component.update: my_display
+      - delay: 200ms
+

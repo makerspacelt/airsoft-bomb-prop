@@ -1,0 +1,190 @@
+esphome:
+  name: kms-ant-v2
+  includes:
+    - utilities.h
+
+logger:
+  # level: VERY_VERBOSE
+
+packages:
+  a: !include game_mode_entry.yaml
+  
+  b: !include game_mode_defusal.yaml
+  c: !include game_mode_domination.yaml
+  d: !include game_mode_zone_control.yaml
+  e: !include game_mode_countdown.yaml
+  
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+switch:
+  - platform: gpio
+    pin: GPIO1
+    id: "buzzer"
+
+output:
+  - platform: ledc
+    pin: GPIO2
+    id: siren
+    frequency: 100
+
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO3
+    id: "btn_r"
+    filters:
+      - invert:
+    on_press:
+      lambda: |-
+        id(r_button_press_start) = millis();
+
+  - platform: gpio
+    pin: GPIO4
+    id: "btn_y"
+    filters:
+      - invert:
+    on_press:
+      lambda: |-
+        id(y_button_press_start) = millis();
+
+
+      # then:
+      # - output.set_level:
+      #     id: siren
+      #     level: 0.0001
+      # - delay: 5s
+      # - output.set_level:
+      #     id: siren
+      #     level: 0
+
+
+matrix_keypad:
+  id: mykeypad
+  rows:
+    - pin: 
+        pcf8574: pcf8574_hub
+        number: 0
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 1
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 2
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 3
+  columns:
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 4
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 5
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 6
+    - pin:
+        pcf8574: pcf8574_hub
+        number: 7
+  # keys: "123A456B789C*0#D"
+  keys: "D#0*C987B654A321"
+  has_diodes: false
+  on_key:
+    - lambda: ESP_LOGI("KEY", "key %d pressed", x);
+    - lambda: |-
+        id(handle_normal_key_press).execute(x);
+
+
+i2c:
+  - id: bus_a
+    sda: GPIO8
+    scl: GPIO9
+    frequency: 300kHz
+
+pcf8574:
+  - id: 'pcf8574_hub'
+    address: 0x20
+    pcf8575: false
+
+script:
+- id: short_buzz
+  then:
+    - switch.turn_on: buzzer
+    - delay: 100ms
+    - switch.turn_off: buzzer
+- id: start_game_siren
+  then:
+    - switch.turn_on: buzzer
+    - delay: 1000ms
+    - switch.turn_off: buzzer
+- id: reset_yellow_btn_timer
+  then:
+    - lambda: |-
+        id(y_button_press_start) = millis();
+        id(y_button_press_duration) = 0;
+- id: reset_red_btn_timer
+  then:
+    - lambda: |-
+        id(r_button_press_start) = millis();
+        id(r_button_press_duration) = 0;
+
+
+- id: handle_normal_key_press
+  parameters:
+    key: uint8_t
+  then:
+    - script.execute: short_buzz
+    - lambda: |-
+        std::string s;
+        s.assign(1, key);
+
+        id(gm_handle_key_pressed).execute(s);
+
+
+globals:
+- id: r_button_press_start
+  type: int
+  initial_value: "0"
+- id: r_button_press_duration
+  type: int
+  initial_value: "0"
+- id: y_button_press_start
+  type: int
+  initial_value: "0"
+- id: y_button_press_duration
+  type: int
+  initial_value: "0"
+
+
+interval:
+  - interval: 100ms
+    then:
+      - lambda: |-
+          if (id(btn_y).state) {
+            id(y_button_press_duration) = millis() - id(y_button_press_start);
+          } else {
+            id(y_button_press_duration) = 0;
+          }
+
+          if (id(btn_r).state) {
+            id(r_button_press_duration) = millis() - id(r_button_press_start);
+          } else {
+            id(r_button_press_duration) = 0;
+          }
+
+          id(gm_clock).execute();
+
+
+display:
+  - platform: lcd_pcf8574
+    id: my_display
+    i2c_id: bus_a
+    dimensions: 16x2
+    address: 0x21
+    # update_interval: never
+    lambda: |-
+      id(gm_display_update).execute(it);

@@ -1,0 +1,221 @@
+globals:
+
+- id: domination_game_time
+  type: int
+  initial_value: "0"
+- id: domination_delay_time
+  type: int
+  initial_value: "0"
+- id: domination_timer_last_update_ms
+  type: int
+  initial_value: "0"
+- id: domination_score_red_ms
+  type: int
+  initial_value: "0"
+- id: domination_score_yellow_ms
+  type: int
+  initial_value: "0"
+- id: domination_team_change_perc
+  type: float
+  initial_value: "0"
+
+- id: current_team
+  type: std::string
+  initial_value: "" # TEAM_RED | TEAM_YELLOW | NONE
+
+sensor:
+  - platform: template
+    id: game_domination_timer
+    update_interval: 250ms
+    lambda: |-
+      if (id(current_game_mode) != 1) {
+        return {};
+      }
+
+      // Timer that reduces the time left on the game when the game is started
+      int prev_value = id(game_domination_timer).state;
+
+      if (isnan(prev_value) || id(domination_timer_last_update_ms) == 0) {
+        id(domination_timer_last_update_ms) = millis();
+        return 0;
+      }
+
+      if (id(gm_finished)) {
+        return prev_value;
+      }
+
+      int time_passed = millis() - id(domination_timer_last_update_ms);
+      int next_value = prev_value - time_passed;
+      if (next_value < 0) {
+        next_value = 0;
+      }
+      
+      id(domination_timer_last_update_ms) = millis();
+      if (prev_value == 0 & next_value == 0) {
+        return {};
+      }
+
+      ESP_LOGI("GM_DOMINATION", "Game timer left %d", next_value);
+      if (next_value == 0) {
+        // Finish the game
+        id(gm_finished) = true;
+        id(gm_finished_ms) = millis();
+      }
+
+      return next_value;
+
+
+script:
+  - id: gm_domination_display_update
+    parameters:
+      disp: lcd_base::LCDDisplay&
+    then:
+      - lambda: |-
+          if (!id(settings_initiated)) {
+            // Settings display and selection
+            if (id(current_menu) == 0) {
+              disp.printf(0, 0, "> Delay min: %d", id(domination_delay_time));
+              disp.printf(0, 1, "  Game  min: %d", id(domination_game_time));
+            } else if (id(current_menu) == 1) {
+              disp.printf(0, 0, "  Delay min: %d", id(domination_delay_time));
+              disp.printf(0, 1, "> Game  min: %d", id(domination_game_time));
+            } else if (id(current_menu) == 2) {
+              disp.printf(0, 0, "  Game  min: %d", id(domination_game_time));
+              disp.printf(0, 1, "> START");
+            }
+          } else {
+              // Gameplay display
+              if (id(prep_for_game_timer).state != 0) {
+                // Displays time before game actuals starts
+                disp.printf(0, 0, " PREP FOR GAME");
+                disp.printf(0, 1, "     %s", format_time_remaining(id(prep_for_game_timer).state).c_str());
+              } else {
+                // Game started
+                if (id(gm_finished)) {
+                  disp.printf(0, 0, "DOMINATION ENDED");
+                }
+                else {
+                  disp.printf(0, 0, "TIME LEFT: %s", format_time_remaining(id(game_domination_timer).state).c_str());
+                }
+
+                if (id(domination_team_change_perc) > 0) {
+                  disp.printf(0, 1, "%.2f", id(domination_team_change_perc));
+                } else {
+                  disp.printf(0, 1, "Tr:%4d Ty:%4d", int(id(domination_score_red_ms) / 1000.0), int(id(domination_score_yellow_ms) / 1000.0));
+                }
+                
+              }
+          }
+
+  - id: gm_domination_handle_key_pressed
+    parameters:
+      key: std::string
+    then:
+      - lambda: |-
+          if (!id(settings_initiated)) {
+            id(gm_domination_handle_key_pressed_menu).execute(key);
+          } else {
+            id(gm_domination_handle_key_pressed_game).execute(key);
+          }
+  - id: gm_domination_handle_key_pressed_game
+    parameters:
+      key: std::string
+    then:
+      - lambda: |-
+          if (id(prep_for_game_timer).state != 0) {
+              return;
+          } else {
+  
+          }
+  - id: gm_domination_handle_key_pressed_menu
+    parameters:
+        key: std::string
+    then:
+      - lambda: |-
+          int next_menu = id(current_menu);
+
+          if (key == "A") {
+            // Move menu up
+            next_menu = next_menu - 1;
+            if (next_menu < 0) {
+              next_menu = 2;
+            }
+            id(current_menu) = next_menu;
+          } else if(key == "B") {
+            // Move menu down
+            next_menu = next_menu + 1;
+            if (next_menu > 2) {
+              next_menu = 0;
+            }
+            id(current_menu) = next_menu;
+          } else if(key == "C") {
+            // Clear selection or start the game
+            if (next_menu == 0) {
+              id(domination_delay_time) = 0;
+            } else if (next_menu == 1) {
+              id(domination_game_time) = 0;
+            } else if (next_menu == 2) {
+              // Start the game
+              id(current_team) = "NONE";
+
+              id(gm_start_game).execute(id(domination_delay_time));
+              ESP_LOGI("GM_DOMINATION", "Starting the game");
+            }
+          }
+
+          if (std::isdigit(key[0])) {
+            // If digit is pressed check if anything needs to be done
+            // If menu with number input is slected process the number
+
+            if (next_menu == 0) {
+              id(domination_delay_time) = append_digit(key, id(domination_delay_time));
+            } else if (next_menu == 1) {
+              id(domination_game_time) = append_digit(key, id(domination_game_time));
+            } 
+          }
+  - id: gm_domination_actual_start
+    then:
+      - lambda: |-
+          // Game started after initial delay
+          id(game_domination_timer).publish_state(id(domination_game_time) * 60 * 1000);
+
+  - id: gm_domination_clock
+    then:
+      - lambda: |-
+          bool game_finished = id(gm_finished);
+
+
+          if (!game_finished and id(prep_for_game_timer).state == 0) {
+            int duration_pressed_ms = 0;
+            std::string team_btn_pressed = "NONE";
+            if (id(r_button_press_duration) > id(y_button_press_duration)) {
+                duration_pressed_ms = id(r_button_press_duration);
+                team_btn_pressed = "TEAM_RED";
+              } else {
+                duration_pressed_ms = id(y_button_press_duration);
+                team_btn_pressed = "TEAM_YELLOW";
+            }
+
+            if (duration_pressed_ms > 0 and id(current_team) != team_btn_pressed) {
+              id(domination_team_change_perc) = duration_pressed_ms / 5000.0 * 100.0;
+              if (duration_pressed_ms > 5000) {
+                id(current_team) = team_btn_pressed;
+                id(domination_team_change_perc) = 100;
+                id(reset_yellow_btn_timer).execute();
+                id(reset_red_btn_timer).execute();
+              }
+            } else {
+              id(domination_team_change_perc) = 0;
+
+              int last_clock_ms = id(gm_clock_last_update_ms);
+              int time_passed = millis() - last_clock_ms;
+
+              if (id(current_team) == "TEAM_RED") {
+                id(domination_score_red_ms) = id(domination_score_red_ms) + time_passed;
+              } else if (id(current_team) == "TEAM_YELLOW") {
+                id(domination_score_yellow_ms) = id(domination_score_yellow_ms) + time_passed;
+              }
+            }
+          }
+
+          
