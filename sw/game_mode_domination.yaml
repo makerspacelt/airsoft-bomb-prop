@@ -160,13 +160,16 @@ script:
               next_menu = 0;
             }
             id(current_menu) = next_menu;
-          } else if(key == "C") {
-            // Clear selection or start the game
+          } else if(key == "*") {
+            // Clear selection
             if (next_menu == 0) {
               id(domination_delay_time) = 0;
             } else if (next_menu == 1) {
               id(domination_game_time) = 0;
-            } else if (next_menu == 2) {
+            } 
+          } else if(key == "C") {
+            // Start the game
+            if (next_menu == 2) {
               // Start the game
               id(current_team) = "NONE";
 

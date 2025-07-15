@@ -109,11 +109,13 @@ script:
               next_menu = 0;
             }
             id(current_menu) = next_menu;
-          } else if(key == "C") {
-            // Clear selection or start the game
+          } else if(key == "*") {
+            // Clear selection
             if (next_menu == 0) {
               id(zone_control_delay_time) = 0;
-            } else if (next_menu == 1) {
+            }
+          } else if(key == "C") {
+            if (next_menu == 1) {
               // Start the game
               id(zone_control_current_team) = "NONE";
 

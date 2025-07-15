@@ -26,9 +26,9 @@
 [ ] Implement settings input validation  
   
 # Global  
-  
+
+[ ] After the game ended if the C button was pressed for 10s the same game with same parameters should start 
 [ ] Implement more frequent display update for progress bars  
 [ ] Different key press tones for C/D buttons (as per spec.)  
 [ ] At any given point if the D + * are pressed for 10s user should be returned to main menu. UPDATE: The function is implemented on * key only because for some reason the keypad does not support multiple inputs at once
-[ ] * should clear any input  
 [ ] Game delay timer at first render shows 00:00 probably due to invalid sequence of update execution

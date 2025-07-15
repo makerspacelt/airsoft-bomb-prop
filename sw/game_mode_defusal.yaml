@@ -268,7 +268,7 @@ script:
               next_menu = 0;
             }
             id(current_menu) = next_menu;
-          } else if(key == "C") {
+          } else if(key == "*") {
             // Clear selection or start the game
             if (next_menu == 0) {
               id(defusal_delay_time) = 0;
@@ -276,7 +276,9 @@ script:
               id(defusal_bomb_time) = 0;
             } else if (next_menu == 2) {
               id(set_password) = "";
-            } else if (next_menu == 3) {
+            }
+          } else if(key == "C") {
+            if (next_menu == 3) {
               // Start the game
               id(exploded) = false;
               id(failed_code_count) = 0; // Resets the state from previous game
