@@ -2,7 +2,6 @@
   
 [ ] Implement beeping when bomb is armed. With time reducing the beeping should increase the speed  
 [ ] After game is ended by defusing the bomb the timer should stop counting  
-[ ] Implement game reset after ending  
 [ ] Implement siren  
 [ ] Implement progress bar  
 [ ] Implement settings input validation  
@@ -12,27 +11,22 @@
   
 [ ] Implement siren per spec.  
 [ ] Implement progress bar  
-[ ] Implement game reset after ending  
 [ ] Implement settings input validation
 
 # Zone control  
   
 [ ] Implement siren per spec.  
 [ ] Implement progress bar  
-[ ] Implement game reset after ending  
 [ ] Implement settings input validation  
 
 # Timer  
   
 [ ] Implement siren per spec.  
 [ ] Implement progress bar  
-[ ] Implement game reset after ending  
 [ ] Implement settings input validation  
   
 # Global  
   
-[ ] Implement complete reset by holding D for X seconds  
-[ ] Implement complete reset of state for each game mode  
 [ ] Implement more frequent display update for progress bars  
 [ ] Different key press tones for C/D buttons (as per spec.)  
 [ ] At any given point if the D + * are pressed for 10s user should be returned to main menu. UPDATE: The function is implemented on * key only because for some reason the keypad does not support multiple inputs at once
