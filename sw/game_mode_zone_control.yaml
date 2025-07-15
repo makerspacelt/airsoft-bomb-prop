@@ -34,7 +34,7 @@ script:
             } 
           } else {
               // Gameplay display
-              if (id(prep_for_game_timer).state != 0) {
+              if (id(prep_for_game_timer).state != 0 and !isnan(id(prep_for_game_timer).state)) {
                 // Displays time before game actuals starts
                 disp.printf(0, 0, " PREP FOR GAME");
                 disp.printf(0, 1, "     %s", format_time_remaining(id(prep_for_game_timer).state).c_str());
@@ -106,7 +106,7 @@ script:
               id(zone_control_current_team) = "NONE";
 
               id(gm_start_game).execute(id(zone_control_delay_time));
-              ESP_LOGI("GM_zone_control", "Starting the game");
+              ESP_LOGI("GM_ZONE_CONTROL", "Starting the game");
             }
           }
 
@@ -160,5 +160,10 @@ script:
               }
             }
           }
+  - id: gm_zone_control_hard_reset
+    then:
+      - lambda: |-
+          ESP_LOGI("GM_ZONE_CONTROL", "Hard reset triggered");
+          id(game_domination_timer).publish_state(0);
 
           

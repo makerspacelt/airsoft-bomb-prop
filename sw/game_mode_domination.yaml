@@ -85,7 +85,7 @@ script:
             }
           } else {
               // Gameplay display
-              if (id(prep_for_game_timer).state != 0) {
+              if (id(prep_for_game_timer).state != 0 and !isnan(id(prep_for_game_timer).state)) {
                 // Displays time before game actuals starts
                 disp.printf(0, 0, " PREP FOR GAME");
                 disp.printf(0, 1, "     %s", format_time_remaining(id(prep_for_game_timer).state).c_str());
@@ -217,5 +217,9 @@ script:
               }
             }
           }
-
-          
+  - id: gm_domination_hard_reset
+    then:
+      - lambda: |-
+          ESP_LOGI("GM_DOMINATION", "Hard reset triggered");
+          id(game_domination_timer).publish_state(0);
+        

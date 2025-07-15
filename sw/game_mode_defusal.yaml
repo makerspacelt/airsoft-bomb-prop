@@ -92,7 +92,7 @@ script:
             }
           } else {
               // Gameplay display
-              if (id(prep_for_game_timer).state != 0) {
+              if (id(prep_for_game_timer).state != 0 and !isnan(id(prep_for_game_timer).state)) {
                 // Displays time before game actuals starts
                 disp.printf(0, 0, " PREP FOR GAME");
                 disp.printf(0, 1, "     %s", format_time_remaining(id(prep_for_game_timer).state).c_str());
@@ -365,4 +365,14 @@ script:
     then:
       - component.update: my_display
       - delay: 200ms
+  - id: gm_defusal_hard_reset
+    then:
+      - lambda: |-
+          ESP_LOGI("GM_DEFUSAL", "Hard reset triggered");
+          id(defuse_timer).publish_state(0);
+          id(defusal_timer_last_update_ms) = 0;
+          id(failed_code_count) = 0;
+          id(attempted_password) = "";
+          id(progress_value) = 0;
+          id(is_armed) = false;
 

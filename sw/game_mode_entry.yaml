@@ -43,6 +43,10 @@ sensor:
     lambda: |-
       int prev_value = id(prep_for_game_timer).state;
       int game_delay_ms = id(gm_delay_mins) * 60 * 1000;
+      
+      if (!id(gm_started)) {
+        return {};
+      }
 
       if (isnan(prev_value)) {
         return game_delay_ms;
@@ -78,6 +82,29 @@ script:
         } else if (id(current_game_mode) == 3) {
           id(gm_countdown_actual_start).execute();
         }
+- id: gm_hard_reset
+  then:
+    - lambda: |-
+        // Reset the game and return to main menu
+
+        if (id(current_game_mode) == 0) {
+          id(gm_defusal_hard_reset).execute();
+        } else if (id(current_game_mode) == 1) {
+          id(gm_domination_hard_reset).execute();
+        } else if (id(current_game_mode) == 2) {
+          id(gm_zone_control_hard_reset).execute();
+        } else if (id(current_game_mode) == 3) {
+          id(gm_countdown_hard_reset).execute();
+        }
+
+        id(current_game_mode) = -1;
+        id(settings_initiated) = false;
+        id(gm_finished) = false;
+        id(gm_started_ms) = 0;
+        id(gm_started) = false;
+        id(gm_finished_ms) = 0;
+        id(prep_for_game_timer).publish_state(0);
+        id(current_menu) = 0;
 
 
 - id: gm_display_update
@@ -164,13 +191,22 @@ script:
         } else if (id(current_game_mode) == 3) {
           id(gm_countdown_clock).execute();
         }
+        
+        if (id(hard_reset_press_duration) > 10000) {
+          ESP_LOGI("GAME_MODE_ENTRY", "Hard reset triggered");
+          id(gm_hard_reset).execute();
+          id(reset_hard_reset_timer).execute();
+        }
+
         id(gm_clock_last_update_ms) = millis();
+
 
 - id: gm_start_game
   parameters:
     start_delay_mins: int
   then:
     - lambda: |-
+        ESP_LOGI("GAME_MODE_ENTRY", "Game start triggered");
         id(settings_initiated) = true;
         id(gm_started) = true;
         id(gm_started_ms) = millis();

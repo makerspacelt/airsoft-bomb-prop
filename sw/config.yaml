@@ -51,6 +51,28 @@ binary_sensor:
       lambda: |-
         id(y_button_press_start) = millis();
 
+  - platform: matrix_keypad
+    keypad_id: mykeypad
+    id: key_d
+    key: "D"
+    on_press:
+      lambda: |-
+        //TODO: Not working with multiples key pressed at once
+        //if (id(key_star).state) {
+        //  id(hard_reset_press_start) = millis();
+        //}
+
+  - platform: matrix_keypad
+    keypad_id: mykeypad
+    id: key_star
+    key: "*"
+    on_press:
+      lambda: |-
+        //TODO: Not working with multiples key pressed at once
+        //if (id(key_d).state) {
+        //  id(hard_reset_press_start) = millis();
+        //}
+        id(hard_reset_press_start) = millis();
 
       # then:
       # - output.set_level:
@@ -94,7 +116,7 @@ matrix_keypad:
   keys: "D#0*C987B654A321"
   has_diodes: false
   on_key:
-    - lambda: ESP_LOGI("KEY", "key %d pressed", x);
+    # - lambda: ESP_LOGI("KEY", "key %d pressed", x);
     - lambda: |-
         id(handle_normal_key_press).execute(x);
 
@@ -124,20 +146,25 @@ script:
 - id: reset_yellow_btn_timer
   then:
     - lambda: |-
-        id(y_button_press_start) = millis();
+        id(y_button_press_start) = 0;
         id(y_button_press_duration) = 0;
 - id: reset_red_btn_timer
   then:
     - lambda: |-
-        id(r_button_press_start) = millis();
+        id(r_button_press_start) = 0;
         id(r_button_press_duration) = 0;
+- id: reset_hard_reset_timer
+  then:
+    - lambda: |-
+        id(hard_reset_press_start) = 0;
+        id(hard_reset_press_duration) = 0;
 
 
 - id: handle_normal_key_press
   parameters:
     key: uint8_t
   then:
-    - script.execute: short_buzz
+    # - script.execute: short_buzz
     - lambda: |-
         std::string s;
         s.assign(1, key);
@@ -158,22 +185,36 @@ globals:
 - id: y_button_press_duration
   type: int
   initial_value: "0"
+- id: hard_reset_press_start
+  type: int
+  initial_value: "0"
+- id: hard_reset_press_duration
+  type: int
+  initial_value: "0"
 
 
 interval:
   - interval: 100ms
     then:
       - lambda: |-
-          if (id(btn_y).state) {
+          if (id(btn_y).state and id(y_button_press_start) != 0) {
             id(y_button_press_duration) = millis() - id(y_button_press_start);
           } else {
             id(y_button_press_duration) = 0;
           }
 
-          if (id(btn_r).state) {
+          if (id(btn_r).state and id(r_button_press_start) != 0) {
             id(r_button_press_duration) = millis() - id(r_button_press_start);
           } else {
             id(r_button_press_duration) = 0;
+          }
+
+          //if (id(key_d).state and id(key_star).state) {  //TODO: Not working with multiples key pressed at once
+          if (id(key_star).state and id(hard_reset_press_start) != 0) {
+            id(hard_reset_press_duration) = millis() - id(hard_reset_press_start);
+            ESP_LOGI("TEST", "Timer left %d", id(hard_reset_press_duration));
+          } else {
+            id(hard_reset_press_duration) = 0;
           }
 
           id(gm_clock).execute();
