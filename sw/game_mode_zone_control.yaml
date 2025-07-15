@@ -74,7 +74,19 @@ script:
           if (id(prep_for_game_timer).state != 0) {
               return;
           } else {
-  
+            if (id(gm_finished)) {
+              if (key == "C") {
+                // Go back to start
+                id(gm_hard_reset).execute();
+                id(current_game_mode) = 2;
+                return;
+              }
+              if (key == "D") {
+                // Go back to main menu
+                id(gm_hard_reset).execute();
+                return;
+              }
+            }
           }
   - id: gm_zone_control_handle_key_pressed_menu
     parameters:

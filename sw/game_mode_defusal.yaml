@@ -178,6 +178,19 @@ script:
           if (id(prep_for_game_timer).state != 0) {
               return;
           } else {
+            if (id(gm_finished)) {
+              if (key == "C") {
+                // Go back to start
+                id(gm_hard_reset).execute();
+                id(current_game_mode) = 0;
+                return;
+              }
+              if (key == "D") {
+                // Go back to main menu
+                id(gm_hard_reset).execute();
+                return;
+              }
+            }
             if (id(set_password).length() != 0) {
               // Passcode is used in the game
               if (std::isdigit(key[0])) {
@@ -375,4 +388,5 @@ script:
           id(attempted_password) = "";
           id(progress_value) = 0;
           id(is_armed) = false;
+
 

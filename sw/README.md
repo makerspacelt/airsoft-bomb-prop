@@ -13,6 +13,20 @@
 [ ] Implement siren per spec.  
 [ ] Implement progress bar  
 [ ] Implement game reset after ending  
+[ ] Implement settings input validation
+
+# Zone control  
+  
+[ ] Implement siren per spec.  
+[ ] Implement progress bar  
+[ ] Implement game reset after ending  
+[ ] Implement settings input validation  
+
+# Timer  
+  
+[ ] Implement siren per spec.  
+[ ] Implement progress bar  
+[ ] Implement game reset after ending  
 [ ] Implement settings input validation  
   
 # Global  
@@ -21,5 +35,6 @@
 [ ] Implement complete reset of state for each game mode  
 [ ] Implement more frequent display update for progress bars  
 [ ] Different key press tones for C/D buttons (as per spec.)  
-[ ] At any given point if the D + * are pressed for 10s user should be returned to main menu  
+[ ] At any given point if the D + * are pressed for 10s user should be returned to main menu. UPDATE: The function is implemented on * key only because for some reason the keypad does not support multiple inputs at once
 [ ] * should clear any input  
+[ ] Game delay timer at first render shows 00:00 probably due to invalid sequence of update execution
