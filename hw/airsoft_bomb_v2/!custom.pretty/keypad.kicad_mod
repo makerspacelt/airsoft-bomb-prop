@@ -1170,26 +1170,26 @@
 			(xyz 0 0 0)
 		)
 	)
-	(model "${KIPRJMOD}/3d/PinHeader_1x10_P254mm_Horizontal001.step"
-		(offset
-			(xyz -14 -23 2.5)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz -180 0 0)
-		)
-	)
 	(model "${KIPRJMOD}/3d/keypad.step"
 		(offset
-			(xyz -11.5 -12.5 3.5)
+			(xyz -9 -12.5 5.85)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
 			(xyz 0 0 90)
+		)
+	)
+	(model "${KIPRJMOD}/3d/header_R1-01x10_P2.54_horizontal_R1.step"
+		(offset
+			(xyz -11.5 -23 4.95)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 180 90)
 		)
 	)
 )
