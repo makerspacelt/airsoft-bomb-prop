@@ -6476,6 +6476,96 @@
 			)
 		)
 	)
+	(footprint "kibuzzard-687FD9CC"
+		(layer "B.Cu")
+		(uuid "5aec8fb1-4cb9-4fca-bc5f-23ae076d6f8d")
+		(at 119.126 82.042 90)
+		(descr "Generated with KiBuzzard")
+		(tags "kb_params=eyJBbGlnbm1lbnRDaG9pY2UiOiAiQ2VudGVyIiwgIkNhcExlZnRDaG9pY2UiOiAiPCIsICJDYXBSaWdodENob2ljZSI6ICI+IiwgIkZvbnRDb21ib0JveCI6ICJVYnVudHVNb25vLUIiLCAiSGVpZ2h0Q3RybCI6IDEuMCwgIkxheWVyQ29tYm9Cb3giOiAiRi5TaWxrUyIsICJMaW5lU3BhY2luZ0N0cmwiOiAxLjUsICJNdWx0aUxpbmVUZXh0IjogIisgICAgLSIsICJQYWRkaW5nQm90dG9tQ3RybCI6IDIuMCwgIlBhZGRpbmdMZWZ0Q3RybCI6IDIuMCwgIlBhZGRpbmdSaWdodEN0cmwiOiAyLjAsICJQYWRkaW5nVG9wQ3RybCI6IDIuMCwgIldpZHRoQ3RybCI6IDUuMCwgImFkdmFuY2VkQ2hlY2tib3giOiBmYWxzZSwgImlubGluZUZvcm1hdFRleHRib3giOiBmYWxzZSwgImxpbmVvdmVyU3R5bGVDaG9pY2UiOiAiU3F1YXJlIiwgImxpbmVvdmVyVGhpY2tuZXNzQ3RybCI6IDF9")
+		(property "Reference" "kibuzzard-687FD9CC"
+			(at 0 3.679933 90)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "531a6461-cfb6-4d53-9fdd-6050001bfc10")
+			(effects
+				(font
+					(size 0.001 0.001)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "G***"
+			(at 0 -3.679933 90)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "7faa89c7-4943-4e5b-93f3-f98316c83042")
+			(effects
+				(font
+					(size 0.001 0.001)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "fca2d23e-63ca-4754-8614-94c88c3e55d7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f25fce19-cf36-4fdb-a6d5-20ed20242c82")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "7058ee1c-d14d-4722-8334-c36ffadc9f16")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(fp_poly
+			(pts
+				(xy -2.299677 0.631933) (xy -2.568928 0.631933) (xy -2.990217 0) (xy -2.568928 -0.631933) (xy -2.299677 -0.631933)
+				(xy -1.874798 -0.631933) (xy -1.874798 -0.362682) (xy -2.046042 -0.362682) (xy -2.046042 -0.081583)
+				(xy -2.299677 -0.081583) (xy -2.299677 0.081583) (xy -2.046042 0.081583) (xy -2.046042 0.362682)
+				(xy -1.874798 0.362682) (xy -1.874798 0.081583) (xy -1.621163 0.081583) (xy -1.621163 -0.081583)
+				(xy -1.874798 -0.081583) (xy -1.874798 -0.362682) (xy -1.874798 -0.631933) (xy 2.299677 -0.631933)
+				(xy 2.299677 -0.107431) (xy 1.857027 -0.107431) (xy 1.857027 0.088045) (xy 2.299677 0.088045) (xy 2.299677 -0.107431)
+				(xy 2.299677 -0.631933) (xy 2.568928 -0.631933) (xy 2.990217 0) (xy 2.568928 0.631933) (xy 2.299677 0.631933)
+				(xy -2.299677 0.631933)
+			)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill solid)
+			(layer "B.SilkS")
+			(uuid "087f2ffd-051d-402d-9a40-8655bc6b995f")
+		)
+	)
 	(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "5f89798e-ac9c-4af7-88ad-7fb9cbd82320")
@@ -14351,6 +14441,50 @@
 				(xyz 0 0 0)
 			)
 		)
+	)
+	(gr_rect
+		(start 175.768 125.476)
+		(end 178.308 134.112)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill solid)
+		(layer "B.SilkS")
+		(uuid "5a9fc3d0-4a2d-4a22-80b1-e085e6569a31")
+	)
+	(gr_rect
+		(start 152.908 125.476)
+		(end 155.448 134.112)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill solid)
+		(layer "B.SilkS")
+		(uuid "683313f8-f699-4a82-ae6e-89076719057f")
+	)
+	(gr_rect
+		(start 170.18 58.928)
+		(end 172.72 67.564)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill solid)
+		(layer "B.SilkS")
+		(uuid "b9eb4c79-6d20-42e4-ae3c-0f2ffbc4e8bb")
+	)
+	(gr_rect
+		(start 132.08 58.928)
+		(end 134.62 67.564)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill solid)
+		(layer "B.SilkS")
+		(uuid "fe4de9b2-4c22-479e-a776-3db09e2de9cf")
 	)
 	(gr_line
 		(start 178.890534 60.866736)
