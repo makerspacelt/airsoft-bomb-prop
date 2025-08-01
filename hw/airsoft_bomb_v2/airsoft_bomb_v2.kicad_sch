@@ -5446,10 +5446,6 @@
 		(uuid "724c37ad-dc7c-4e38-8ce1-17bf388b8b04")
 	)
 	(no_connect
-		(at 105.41 153.67)
-		(uuid "7a81f3cd-d349-4ec5-956e-8b51361289a1")
-	)
-	(no_connect
 		(at 69.85 158.75)
 		(uuid "7be1a5a3-beb2-40d8-876e-a3c41f76ee8a")
 	)
@@ -5536,6 +5532,10 @@
 	(no_connect
 		(at 302.26 140.97)
 		(uuid "ef37c20e-2c3c-4695-a95b-33470c6b2705")
+	)
+	(no_connect
+		(at 69.85 151.13)
+		(uuid "f243d11e-862d-411a-b03e-5f75079de6d3")
 	)
 	(no_connect
 		(at 302.26 116.84)
@@ -5933,6 +5933,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 153.67) (xy 125.73 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a6d499f-6e07-4af7-bd7b-3d90c2254367")
+	)
+	(wire
+		(pts
 			(xy 227.33 74.93) (xy 227.33 77.47)
 		)
 		(stroke
@@ -6263,6 +6273,16 @@
 	)
 	(wire
 		(pts
+			(xy 105.41 153.67) (xy 109.22 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e683c40-f806-4ad8-a2d6-edd3c449404e")
+	)
+	(wire
+		(pts
 			(xy 149.86 148.59) (xy 121.92 148.59)
 		)
 		(stroke
@@ -6390,16 +6410,6 @@
 			(type default)
 		)
 		(uuid "9820aece-affd-4c9e-82d3-852651fae631")
-	)
-	(wire
-		(pts
-			(xy 43.18 151.13) (xy 54.61 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9820e2c4-4df3-4477-af8e-7ef6ab149639")
 	)
 	(wire
 		(pts
@@ -6720,16 +6730,6 @@
 			(type default)
 		)
 		(uuid "c596f74e-332f-4787-b5cd-fe2825c066e7")
-	)
-	(wire
-		(pts
-			(xy 62.23 151.13) (xy 69.85 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c59fdd28-6c38-47d4-9c93-d0976ef047a6")
 	)
 	(wire
 		(pts
@@ -7121,6 +7121,16 @@
 		)
 		(uuid "1653c2e8-1d72-4dca-a610-5caa77b4aa42")
 	)
+	(label "SIREN"
+		(at 125.73 153.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "182cf7ed-3a3b-4bc8-8b56-f145201ae4e2")
+	)
 	(label "I2C_SDA"
 		(at 67.31 66.04 0)
 		(effects
@@ -7160,16 +7170,6 @@
 			(justify left bottom)
 		)
 		(uuid "45e3d902-1153-4b9f-bafd-81991864989d")
-	)
-	(label "SIREN"
-		(at 43.18 151.13 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "502ca8bf-3ade-4a87-b899-de7eaffd07f9")
 	)
 	(label "BTN_Y"
 		(at 185.42 184.15 0)
@@ -8005,74 +8005,6 @@
 			(project "airsoft_bomb_v2"
 				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
 					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 58.42 151.13 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26a434b2-5f87-47f3-aad4-dc0be44ad20c")
-		(property "Reference" "R9"
-			(at 58.42 144.78 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1k"
-			(at 58.42 147.32 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 58.42 152.908 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 58.42 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 58.42 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "d6bb730b-d617-47c3-aec7-75a7a7882ad3")
-		)
-		(pin "1"
-			(uuid "bbd4cea1-b5d3-4736-a5e5-db920409c50d")
-		)
-		(instances
-			(project "airsoft_bomb_v2"
-				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
-					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -11433,6 +11365,74 @@
 			(project "airsoft_bomb_v2"
 				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
 					(reference "#PWR027")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 113.03 153.67 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "af22567b-4750-42b3-aba1-10b783a7038c")
+		(property "Reference" "R9"
+			(at 113.03 147.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 113.03 149.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 113.03 151.892 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 113.03 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9306fc16-818c-4790-905b-9453040e8cd6")
+		)
+		(pin "1"
+			(uuid "6299c966-ae27-4909-b92a-69ce898bc674")
+		)
+		(instances
+			(project "airsoft_bomb_v2"
+				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
+					(reference "R9")
 					(unit 1)
 				)
 			)
