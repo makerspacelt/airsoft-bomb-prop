@@ -1,0 +1,70 @@
+B,C,9,9,9,B,9,9,9,B,C,DELAY=59949900,DELAY=59940000
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 9  |
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 99 |
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 999|
+[LCD] |  Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Game  min: 9  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Game  min: 99 |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Game  min: 999|
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 999|
+[LCD] |> START         |
+[KEY C]
+[GM_domination] Starting the game
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     999:00     |
+[DELAY 59949900]
+[GameManager] Siren for 8000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |TIME LEFT:999:00|
+[LCD] |T1:0     T2:0   |
+[DELAY 59940000]
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |DOMINATION ENDED|
+[LCD] |T1:0     T2:0   |

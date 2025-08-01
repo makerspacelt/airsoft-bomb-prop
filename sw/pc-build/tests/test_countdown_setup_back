@@ -1,0 +1,30 @@
+b,b,b,c,d
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Zone control  |
+[LCD] |> Timer         |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY D]
+[GameManager] Exiting game
+[GameManager] Buzzer for 100ms at 400Hz
+[LCD] |----------------|
+[LCD] |  Zone control  |
+[LCD] |> Timer         |

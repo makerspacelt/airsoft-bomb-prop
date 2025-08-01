@@ -1,0 +1,89 @@
+B,C,1,2,3,9,9,9,*,B,9,8,*,5,6,7,B
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 1  |
+[LCD] |  Game  min: 0  |
+[KEY 2]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 12 |
+[LCD] |  Game  min: 0  |
+[KEY 3]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 123|
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 9  |
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 99 |
+[LCD] |  Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 999|
+[LCD] |  Game  min: 0  |
+[KEY *]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 9  |
+[KEY 8]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 98 |
+[KEY *]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 5  |
+[KEY 6]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 56 |
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 567|
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 567|
+[LCD] |> START         |

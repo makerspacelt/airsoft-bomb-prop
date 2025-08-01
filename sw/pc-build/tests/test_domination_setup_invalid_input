@@ -1,0 +1,39 @@
+B,C,B,B,C,1,B
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 0  |
+[LCD] |> START         |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |*INVALID INPUT* |
+[LCD] | * GAME TIME *  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 0  |
+[LCD] |> START         |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |

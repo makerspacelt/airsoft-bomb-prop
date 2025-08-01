@@ -1,0 +1,51 @@
+B,C,B,1,B,C,DELAY=60000,RESET,C
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 1  |
+[LCD] |> START         |
+[KEY C]
+[GM_domination] Starting the game
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |TIME LEFT: 01:00|
+[LCD] |T1:0     T2:0   |
+[DELAY 60000]
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |DOMINATION ENDED|
+[LCD] |T1:0     T2:0   |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 1  |

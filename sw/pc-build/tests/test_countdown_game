@@ -1,0 +1,93 @@
+B,B,B,C,0,B,1,2,3,1,B,C,TICK,TICK,TICK,C_LONG,TICK,TICK,RESET
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Zone control  |
+[LCD] |> Timer         |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 1  |
+[KEY 2]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 12 |
+[KEY 3]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 123|
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 1  |
+[LCD] |> START         |
+[KEY C]
+[GM_countdown] Starting the game
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |  GAME STARTED  |
+[LCD] |     01:00      |
+[TICK 30000]
+[LCD] |----------------|
+[LCD] |  GAME STARTED  |
+[LCD] |     00:30      |
+[TICK 60000]
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |   GAME ENDED   |
+[LCD] |                |
+[TICK 90000]
+[KEY C_LONG]
+[GM_countdown] Restarting the game
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  GAME STARTED  |
+[LCD] |     01:00      |
+[TICK 120000]
+[LCD] |----------------|
+[LCD] |  GAME STARTED  |
+[LCD] |     00:30      |
+[TICK 150000]
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |   GAME ENDED   |
+[LCD] |                |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  Zone control  |
+[LCD] |> Timer         |

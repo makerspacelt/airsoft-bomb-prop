@@ -1,0 +1,80 @@
+A,C,C,0,1,1,2,3,4,5,6,7,8,9,0
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Mertvek       |
+[LCD] |> Settings      |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren settings|
+[LCD] |  Back          |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren level: 9|
+[LCD] |  Test (wait 5s)|
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.000400 (user level 1)
+[LCD] |----------------|
+[LCD] |> Siren level: 1|
+[LCD] |  Test (wait 5s)|
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.000400 (user level 1)
+[KEY 2]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.012850 (user level 2)
+[LCD] |----------------|
+[LCD] |> Siren level: 2|
+[LCD] |  Test (wait 5s)|
+[KEY 3]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.025300 (user level 3)
+[LCD] |----------------|
+[LCD] |> Siren level: 3|
+[LCD] |  Test (wait 5s)|
+[KEY 4]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.037750 (user level 4)
+[LCD] |----------------|
+[LCD] |> Siren level: 4|
+[LCD] |  Test (wait 5s)|
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.050200 (user level 5)
+[LCD] |----------------|
+[LCD] |> Siren level: 5|
+[LCD] |  Test (wait 5s)|
+[KEY 6]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.062650 (user level 6)
+[LCD] |----------------|
+[LCD] |> Siren level: 6|
+[LCD] |  Test (wait 5s)|
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.075100 (user level 7)
+[LCD] |----------------|
+[LCD] |> Siren level: 7|
+[LCD] |  Test (wait 5s)|
+[KEY 8]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.087550 (user level 8)
+[LCD] |----------------|
+[LCD] |> Siren level: 8|
+[LCD] |  Test (wait 5s)|
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 1.000000 (user level 9)
+[LCD] |----------------|
+[LCD] |> Siren level: 9|
+[LCD] |  Test (wait 5s)|
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz

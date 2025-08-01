@@ -1,0 +1,25 @@
+B,B,C,RESET
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |0        0      |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |

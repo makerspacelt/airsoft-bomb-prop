@@ -1,0 +1,101 @@
+B,C,B,1,B,C,DELAY=10000,RED,DELAY=4999,DELAY=1,RED_RELEASE,YELLOW,DELAY=4999,YELLOW_RELEASE,DELAY=1,RED,DELAY=10000,RED_RELEASE,YELLOW,DELAY=1000,DELAY=4000,YELLOW_RELEASE,DELAY=24999,DELAY=1,RESET
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Game  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Game  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Game  min: 1  |
+[LCD] |> START         |
+[KEY C]
+[GM_domination] Starting the game
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |TIME LEFT: 01:00|
+[LCD] |T1:0     T2:0   |
+[DELAY 10000]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:50|
+[LCD] |T1:0     T2:0   |
+[KEY RED]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:50|
+[LCD] |1               |
+[DELAY 4999]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:45|
+[LCD] |XXXXXXXXXXXXXXX5|
+[DELAY 1]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:45|
+[LCD] |T1:0     T2:0   |
+[KEY RED_RELEASE]
+[KEY YELLOW]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:45|
+[LCD] |1               |
+[DELAY 4999]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:40|
+[LCD] |XXXXXXXXXXXXXXX5|
+[KEY YELLOW_RELEASE]
+[DELAY 1]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:40|
+[LCD] |T1:5     T2:0   |
+[KEY RED]
+[DELAY 10000]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:30|
+[LCD] |T1:15    T2:0   |
+[KEY RED_RELEASE]
+[KEY YELLOW]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:30|
+[LCD] |1               |
+[DELAY 1000]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:29|
+[LCD] |XXX2            |
+[DELAY 4000]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:25|
+[LCD] |T1:20    T2:0   |
+[KEY YELLOW_RELEASE]
+[DELAY 24999]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:00|
+[LCD] |T1:20    T2:24  |
+[DELAY 1]
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |DOMINATION ENDED|
+[LCD] |T1:20    T2:24  |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |

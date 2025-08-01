@@ -1,0 +1,46 @@
+A,C,C,B,C,A,1,B,C
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Mertvek       |
+[LCD] |> Settings      |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren settings|
+[LCD] |  Back          |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren level: 9|
+[LCD] |  Test (wait 5s)|
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Siren level: 9|
+[LCD] |> Test (wait 5s)|
+[KEY C]
+[GameManager] Siren for 5000ms at 1220Hz level 1.000000 with 5000ms delay
+[GameManager] Buzzer for 100ms at 1400Hz
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Siren level: 9|
+[LCD] |  Test (wait 5s)|
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.000400 (user level 1)
+[LCD] |----------------|
+[LCD] |> Siren level: 1|
+[LCD] |  Test (wait 5s)|
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Siren level: 1|
+[LCD] |> Test (wait 5s)|
+[KEY C]
+[GameManager] Siren for 5000ms at 200Hz level 0.000400 with 5000ms delay
+[GameManager] Buzzer for 100ms at 1400Hz

@@ -1,2 +1,6 @@
 /.esphome/
 /.venv/
+/pc-build/build/
+/.cache/
+/.local/
+/.platformio/

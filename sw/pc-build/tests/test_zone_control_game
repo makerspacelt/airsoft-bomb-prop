@@ -1,0 +1,106 @@
+B,B,C,DELAY=10000,RED,DELAY=63,DELAY=63,DELAY=63,DELAY=63,DELAY=63,DELAY=4684,DELAY=1,DELAY=999,DELAY=1,DELAY=999000,RED,DELAY=6000,RED_RELEASE,YELLOW,YELLOW_RELEASE,DELAY=1,RED,DELAY=6000,RED_RELEASE,YELLOW,DELAY=4999,DELAY=1,DELAY=999999000,RESET
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Defusal       |
+[LCD] |> Domination    |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |0        0      |
+[DELAY 10000]
+[KEY RED]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |1               |
+[DELAY 63]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |2               |
+[DELAY 63]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |3               |
+[DELAY 63]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |4               |
+[DELAY 63]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |5               |
+[DELAY 63]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |X1              |
+[DELAY 4684]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |XXXXXXXXXXXXXXX5|
+[DELAY 1]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |0        0      |
+[DELAY 999]
+[DELAY 1]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1        0      |
+[DELAY 999000]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1000     0      |
+[KEY RED]
+[DELAY 6000]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1006     0      |
+[KEY RED_RELEASE]
+[KEY YELLOW]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |1               |
+[KEY YELLOW_RELEASE]
+[DELAY 1]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1006     0      |
+[KEY RED]
+[DELAY 6000]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1012     0      |
+[KEY RED_RELEASE]
+[KEY YELLOW]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |1               |
+[DELAY 4999]
+[LCD] |----------------|
+[LCD] |   CAPTURING    |
+[LCD] |XXXXXXXXXXXXXXX5|
+[DELAY 1]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1017     0      |
+[DELAY 999999000]
+[LCD] |----------------|
+[LCD] |TEAM 1:  TEAM 2:|
+[LCD] |1017     999999 |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |  Domination    |
+[LCD] |> Zone control  |

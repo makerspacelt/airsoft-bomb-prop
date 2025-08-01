@@ -1,93 +1,123 @@
 esphome:
   name: kms-ant-v2
   includes:
-    - utilities.h
+    - common
+  on_boot:
+    - then:
+        lambda: |-
+          id(siren).turn_on();
+          id(siren).set_level(0);
+          id(buzzer).turn_on();
+          id(buzzer).set_level(0);
+          antg.action_set_siren_level(id(g_siren_level), false);
+  on_shutdown:
+    - then:
+        lambda: |-
+          id(siren).turn_off();
+          id(buzzer).turn_off();
 
 logger:
-  # level: VERY_VERBOSE
-
-packages:
-  a: !include game_mode_entry.yaml
-  
-  b: !include game_mode_defusal.yaml
-  c: !include game_mode_domination.yaml
-  d: !include game_mode_zone_control.yaml
-  e: !include game_mode_countdown.yaml
-  
+  level: DEBUG
 
 esp32:
   board: esp32-c3-devkitm-1
   framework:
     type: esp-idf
 
-switch:
-  - platform: gpio
-    pin: GPIO1
-    id: "buzzer"
+preferences:
+  flash_write_interval: 10s
+
+globals:
+  id: g_siren_level # 1-9
+  type: int
+  restore_value: true
+  initial_value: "9"
 
 output:
   - platform: ledc
+    pin: GPIO1
+    id: buzzer
+    frequency: 1000Hz
+
+  - platform: ledc
     pin: GPIO2
     id: siren
-    frequency: 100
-
 
 binary_sensor:
+  # RED button
   - platform: gpio
     pin: GPIO3
-    id: "btn_r"
+    id: btn_r
     filters:
       - invert:
     on_press:
       lambda: |-
-        id(r_button_press_start) = millis();
+        ESP_LOGI("Key", "on_press RED");
+        game_manager.handle_key(KEY_RED);
+        id(my_display).update();
+    on_release:
+      lambda: |-
+        ESP_LOGI("Key", "on_release RED");
+        game_manager.handle_key(KEY_RED_RELEASE);
+        id(my_display).update();
 
+  # YELLOW button
   - platform: gpio
     pin: GPIO4
-    id: "btn_y"
+    id: btn_y
     filters:
       - invert:
     on_press:
       lambda: |-
-        id(y_button_press_start) = millis();
+        ESP_LOGI("Key", "on_press YELLOW");
+        game_manager.handle_key(KEY_YELLOW);
+        id(my_display).update();
+    on_release:
+      lambda: |-
+        ESP_LOGI("Key", "on_release YELLOW");
+        game_manager.handle_key(KEY_YELLOW_RELEASE);
+        id(my_display).update();
 
+  # C long press handling for game restart
+  - platform: matrix_keypad
+    keypad_id: mykeypad
+    id: key_c
+    key: C
+    on_press:
+      lambda: |-
+        game_manager.key_c_press_at = millis();
+    on_release:
+      lambda: |-
+        game_manager.key_c_press_at = 0;
+
+  # D long press handling for organizer game reset
   - platform: matrix_keypad
     keypad_id: mykeypad
     id: key_d
-    key: "D"
+    key: D
     on_press:
       lambda: |-
-        //TODO: Not working with multiples key pressed at once
-        //if (id(key_star).state) {
-        //  id(hard_reset_press_start) = millis();
-        //}
+        game_manager.hard_reset_press_at = millis();
+    on_release:
+      lambda: |-
+        game_manager.hard_reset_press_at = 0;
 
+  # * long press handling for organizer game reset
   - platform: matrix_keypad
     keypad_id: mykeypad
     id: key_star
     key: "*"
     on_press:
       lambda: |-
-        //TODO: Not working with multiples key pressed at once
-        //if (id(key_d).state) {
-        //  id(hard_reset_press_start) = millis();
-        //}
-        id(hard_reset_press_start) = millis();
-
-      # then:
-      # - output.set_level:
-      #     id: siren
-      #     level: 0.0001
-      # - delay: 5s
-      # - output.set_level:
-      #     id: siren
-      #     level: 0
-
+        game_manager.hard_reset_press_at = millis();
+    on_release:
+      lambda: |-
+        game_manager.hard_reset_press_at = 0;
 
 matrix_keypad:
   id: mykeypad
   rows:
-    - pin: 
+    - pin:
         pcf8574: pcf8574_hub
         number: 0
     - pin:
@@ -112,14 +142,13 @@ matrix_keypad:
     - pin:
         pcf8574: pcf8574_hub
         number: 7
-  # keys: "123A456B789C*0#D"
   keys: "D#0*C987B654A321"
   has_diodes: false
   on_key:
-    # - lambda: ESP_LOGI("KEY", "key %d pressed", x);
     - lambda: |-
-        id(handle_normal_key_press).execute(x);
-
+        ESP_LOGI("Key", "on_key %c", x);
+        game_manager.handle_key(x);
+        id(my_display).update();
 
 i2c:
   - id: bus_a
@@ -128,97 +157,9 @@ i2c:
     frequency: 300kHz
 
 pcf8574:
-  - id: 'pcf8574_hub'
+  - id: "pcf8574_hub"
     address: 0x20
     pcf8575: false
-
-script:
-- id: short_buzz
-  then:
-    - switch.turn_on: buzzer
-    - delay: 100ms
-    - switch.turn_off: buzzer
-- id: start_game_siren
-  then:
-    - switch.turn_on: buzzer
-    - delay: 1000ms
-    - switch.turn_off: buzzer
-- id: reset_yellow_btn_timer
-  then:
-    - lambda: |-
-        id(y_button_press_start) = 0;
-        id(y_button_press_duration) = 0;
-- id: reset_red_btn_timer
-  then:
-    - lambda: |-
-        id(r_button_press_start) = 0;
-        id(r_button_press_duration) = 0;
-- id: reset_hard_reset_timer
-  then:
-    - lambda: |-
-        id(hard_reset_press_start) = 0;
-        id(hard_reset_press_duration) = 0;
-
-
-- id: handle_normal_key_press
-  parameters:
-    key: uint8_t
-  then:
-    # - script.execute: short_buzz
-    - lambda: |-
-        std::string s;
-        s.assign(1, key);
-
-        id(gm_handle_key_pressed).execute(s);
-
-
-globals:
-- id: r_button_press_start
-  type: int
-  initial_value: "0"
-- id: r_button_press_duration
-  type: int
-  initial_value: "0"
-- id: y_button_press_start
-  type: int
-  initial_value: "0"
-- id: y_button_press_duration
-  type: int
-  initial_value: "0"
-- id: hard_reset_press_start
-  type: int
-  initial_value: "0"
-- id: hard_reset_press_duration
-  type: int
-  initial_value: "0"
-
-
-interval:
-  - interval: 100ms
-    then:
-      - lambda: |-
-          if (id(btn_y).state and id(y_button_press_start) != 0) {
-            id(y_button_press_duration) = millis() - id(y_button_press_start);
-          } else {
-            id(y_button_press_duration) = 0;
-          }
-
-          if (id(btn_r).state and id(r_button_press_start) != 0) {
-            id(r_button_press_duration) = millis() - id(r_button_press_start);
-          } else {
-            id(r_button_press_duration) = 0;
-          }
-
-          //if (id(key_d).state and id(key_star).state) {  //TODO: Not working with multiples key pressed at once
-          if (id(key_star).state and id(hard_reset_press_start) != 0) {
-            id(hard_reset_press_duration) = millis() - id(hard_reset_press_start);
-            ESP_LOGI("TEST", "Timer left %d", id(hard_reset_press_duration));
-          } else {
-            id(hard_reset_press_duration) = 0;
-          }
-
-          id(gm_clock).execute();
-
 
 display:
   - platform: lcd_pcf8574
@@ -227,5 +168,133 @@ display:
     dimensions: 16x2
     address: 0x21
     # update_interval: never
+    user_characters:
+      # right arrow
+      - position: 0
+        data:
+          - 0b11000
+          - 0b01100
+          - 0b00110
+          - 0b11111
+          - 0b11111
+          - 0b00110
+          - 0b01100
+          - 0b11000
+      # progress bars
+      - position: 1
+        data:
+          - 0b10000
+          - 0b10000
+          - 0b10000
+          - 0b10000
+          - 0b10000
+          - 0b10000
+          - 0b10000
+          - 0b10000
+      - position: 2
+        data:
+          - 0b11000
+          - 0b11000
+          - 0b11000
+          - 0b11000
+          - 0b11000
+          - 0b11000
+          - 0b11000
+          - 0b11000
+      - position: 3
+        data:
+          - 0b11100
+          - 0b11100
+          - 0b11100
+          - 0b11100
+          - 0b11100
+          - 0b11100
+          - 0b11100
+          - 0b11100
+      - position: 4
+        data:
+          - 0b11110
+          - 0b11110
+          - 0b11110
+          - 0b11110
+          - 0b11110
+          - 0b11110
+          - 0b11110
+          - 0b11110
+      - position: 5
+        data:
+          - 0b11111
+          - 0b11111
+          - 0b11111
+          - 0b11111
+          - 0b11111
+          - 0b11111
+          - 0b11111
+          - 0b11111
     lambda: |-
-      id(gm_display_update).execute(it);
+      game_manager.display_update(it);
+
+script:
+  - id: s_start_buzzer
+    parameters:
+      duration: int
+      level: float
+      tone: int
+    mode: restart
+    then:
+      - output.ledc.set_frequency:
+          id: buzzer
+          frequency: !lambda return tone;
+      - output.set_level:
+          id: buzzer
+          level: !lambda return level;
+      - delay: !lambda return duration;
+      - output.set_level:
+          id: buzzer
+          level: 0
+
+  - id: s_start_siren
+    parameters:
+      delay: int
+      duration: int
+      level: float
+      tone: int
+    mode: restart
+    then:
+      - delay: !lambda return delay;
+      - output.ledc.set_frequency:
+          id: siren
+          frequency: !lambda return tone;
+      - output.set_level:
+          id: siren
+          level: !lambda return level;
+      - delay: !lambda return duration;
+      - output.set_level:
+          id: siren
+          level: 0
+
+  - id: s_handle_actions
+    then:
+      lambda: |-
+        uint32_t actions = antg.actions;
+        if (actions > 0) {
+          if (actions & ACTION_SAVE_SIREN_LEVEL) {
+            id(g_siren_level) = antg.settings.siren_level_user;
+          }
+          if (actions & ACTION_START_SIREN) {
+            ant_siren_t *s = &antg.siren_params;
+            id(s_start_siren)->execute(s->delay, s->duration, s->level, s->tone);
+          }
+          if (actions & ACTION_START_BUZZER) {
+            ant_buzzer_t *b = &antg.buzzer_params;
+            id(s_start_buzzer)->execute(b->duration, b->level, b->tone);
+          }
+        }
+
+interval:
+  - interval: 50ms
+    then:
+      - lambda: |-
+          uint32_t now = millis();
+          game_manager.clock(now, now - game_manager.clock_last_update_ms);
+          id(my_display).update();
