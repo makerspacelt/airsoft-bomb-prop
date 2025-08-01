@@ -40,7 +40,7 @@ output:
     frequency: 1000Hz
 
   - platform: ledc
-    pin: GPIO2
+    pin: GPIO10
     id: siren
 
 binary_sensor:
