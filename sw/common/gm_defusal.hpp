@@ -50,6 +50,7 @@ private:
       case KEY_HASH:
         // confirm code
         if (bomb_code == bomb_code_user) {
+          armed = true;
           bomb_code_user = "";
           ESP_LOGI("GM_defusal_code", "ARM -> ARMED");
           state = STATE::ARMED;
@@ -111,6 +112,7 @@ private:
           bomb_code_user = "";
           ESP_LOGI("GM_defusal_code", "ARMED -> DISARMED");
           state = STATE::DISARMED;
+          armed = false;
           finished = true;
           antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
         } else {
@@ -130,6 +132,7 @@ private:
             // third failed attempt = bomb explodes
             ESP_LOGI("GM_defusal_code", "ARMED -> EXPLODED");
             state = STATE::EXPLODED;
+            armed = false;
             finished = true;
             antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
             break;
@@ -158,11 +161,13 @@ public:
   AntGlobals &antg;
   GameModeDefusalCode(AntGlobals &antg) : antg(antg) {}
 
+  bool armed = false;
   bool finished = false;
 
   uint32_t bomb_ms_remaining = 0;
 
   void start_game(std::string code, uint32_t bomb_time_ms) {
+    armed = false;
     finished = false;
     ESP_LOGI("GM_defusal_code", "START");
     state = STATE::ARM;
@@ -201,6 +206,7 @@ public:
       if (bomb_ms_remaining <= 0) {
         ESP_LOGI("GM_defusal_code", "EXPLODED");
         state = STATE::EXPLODED;
+        armed = false;
         finished = true;
         antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
       }
@@ -223,6 +229,8 @@ private:
   static constexpr uint32_t DISARM_TIME = 10000;
 
   STATE state = STATE::READY;
+
+  uint32_t key_press_at = 0;
 
   void disp_time_left(esphome::lcd_base::LCDDisplay &disp, uint32_t bomb_ms_remaining) {
     disp.printf(0, 1, "TIME LEFT:% 6s", format_time_remaining(bomb_ms_remaining).c_str());
@@ -256,6 +264,7 @@ private:
       ESP_LOGI("GM_defusal_buttons", "ARMING -> READY");
       state = STATE::READY;
     } else if (now - key_press_at >= ARM_TIME) {
+      armed = true;
       ESP_LOGI("GM_defusal_buttons", "ARMING -> ARMED");
       state = STATE::ARMED;
     }
@@ -276,6 +285,7 @@ private:
     } else if (now - key_press_at >= DISARM_TIME) {
       ESP_LOGI("GM_defusal_buttons", "DISARMING -> DISARMED");
       state = STATE::DISARMED;
+      armed = false;
       finished = true;
       antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
     }
@@ -313,12 +323,13 @@ public:
   AntGlobals &antg;
   GameModeDefusalButtons(AntGlobals &antg) : antg(antg) {}
 
+  bool armed = false;
   bool finished = false;
 
   uint32_t bomb_ms_remaining = 0;
-  uint32_t key_press_at = 0;
 
   void start_game(uint32_t bomb_time_ms) {
+    armed = false;
     finished = false;
     ESP_LOGI("GM_defusal_buttons", "START");
     state = STATE::READY;
@@ -354,6 +365,7 @@ public:
       if (bomb_ms_remaining <= 0) {
         ESP_LOGI("GM_defusal_buttons", "EXPLODED");
         state = STATE::EXPLODED;
+        armed = false;
         finished = true;
         antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
       }
@@ -557,9 +569,9 @@ public:
 
   void handle_key(unsigned char key) {
     switch (state) {
-    case STATE::PRE_START:     break;
     case STATE::SETUP:         handle_key_setup(key); break;
     case STATE::INVALID_INPUT: handle_key_invalid_input(); break;
+    case STATE::PRE_START:     break;
     case STATE::DEFUSAL_CODE:
       gm_defusal_code.handle_key(key);
       if (gm_defusal_code.finished) {
@@ -577,18 +589,18 @@ public:
 
   void clock(uint32_t now, uint32_t delta) {
     switch (state) {
-    case STATE::PRE_START:     clock_pre_start(now, delta); break;
     case STATE::SETUP:         break;
     case STATE::INVALID_INPUT: break;
+    case STATE::PRE_START:     clock_pre_start(now, delta); break;
     case STATE::DEFUSAL_CODE:
       gm_defusal_code.clock(now, delta);
-      if (!gm_defusal_code.finished) {
+      if (gm_defusal_code.armed && !gm_defusal_code.finished) {
         bomb_buzzer(100 * (float)gm_defusal_code.bomb_ms_remaining / bomb_ms_total, now);
       }
       break;
     case STATE::DEFUSAL_BUTTONS:
       gm_defusal_buttons.clock(now, delta);
-      if (!gm_defusal_buttons.finished) {
+      if (gm_defusal_code.armed && !gm_defusal_buttons.finished) {
         bomb_buzzer(100 * (float)gm_defusal_buttons.bomb_ms_remaining / bomb_ms_total, now);
       }
       break;
