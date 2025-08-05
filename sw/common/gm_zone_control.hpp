@@ -13,15 +13,43 @@ class GameModeZoneControl {
 private:
   static constexpr uint32_t CAPTURE_TIME = 5000;
 
-  enum class STATE { SCOREBOARD, CAPTURING };
+  enum class MENU { START, BACK, COUNT };
+  enum class STATE { SETUP, SCOREBOARD, CAPTURING };
   enum class TEAM { NONE, RED, YELLOW };
 
-  STATE state = STATE::SCOREBOARD;
+  MENU menu = MENU::START;
+  STATE state = STATE::SETUP;
   TEAM team_active = TEAM::NONE; // Use enum instead of magic numbers
 
   uint32_t team_red_time = 0;
   uint32_t team_yellow_time = 0;
   uint32_t capture_start = 0;
+
+  // === SETUP STATE ===
+  void display_setup(esphome::lcd_base::LCDDisplay &disp) {
+    if (menu == MENU::START) {
+      disp.printf(0, 0, "> START");
+      disp.printf(0, 1, "  Back");
+    } else if (menu == MENU::BACK) {
+      disp.printf(0, 0, "  START");
+      disp.printf(0, 1, "> Back");
+    }
+  }
+
+  void handle_key_setup(unsigned char key) {
+    switch (key) {
+    case KEY_A: menu = enum_prev(menu); break;
+    case KEY_B: menu = enum_next(menu); break;
+    case KEY_C:
+      if (menu == MENU::START) {
+        state = STATE::SCOREBOARD;
+      } else if (menu == MENU::BACK) {
+        antg.action_exit_game();
+      }
+      break;
+    case KEY_D: antg.action_exit_game(); break;
+    }
+  }
 
   // === SCOREBOARD STATE ===
   void display_scoreboard(esphome::lcd_base::LCDDisplay &disp) {
@@ -74,7 +102,8 @@ public:
   GameModeZoneControl(AntGlobals &antg) : antg(antg) {}
 
   void init() {
-    state = STATE::SCOREBOARD;
+    menu = MENU::START;
+    state = STATE::SETUP;
     team_active = TEAM::NONE;
     team_red_time = 0;
     team_yellow_time = 0;
@@ -82,6 +111,7 @@ public:
 
   void display_update(esphome::lcd_base::LCDDisplay &disp) {
     switch (state) {
+    case STATE::SETUP:      display_setup(disp); break;
     case STATE::SCOREBOARD: display_scoreboard(disp); break;
     case STATE::CAPTURING:  display_capturing(disp); break;
     }
@@ -89,6 +119,7 @@ public:
 
   void handle_key(unsigned char key) {
     switch (state) {
+    case STATE::SETUP:      handle_key_setup(key); break;
     case STATE::SCOREBOARD: handle_key_scoreboard(key); break;
     case STATE::CAPTURING:  break;
     }
@@ -98,6 +129,7 @@ public:
     update_team_time(delta);
 
     switch (state) {
+    case STATE::SETUP:      break;
     case STATE::CAPTURING:  clock_capturing(now, delta); break;
     case STATE::SCOREBOARD: break;
     }
