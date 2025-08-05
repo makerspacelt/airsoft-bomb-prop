@@ -124,8 +124,6 @@ private:
     switch (key) {
     case KEY_C:      antg.action_buzzer(BUZZER_TONE_C); break;
     case KEY_D:      antg.action_buzzer(BUZZER_TONE_D); break;
-    case KEY_RESET:
-    case KEY_C_LONG: antg.action_buzzer(BUZZER_TONE_SPECIAL, BUZZER_DURATION_SPECIAL); break;
     case KEY_RED:
     case KEY_RED_RELEASE:
     case KEY_YELLOW:
@@ -179,6 +177,7 @@ private:
     }
 
     if (key == KEY_RESET) {
+      antg.action_buzzer(BUZZER_TONE_SPECIAL, BUZZER_DURATION_SPECIAL);
       ESP_LOGI("GameManager", "Hard reset");
       current_game = MODE_NONE;
     }

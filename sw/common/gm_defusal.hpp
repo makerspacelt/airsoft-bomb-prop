@@ -487,6 +487,7 @@ private:
   void handle_key_finished(unsigned char key) {
     switch (key) {
     case KEY_C_LONG:
+      antg.action_buzzer(BUZZER_TONE_SPECIAL, BUZZER_DURATION_SPECIAL);
       ESP_LOGI("GM_defusal", "Restarting the game");
       start_game();
       break;

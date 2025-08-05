@@ -128,6 +128,7 @@ private:
 
   void handle_key_finished(unsigned char key) {
     if (key == KEY_C_LONG) {
+      antg.action_buzzer(BUZZER_TONE_SPECIAL, BUZZER_DURATION_SPECIAL);
       ESP_LOGI("GM_countdown", "Restarting the game");
       start();
     }
