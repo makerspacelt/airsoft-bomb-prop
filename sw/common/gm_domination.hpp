@@ -15,7 +15,7 @@ private:
   static constexpr uint8_t MINUTES_MAX_LEN = 3;
 
   enum class STATE { SETUP, INVALID_INPUT, PRE_START, RUNNING, FINISHED };
-  enum class MENU { DELAY_MIN, GAME_MIN, START, COUNT };
+  enum class MENU { DELAY_MIN, GAME_MIN, START, BACK, COUNT };
 
   STATE state = STATE::SETUP;
   MENU menu = MENU::DELAY_MIN;
@@ -42,6 +42,9 @@ private:
     } else if (menu == MENU::START) {
       disp.printf(0, 0, "  Game  min: %d", game_min);
       disp.printf(0, 1, "> START");
+    } else if (menu == MENU::BACK) {
+      disp.printf(0, 0, "  START");
+      disp.printf(0, 1, "> Back");
     }
   }
 
@@ -64,6 +67,8 @@ private:
           ESP_LOGI("GM_domination", "Starting the game");
           start();
         }
+      } else if (menu == MENU::BACK) {
+        antg.action_exit_game();
       }
       break;
     case KEY_D:

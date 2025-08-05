@@ -4,7 +4,7 @@
 #include "gm_countdown.hpp"
 #include "gm_defusal.hpp"
 #include "gm_domination.hpp"
-#include "gm_mertvek.hpp"
+#include "gm_respawn_timer.hpp"
 #include "gm_settings.hpp"
 #include "gm_zone_control.hpp"
 
@@ -16,7 +16,7 @@
 
 class GameManager {
 private:
-  enum class MODE { DEFUSAL, DOMINATION, ZONE_CONTROL, COUNTDOWN, MERTVEK, SETTINGS, COUNT };
+  enum class MODE { DEFUSAL, DOMINATION, ZONE_CONTROL, COUNTDOWN, RESPAWN_TIMER, SETTINGS, COUNT };
   // COUNT is used as a placeholder for the last value and also as an unselected gamemode.
   static constexpr MODE MODE_NONE = MODE::COUNT;
 
@@ -28,7 +28,7 @@ private:
   GameModeDomination gm_domination;
   GameModeZoneControl gm_zone_control;
   GameModeCountdown gm_countdown;
-  GameModeMertvek gm_mertvek;
+  GameModeRespawnTimer gm_respawn_timer;
   GameSettings gm_settings;
 
   void handle_actions() {
@@ -49,7 +49,8 @@ private:
     }
     if (actions & ACTION_START_SIREN) {
       ant_siren_t *s = &antg.siren_params;
-      ESP_LOGI("GameManager", "Siren for %dms at %dHz level %f with %dms delay", s->duration, s->tone, s->level, s->delay);
+      ESP_LOGI("GameManager", "Siren for %dms at %dHz level %f with %dms delay", s->duration, s->tone, s->level,
+               s->delay);
     }
     if (actions & ACTION_START_BUZZER) {
       ant_buzzer_t *b = &antg.buzzer_params;
@@ -70,8 +71,8 @@ public:
   int clock_last_update_ms = 0;
 
   GameManager(AntGlobals &antg)
-      : antg(antg), gm_defusal(antg), gm_domination(antg), gm_zone_control(antg), gm_countdown(antg), gm_mertvek(antg),
-        gm_settings(antg) {}
+      : antg(antg), gm_defusal(antg), gm_domination(antg), gm_zone_control(antg), gm_countdown(antg),
+        gm_respawn_timer(antg), gm_settings(antg) {}
 
   void display_update(esphome::lcd_base::LCDDisplay &disp) {
     switch (current_game) {
@@ -94,26 +95,23 @@ public:
         disp.print(0, 0, "  Zone control");
         disp.print(0, 1, "> Timer");
         break;
-      case MODE::MERTVEK:
+      case MODE::RESPAWN_TIMER:
         disp.print(0, 0, "  Timer");
-        disp.print(0, 1, "> Mertvek");
+        disp.print(0, 1, "> Respawn timer");
         break;
       case MODE::SETTINGS:
-        disp.print(0, 0, "  Mertvek");
+        disp.print(0, 0, "  Respawn timer");
         disp.print(0, 1, "> Settings");
         break;
       case MODE_NONE: ESP_LOGW("GameManager", "COUNT menu item should never be selected."); break;
       }
       break;
-    case MODE::DEFUSAL:      gm_defusal.display_update(disp); break;
-    case MODE::DOMINATION:   gm_domination.display_update(disp); break;
-    case MODE::ZONE_CONTROL: gm_zone_control.display_update(disp); break;
-    case MODE::COUNTDOWN:    gm_countdown.display_update(disp); break;
-    case MODE::MERTVEK:
-      // gm_mertvek_display_update(disp);
-      disp.print(3, 0, "Soon TM");
-      break;
-    case MODE::SETTINGS: gm_settings.display_update(disp); break;
+    case MODE::DEFUSAL:       gm_defusal.display_update(disp); break;
+    case MODE::DOMINATION:    gm_domination.display_update(disp); break;
+    case MODE::ZONE_CONTROL:  gm_zone_control.display_update(disp); break;
+    case MODE::COUNTDOWN:     gm_countdown.display_update(disp); break;
+    case MODE::RESPAWN_TIMER: gm_respawn_timer.display_update(disp); break;
+    case MODE::SETTINGS:      gm_settings.display_update(disp); break;
     }
   }
 
@@ -157,23 +155,23 @@ public:
         // Activate the selected mode
         current_game = menu;
         switch (current_game) {
-        case MODE::DEFUSAL:      gm_defusal.init(); break;
-        case MODE::DOMINATION:   gm_domination.init(); break;
-        case MODE::ZONE_CONTROL: gm_zone_control.init(); break;
-        case MODE::COUNTDOWN:    gm_countdown.init(); break;
-        case MODE::MERTVEK:      gm_mertvek.init(); break;
-        case MODE::SETTINGS:     gm_settings.init(); break;
-        case MODE_NONE:          break;
+        case MODE::DEFUSAL:       gm_defusal.init(); break;
+        case MODE::DOMINATION:    gm_domination.init(); break;
+        case MODE::ZONE_CONTROL:  gm_zone_control.init(); break;
+        case MODE::COUNTDOWN:     gm_countdown.init(); break;
+        case MODE::RESPAWN_TIMER: gm_respawn_timer.init(); break;
+        case MODE::SETTINGS:      gm_settings.init(); break;
+        case MODE_NONE:           break;
         }
         break;
       }
       break;
-    case MODE::DEFUSAL:      gm_defusal.handle_key(key); break;
-    case MODE::DOMINATION:   gm_domination.handle_key(key); break;
-    case MODE::ZONE_CONTROL: gm_zone_control.handle_key(key); break;
-    case MODE::COUNTDOWN:    gm_countdown.handle_key(key); break;
-    case MODE::MERTVEK:      gm_mertvek.handle_key(key); break;
-    case MODE::SETTINGS:     gm_settings.handle_key(key); break;
+    case MODE::DEFUSAL:       gm_defusal.handle_key(key); break;
+    case MODE::DOMINATION:    gm_domination.handle_key(key); break;
+    case MODE::ZONE_CONTROL:  gm_zone_control.handle_key(key); break;
+    case MODE::COUNTDOWN:     gm_countdown.handle_key(key); break;
+    case MODE::RESPAWN_TIMER: gm_respawn_timer.handle_key(key); break;
+    case MODE::SETTINGS:      gm_settings.handle_key(key); break;
     }
 
     if (key == KEY_RESET) {
@@ -203,13 +201,13 @@ public:
     }
 
     switch (current_game) {
-    case MODE::DEFUSAL:      gm_defusal.clock(now, delta); break;
-    case MODE::DOMINATION:   gm_domination.clock(now, delta); break;
-    case MODE::ZONE_CONTROL: gm_zone_control.clock(now, delta); break;
-    case MODE::COUNTDOWN:    gm_countdown.clock(now, delta); break;
-    case MODE::MERTVEK:      gm_mertvek.clock(now, delta); break;
-    case MODE::SETTINGS:     gm_settings.clock(now, delta); break;
-    case MODE_NONE:          break;
+    case MODE::DEFUSAL:       gm_defusal.clock(now, delta); break;
+    case MODE::DOMINATION:    gm_domination.clock(now, delta); break;
+    case MODE::ZONE_CONTROL:  gm_zone_control.clock(now, delta); break;
+    case MODE::COUNTDOWN:     gm_countdown.clock(now, delta); break;
+    case MODE::RESPAWN_TIMER: gm_respawn_timer.clock(now, delta); break;
+    case MODE::SETTINGS:      gm_settings.clock(now, delta); break;
+    case MODE_NONE:           break;
     }
 
     handle_actions();

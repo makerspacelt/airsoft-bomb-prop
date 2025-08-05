@@ -8,11 +8,11 @@
 #include "../pc-build/mock_esphome.hpp"
 #endif
 
-class GameModeMertvek {
+class GameModeRespawnTimer {
 private:
 public:
   AntGlobals &antg;
-  GameModeMertvek(AntGlobals &antg) : antg(antg) {}
+  GameModeRespawnTimer(AntGlobals &antg) : antg(antg) {}
 
   void init() {}
 

@@ -25,10 +25,10 @@ B,B,B,C,A,A
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Game  min: 0  |
-[LCD] |> START         |
+[LCD] |  START         |
+[LCD] |> Back          |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Delay min: 0  |
-[LCD] |> Game  min: 0  |
+[LCD] |  Game  min: 0  |
+[LCD] |> START         |

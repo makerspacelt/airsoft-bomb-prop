@@ -5,7 +5,7 @@ A,B,A
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Mertvek       |
+[LCD] |  Respawn timer |
 [LCD] |> Settings      |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
@@ -15,5 +15,5 @@ A,B,A
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Mertvek       |
+[LCD] |  Respawn timer |
 [LCD] |> Settings      |

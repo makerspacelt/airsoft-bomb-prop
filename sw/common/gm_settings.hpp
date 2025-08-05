@@ -26,6 +26,7 @@ public:
   bool active = false; // whether the user has entered siren settings
 
   void init() {
+    menu = MENU::LEVEL;
     active = true;
     siren_level = antg.settings.siren_level_user;
   }
@@ -52,6 +53,7 @@ public:
     switch (key) {
     case KEY_A: menu = enum_prev(menu); break;
     case KEY_B: menu = enum_next(menu); break;
+    case KEY_D: antg.action_exit_game(); break;
     case KEY_C:
       switch (menu) {
       case MENU::LEVEL: break;
@@ -127,7 +129,10 @@ private:
 public:
   GameSettings(AntGlobals &antg) : antg(antg), siren_settings(antg) {}
 
-  void init() {}
+  void init() {
+    state = STATE::TOP;
+    menu = MENU::SIREN;
+  }
 
   void display_update(esphome::lcd_base::LCDDisplay &disp) {
     switch (state) {

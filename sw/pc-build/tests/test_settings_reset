@@ -1,22 +1,27 @@
-A,C,RESET,C
+A,C,B,RESET,C
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Mertvek       |
+[LCD] |  Respawn timer |
 [LCD] |> Settings      |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
 [LCD] |  Back          |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Siren settings|
+[LCD] |> Back          |
 [KEY RESET]
 [GameManager] Hard reset
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
-[LCD] |  Mertvek       |
+[LCD] |  Respawn timer |
 [LCD] |> Settings      |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz

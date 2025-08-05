@@ -377,7 +377,7 @@ private:
   static constexpr uint32_t MINUTES_MAX_LEN = 3;
 
   enum class STATE { SETUP, INVALID_INPUT, PRE_START, DEFUSAL_CODE, DEFUSAL_BUTTONS };
-  enum class MENU { DELAY_MIN, BOMB_MIN, BOMB_CODE, START, COUNT };
+  enum class MENU { DELAY_MIN, BOMB_MIN, BOMB_CODE, START, BACK, COUNT };
 
   STATE state = STATE::SETUP;
   MENU menu = MENU::DELAY_MIN;
@@ -407,6 +407,9 @@ private:
     } else if (menu == MENU::START) {
       disp.printf(0, 0, "  Code: %s", bomb_code.c_str());
       disp.printf(0, 1, "> START");
+    } else if (menu == MENU::BACK) {
+      disp.printf(0, 0, "  START");
+      disp.printf(0, 1, "> Back");
     }
   }
 
@@ -433,6 +436,7 @@ private:
       case MENU::DELAY_MIN: delay_min = 0; break;
       case MENU::BOMB_MIN:  bomb_min = 0; break;
       case MENU::BOMB_CODE: bomb_code = ""; break;
+      case MENU::BACK:      break;
       case MENU::START:     break;
       case MENU::COUNT:     break;
       }
@@ -445,6 +449,8 @@ private:
           ESP_LOGI("GM_defusal", "Starting the game");
           start_game();
         }
+      } else if (menu == MENU::BACK) {
+        antg.action_exit_game();
       }
       break;
     case KEY_D: antg.action_exit_game(); break;
