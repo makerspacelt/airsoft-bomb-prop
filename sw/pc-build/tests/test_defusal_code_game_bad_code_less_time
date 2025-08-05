@@ -1,0 +1,115 @@
+C,C,B,1,B,7,B,C,7,#,DELAY=40000,6,#,DELAY=1000,5,3,#,DELAY=1000,2,#,DELAY=1000
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Bomb  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 0  |
+[LCD] |> Bomb  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 1  |
+[LCD] |> Code:         |
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 1  |
+[LCD] |> Code: 7       |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Code: 7       |
+[LCD] |> START         |
+[KEY C]
+[GM_defusal] Starting the game
+[GM_defusal_buttons] -> DEFUSAL (CODE)
+[GM_defusal_code] START
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |ARM CODE:       |
+[LCD] |TIME LEFT: 01:00|
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARM CODE: 7     |
+[LCD] |TIME LEFT: 01:00|
+[KEY #]
+[GM_defusal_code] ARM -> ARMED
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARMED:          |
+[LCD] |TIME LEFT: 01:00|
+[DELAY 40000]
+[GameManager] Buzzer for 100ms at 1500Hz
+[LCD] |----------------|
+[LCD] |ARMED:          |
+[LCD] |TIME LEFT: 00:20|
+[KEY 6]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARMED: 6        |
+[LCD] |TIME LEFT: 00:20|
+[KEY #]
+[GM_defusal_code] ARMED -> ARMED
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |    BAD CODE    |
+[LCD] |TIME LEFT: 00:10|
+[DELAY 1000]
+[GM_defusal_code] BAD_CODE_ARMED -> ARMED
+[GameManager] Buzzer for 100ms at 1500Hz
+[LCD] |----------------|
+[LCD] |ARMED:          |
+[LCD] |TIME LEFT: 00:09|
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARMED: 5        |
+[LCD] |TIME LEFT: 00:09|
+[KEY 3]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARMED: 53       |
+[LCD] |TIME LEFT: 00:09|
+[KEY #]
+[GM_defusal_code] ARMED -> ARMED
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |    BAD CODE    |
+[LCD] |TIME LEFT: 00:09|
+[DELAY 1000]
+[GM_defusal_code] BAD_CODE_ARMED -> ARMED
+[GameManager] Buzzer for 100ms at 1500Hz
+[LCD] |----------------|
+[LCD] |ARMED:          |
+[LCD] |TIME LEFT: 00:08|
+[KEY 2]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |ARMED: 2        |
+[LCD] |TIME LEFT: 00:08|
+[KEY #]
+[GM_defusal_code] ARMED -> ARMED
+[GM_defusal_code] ARMED -> EXPLODED
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |    EXPLODED    |
+[LCD] |TIME LEFT: 00:08|
+[DELAY 1000]
