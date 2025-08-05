@@ -350,7 +350,7 @@ public:
 
   void handle_key(unsigned char key) {
     switch (state) {
-    case STATE::READY:     handle_key_ready(key);
+    case STATE::READY:     handle_key_ready(key); break;
     case STATE::ARMING:    break;
     case STATE::DISARMING: break;
     case STATE::ARMED:     handle_key_armed(key); break;
