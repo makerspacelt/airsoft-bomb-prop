@@ -1,4 +1,8 @@
-B,C,9,9,9,B,9,9,9,B,C,DELAY=59949900,DELAY=59940000
+C,B,C,9,9,9,B,9,9,9,B,C,DELAY=59949900,DELAY=59940000
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |

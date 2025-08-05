@@ -20,6 +20,10 @@ private:
   // COUNT is used as a placeholder for the last value and also as an unselected gamemode.
   static constexpr MODE MODE_NONE = MODE::COUNT;
 
+  enum class STATE { SPLASH, MENU };
+  STATE state = STATE::SPLASH;
+  uint32_t splash_start_time = 0;
+
   MODE menu = MODE::DEFUSAL;
   MODE current_game = MODE_NONE;
 
@@ -64,17 +68,12 @@ private:
     antg.clear_actions(); // all actions have been handled.
   }
 
-public:
-  int hard_reset_press_at = 0;
-  int key_c_press_at = 0;
+  void display_splash(esphome::lcd_base::LCDDisplay &disp) {
+    disp.print(0, 0, "   KMS ANT V2   ");
+    disp.print(0, 1, "  makerspace.lt ");
+  }
 
-  int clock_last_update_ms = 0;
-
-  GameManager(AntGlobals &antg)
-      : antg(antg), gm_defusal(antg), gm_domination(antg), gm_zone_control(antg), gm_countdown(antg),
-        gm_respawn_timer(antg), gm_settings(antg) {}
-
-  void display_update(esphome::lcd_base::LCDDisplay &disp) {
+  void display_menu(esphome::lcd_base::LCDDisplay &disp) {
     switch (current_game) {
     case MODE_NONE:
       // No game activated, render menu
@@ -115,7 +114,12 @@ public:
     }
   }
 
-  void handle_key(unsigned char key) {
+  void handle_key_splash(unsigned char key) {
+    // Immediate switch to MENU on any key press
+    state = STATE::MENU;
+  }
+
+  void handle_key_menu(unsigned char key) {
     // Activate buzzer for key presses
     switch (key) {
     case KEY_C:      antg.action_buzzer(BUZZER_TONE_C); break;
@@ -182,7 +186,13 @@ public:
     handle_actions();
   }
 
-  void clock(uint32_t now, uint32_t delta) {
+  void clock_splash(uint32_t now, uint32_t delta) {
+    if (now - splash_start_time >= 2000) {
+      state = STATE::MENU;
+    }
+  }
+
+  void clock_menu(uint32_t now, uint32_t delta) {
     if (hard_reset_press_at && now - hard_reset_press_at > HARD_RESET_KEY_HOLD_DURATION) {
       handle_key(KEY_RESET);
       hard_reset_press_at = 0;
@@ -212,5 +222,38 @@ public:
 
     handle_actions();
     clock_last_update_ms = now;
+  }
+
+public:
+  int hard_reset_press_at = 0;
+  int key_c_press_at = 0;
+
+  int clock_last_update_ms = 0;
+
+  GameManager(AntGlobals &antg)
+      : antg(antg), gm_defusal(antg), gm_domination(antg), gm_zone_control(antg), gm_countdown(antg),
+        gm_respawn_timer(antg), gm_settings(antg) {
+    splash_start_time = esphome::millis();
+  }
+
+  void display_update(esphome::lcd_base::LCDDisplay &disp) {
+    switch (state) {
+    case STATE::SPLASH: display_splash(disp); break;
+    case STATE::MENU:   display_menu(disp); break;
+    }
+  }
+
+  void handle_key(unsigned char key) {
+    switch (state) {
+    case STATE::SPLASH: handle_key_splash(key); break;
+    case STATE::MENU:   handle_key_menu(key); break;
+    }
+  }
+
+  void clock(uint32_t now, uint32_t delta) {
+    switch (state) {
+    case STATE::SPLASH: clock_splash(now, delta); break;
+    case STATE::MENU:   clock_menu(now, delta); break;
+    }
   }
 };

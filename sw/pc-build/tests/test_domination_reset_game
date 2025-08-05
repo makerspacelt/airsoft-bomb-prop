@@ -1,4 +1,8 @@
-B,C,B,1,B,C,RESET
+C,B,C,B,1,B,C,RESET
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |

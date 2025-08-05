@@ -1,4 +1,8 @@
-B,B,B,C,0,1,B,1,2,3,2,B,C,TICK,TICK,TICK,TICK,TICK,TICK,TICK,C_LONG,DELAY=60000,DELAY=120000,RESET
+C,B,B,B,C,0,1,B,1,2,3,2,B,C,TICK,TICK,TICK,TICK,TICK,TICK,TICK,C_LONG,DELAY=60000,DELAY=120000,RESET
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |
