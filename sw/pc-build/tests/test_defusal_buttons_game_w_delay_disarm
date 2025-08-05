@@ -1,0 +1,121 @@
+C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YELLOW,DELAY=4000,YELLOW_RELEASE,RED,DELAY=9000,DELAY=1000,DELAY=10000,C_LONG,DELAY=60000,DELAY=60000
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 1  |
+[LCD] |  Bomb  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 1  |
+[LCD] |> Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 1  |
+[LCD] |> Bomb  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 1  |
+[LCD] |> Code:         |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Code:         |
+[LCD] |> START         |
+[KEY C]
+[GM_defusal] Starting the game
+[GM_defusal_buttons] -> PRE START
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     01:00      |
+[DELAY 59000]
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     00:01      |
+[DELAY 1000]
+[GM_defusal_buttons] -> DEFUSAL (BUTTONS)
+[GM_defusal_buttons] START
+[GameManager] Siren for 8000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |     READY      |
+[LCD] |TIME LEFT: 01:00|
+[KEY RED]
+[GM_defusal_buttons] READY -> ARMING
+[LCD] |----------------|
+[LCD] |ARMING  01:00   |
+[LCD] |1               |
+[DELAY 4000]
+[LCD] |----------------|
+[LCD] |ARMING  00:56   |
+[LCD] |XXXXXXXXXXXX5   |
+[DELAY 1000]
+[GM_defusal_buttons] ARMING -> ARMED
+[LCD] |----------------|
+[LCD] |     ARMED      |
+[LCD] |TIME LEFT: 00:55|
+[KEY RED_RELEASE]
+[KEY YELLOW]
+[GM_defusal_buttons] ARMED -> DISARMING
+[LCD] |----------------|
+[LCD] |DISARMING 00:55 |
+[LCD] |1               |
+[DELAY 4000]
+[LCD] |----------------|
+[LCD] |DISARMING 00:51 |
+[LCD] |XXXXXX3         |
+[KEY YELLOW_RELEASE]
+[GM_defusal_buttons] DISARMING -> ARMED
+[LCD] |----------------|
+[LCD] |     ARMED      |
+[LCD] |TIME LEFT: 00:51|
+[KEY RED]
+[GM_defusal_buttons] ARMED -> DISARMING
+[LCD] |----------------|
+[LCD] |DISARMING 00:51 |
+[LCD] |1               |
+[DELAY 9000]
+[LCD] |----------------|
+[LCD] |DISARMING 00:42 |
+[LCD] |XXXXXXXXXXXXXX2 |
+[DELAY 1000]
+[GM_defusal_buttons] DISARMING -> DISARMED
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
+[LCD] |----------------|
+[LCD] |    DISARMED    |
+[LCD] |TIME LEFT: 00:41|
+[DELAY 10000]
+[KEY C_LONG]
+[GM_defusal] Restarting the game
+[GM_defusal_buttons] -> PRE START
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     01:00      |
+[DELAY 60000]
+[GM_defusal_buttons] -> DEFUSAL (BUTTONS)
+[GM_defusal_buttons] START
+[GameManager] Siren for 8000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |     READY      |
+[LCD] |TIME LEFT: 01:00|
+[DELAY 60000]
+[GM_defusal_buttons] EXPLODED
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
+[LCD] |----------------|
+[LCD] |    EXPLODED    |
+[LCD] |TIME LEFT: 00:00|

@@ -1,0 +1,147 @@
+C,C,1,9,9,9,9,9,B,0,9,9,9,B,9,8,7,6,5,*,9,8,7,6,5,4,3,B,C
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 1  |
+[LCD] |  Bomb  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 19 |
+[LCD] |  Bomb  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 199|
+[LCD] |  Bomb  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 9  |
+[LCD] |  Bomb  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 99 |
+[LCD] |  Bomb  min: 0  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 999|
+[LCD] |  Bomb  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Bomb  min: 0  |
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Bomb  min: 9  |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Bomb  min: 99 |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 999|
+[LCD] |> Bomb  min: 999|
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code:         |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 9       |
+[KEY 8]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 98      |
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 987     |
+[KEY 6]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 9876    |
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 98765   |
+[KEY *]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code:         |
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 9       |
+[KEY 8]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 98      |
+[KEY 7]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 987     |
+[KEY 6]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 9876    |
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 98765   |
+[KEY 4]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 987654  |
+[KEY 3]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 999|
+[LCD] |> Code: 3       |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Code: 3       |
+[LCD] |> START         |
+[KEY C]
+[GM_defusal] Starting the game
+[GM_defusal_buttons] -> PRE START
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     999:00     |

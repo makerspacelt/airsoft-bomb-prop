@@ -253,6 +253,17 @@ private:
 
   // === ARMING STATE ===
 
+  void handle_key_arming(unsigned char key) {
+    switch (key) {
+    case KEY_RED_RELEASE:
+    case KEY_YELLOW_RELEASE:
+      ESP_LOGI("GM_defusal_buttons", "ARMING -> READY");
+      key_press_at = 0;
+      state = STATE::READY;
+      break;
+    }
+  }
+
   void display_arming(esphome::lcd_base::LCDDisplay &disp) {
     float ratio = (esphome::millis() - key_press_at) / (float)ARM_TIME;
     disp.printf(0, 0, "ARMING % 6s", format_time_remaining(bomb_ms_remaining).c_str());
@@ -260,10 +271,7 @@ private:
   }
 
   void clock_arming(uint32_t now, uint32_t delta) {
-    if (!antg.btn_red_pressed && !antg.btn_yellow_pressed) {
-      ESP_LOGI("GM_defusal_buttons", "ARMING -> READY");
-      state = STATE::READY;
-    } else if (now - key_press_at >= ARM_TIME) {
+    if (now - key_press_at >= ARM_TIME) {
       armed = true;
       ESP_LOGI("GM_defusal_buttons", "ARMING -> ARMED");
       state = STATE::ARMED;
@@ -272,6 +280,17 @@ private:
 
   // === DISARMING STATE ===
 
+  void handle_key_disarming(unsigned char key) {
+    switch (key) {
+    case KEY_RED_RELEASE:
+    case KEY_YELLOW_RELEASE:
+      ESP_LOGI("GM_defusal_buttons", "DISARMING -> ARMED");
+      key_press_at = 0;
+      state = STATE::ARMED;
+      break;
+    }
+  }
+
   void display_disarming(esphome::lcd_base::LCDDisplay &disp) {
     float ratio = (esphome::millis() - key_press_at) / (float)DISARM_TIME;
     disp.printf(0, 0, "DISARMING% 6s", format_time_remaining(bomb_ms_remaining).c_str());
@@ -279,10 +298,7 @@ private:
   }
 
   void clock_disarming(uint32_t now, uint32_t delta) {
-    if (!antg.btn_red_pressed && !antg.btn_yellow_pressed) {
-      ESP_LOGI("GM_defusal_buttons", "DISARMING -> ARMED");
-      state = STATE::ARMED;
-    } else if (now - key_press_at >= DISARM_TIME) {
+    if (now - key_press_at >= DISARM_TIME) {
       ESP_LOGI("GM_defusal_buttons", "DISARMING -> DISARMED");
       state = STATE::DISARMED;
       armed = false;
@@ -351,8 +367,8 @@ public:
   void handle_key(unsigned char key) {
     switch (state) {
     case STATE::READY:     handle_key_ready(key); break;
-    case STATE::ARMING:    break;
-    case STATE::DISARMING: break;
+    case STATE::ARMING:    handle_key_arming(key); break;
+    case STATE::DISARMING: handle_key_disarming(key); break;
     case STATE::ARMED:     handle_key_armed(key); break;
     case STATE::DISARMED:  break;
     case STATE::EXPLODED:  break;

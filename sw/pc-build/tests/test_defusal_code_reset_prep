@@ -1,0 +1,82 @@
+C,C,1,B,1,B,1,B,C,DELAY=2000,RESET,C,A,A,C
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 0  |
+[LCD] |  Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 1  |
+[LCD] |  Bomb  min: 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 1  |
+[LCD] |> Bomb  min: 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Delay min: 1  |
+[LCD] |> Bomb  min: 1  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 1  |
+[LCD] |> Code:         |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bomb  min: 1  |
+[LCD] |> Code: 1       |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Code: 1       |
+[LCD] |> START         |
+[KEY C]
+[GM_defusal] Starting the game
+[GM_defusal_buttons] -> PRE START
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     01:00      |
+[DELAY 2000]
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     00:58      |
+[KEY RESET]
+[GameManager] Hard reset
+[GameManager] Buzzer for 400ms at 2200Hz
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Delay min: 1  |
+[LCD] |  Bomb  min: 1  |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  START         |
+[LCD] |> Back          |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Code: 1       |
+[LCD] |> START         |
+[KEY C]
+[GM_defusal] Starting the game
+[GM_defusal_buttons] -> PRE START
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] | PREP FOR GAME  |
+[LCD] |     01:00      |
