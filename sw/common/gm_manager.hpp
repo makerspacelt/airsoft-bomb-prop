@@ -122,8 +122,8 @@ private:
   void handle_key_menu(unsigned char key) {
     // Activate buzzer for key presses
     switch (key) {
-    case KEY_C:      antg.action_buzzer(BUZZER_TONE_C); break;
-    case KEY_D:      antg.action_buzzer(BUZZER_TONE_D); break;
+    case KEY_C: antg.action_buzzer(BUZZER_TONE_C); break;
+    case KEY_D: antg.action_buzzer(BUZZER_TONE_D); break;
     case KEY_RED:
     case KEY_RED_RELEASE:
     case KEY_YELLOW:

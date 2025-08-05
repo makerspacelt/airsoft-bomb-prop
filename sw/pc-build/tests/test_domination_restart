@@ -1,4 +1,4 @@
-C,B,C,B,1,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=5000,DELAY=50000,C_LONG
+C,B,C,B,1,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=5000,DELAY=50000,C_LONG,DELAY=50000
 [LCD] |----------------|
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
@@ -38,7 +38,11 @@ C,B,C,B,1,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=5000,DELAY=50000,C_LONG
 [LCD] |TIME LEFT: 01:00|
 [LCD] |T1:0     T2:0   |
 [KEY RED]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 01:00|
+[LCD] |1               |
 [DELAY 5000]
+[GameManager] Buzzer for 5000ms at 1000Hz
 [LCD] |----------------|
 [LCD] |TIME LEFT: 00:55|
 [LCD] |T1:0     T2:0   |
@@ -46,15 +50,19 @@ C,B,C,B,1,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=5000,DELAY=50000,C_LONG
 [DELAY 5000]
 [LCD] |----------------|
 [LCD] |TIME LEFT: 00:50|
-[LCD] |T1:0     T2:0   |
+[LCD] |T1:5     T2:0   |
 [DELAY 50000]
 [GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
 [LCD] |----------------|
 [LCD] |DOMINATION ENDED|
-[LCD] |T1:0     T2:0   |
+[LCD] |T1:5     T2:0   |
 [KEY C_LONG]
 [GM_domination] Restarting the game
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |TIME LEFT: 01:00|
+[LCD] |T1:0     T2:0   |
+[DELAY 50000]
+[LCD] |----------------|
+[LCD] |TIME LEFT: 00:10|
 [LCD] |T1:0     T2:0   |

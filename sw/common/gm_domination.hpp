@@ -183,10 +183,14 @@ private:
   void start() {
     delay_ms_remaining = delay_min * 60 * 1000;
     game_ms_remaining = game_min * 60 * 1000;
-    if (delay_ms_remaining > 0)
+    team_active = 0;
+    team_red_time = 0;
+    team_yellow_time = 0;
+    if (delay_ms_remaining > 0) {
       state = STATE::PRE_START;
-    else
+    } else {
       state = STATE::RUNNING;
+    }
   }
 
 public:
@@ -196,8 +200,6 @@ public:
   void init() {
     state = STATE::SETUP;
     menu = MENU::DELAY_MIN;
-    team_red_time = 0;
-    team_yellow_time = 0;
   }
 
   void display_update(esphome::lcd_base::LCDDisplay &disp) {

@@ -10,7 +10,6 @@
 #include "../common/gm_manager.hpp"
 #include "mock_esphome.hpp"
 
-#define TICK_TEST 30000
 #define TICK_INTERACTIVE 50
 
 // --- Display Mock ---
@@ -19,7 +18,7 @@ esphome::lcd_base::LCDDisplay my_display;
 
 // --- Time Mock ---
 
-uint32_t cur_millis = 0;
+uint32_t cur_millis = 1;
 uint32_t esphome::millis() { return cur_millis; }
 
 // --- Non-blocking keyboard input ---
@@ -56,11 +55,7 @@ void process_test_sequence(const std::string &sequence) {
     // Convert token to uppercase for case-insensitivity
     std::transform(token.begin(), token.end(), token.begin(), [](unsigned char c) { return std::toupper(c); });
 
-    if (token == "TICK") {
-      cur_millis += TICK_TEST;
-      printf("[TICK %d]\n", cur_millis);
-      game_manager.clock(cur_millis, TICK_TEST);
-    } else if (token.rfind("DELAY=", 0) == 0) {
+    if (token.rfind("DELAY=", 0) == 0) {
       int delay_ms = std::stoi(token.substr(6));
       printf("[DELAY %d]\n", delay_ms);
       cur_millis += delay_ms;
