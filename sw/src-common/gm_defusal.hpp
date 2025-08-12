@@ -201,7 +201,7 @@ public:
   }
 
   void clock(uint32_t now, uint32_t delta) {
-    if (!finished) {
+    if (armed && !finished) { // bomb timer
       bomb_ms_remaining -= delta;
       if (bomb_ms_remaining <= 0) {
         ESP_LOGI("GM_defusal_code", "EXPLODED");
@@ -376,7 +376,7 @@ public:
   }
 
   void clock(uint32_t now, uint32_t delta) {
-    if (!finished) {
+    if (armed && !finished) { // bomb timer
       bomb_ms_remaining -= delta;
       if (bomb_ms_remaining <= 0) {
         ESP_LOGI("GM_defusal_buttons", "EXPLODED");

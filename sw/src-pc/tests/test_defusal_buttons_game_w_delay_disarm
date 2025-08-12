@@ -1,4 +1,4 @@
-C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YELLOW,DELAY=4000,YELLOW_RELEASE,RED,DELAY=9000,DELAY=1000,DELAY=10000,C_LONG,DELAY=60000,DELAY=60000
+C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YELLOW,DELAY=4000,YELLOW_RELEASE,RED,DELAY=9000,DELAY=1000,DELAY=10000,C_LONG,DELAY=60000,RED,DELAY=5000,RED_RELEASE,DELAY=60000
 [LCD] |----------------|
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
@@ -61,43 +61,43 @@ C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YEL
 [LCD] |1               |
 [DELAY 4000]
 [LCD] |----------------|
-[LCD] |ARMING  00:56   |
+[LCD] |ARMING  01:00   |
 [LCD] |XXXXXXXXXXXX5   |
 [DELAY 1000]
 [GM_defusal_buttons] ARMING -> ARMED
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:55|
+[LCD] |TIME LEFT: 01:00|
 [KEY RED_RELEASE]
 [KEY YELLOW]
 [GM_defusal_buttons] ARMED -> DISARMING
 [LCD] |----------------|
-[LCD] |DISARMING 00:55 |
+[LCD] |DISARMING 01:00 |
 [LCD] |1               |
 [DELAY 4000]
 [LCD] |----------------|
-[LCD] |DISARMING 00:51 |
+[LCD] |DISARMING 00:56 |
 [LCD] |XXXXXX3         |
 [KEY YELLOW_RELEASE]
 [GM_defusal_buttons] DISARMING -> ARMED
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:51|
+[LCD] |TIME LEFT: 00:56|
 [KEY RED]
 [GM_defusal_buttons] ARMED -> DISARMING
 [LCD] |----------------|
-[LCD] |DISARMING 00:51 |
+[LCD] |DISARMING 00:56 |
 [LCD] |1               |
 [DELAY 9000]
 [LCD] |----------------|
-[LCD] |DISARMING 00:42 |
+[LCD] |DISARMING 00:47 |
 [LCD] |XXXXXXXXXXXXXX2 |
 [DELAY 1000]
 [GM_defusal_buttons] DISARMING -> DISARMED
 [GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
 [LCD] |----------------|
 [LCD] |    DISARMED    |
-[LCD] |TIME LEFT: 00:41|
+[LCD] |TIME LEFT: 00:46|
 [DELAY 10000]
 [KEY C_LONG]
 [GM_defusal] Restarting the game
@@ -113,6 +113,17 @@ C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YEL
 [LCD] |----------------|
 [LCD] |     READY      |
 [LCD] |TIME LEFT: 01:00|
+[KEY RED]
+[GM_defusal_buttons] READY -> ARMING
+[LCD] |----------------|
+[LCD] |ARMING  01:00   |
+[LCD] |1               |
+[DELAY 5000]
+[GM_defusal_buttons] ARMING -> ARMED
+[LCD] |----------------|
+[LCD] |     ARMED      |
+[LCD] |TIME LEFT: 01:00|
+[KEY RED_RELEASE]
 [DELAY 60000]
 [GM_defusal_buttons] EXPLODED
 [GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay

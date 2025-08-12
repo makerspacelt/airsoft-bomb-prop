@@ -1,4 +1,4 @@
-C,C,B,1,B,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=55000,C_LONG,RED,DELAY=5000,RED_RELEASE
+C,C,B,1,B,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=60000,C_LONG,RED,DELAY=5000,RED_RELEASE
 [LCD] |----------------|
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
@@ -48,9 +48,9 @@ C,C,B,1,B,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=55000,C_LONG,RED,DELAY=5000,RED_R
 [GM_defusal_buttons] ARMING -> ARMED
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:55|
+[LCD] |TIME LEFT: 01:00|
 [KEY RED_RELEASE]
-[DELAY 55000]
+[DELAY 60000]
 [GM_defusal_buttons] EXPLODED
 [GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
 [LCD] |----------------|
@@ -73,5 +73,5 @@ C,C,B,1,B,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=55000,C_LONG,RED,DELAY=5000,RED_R
 [GM_defusal_buttons] ARMING -> ARMED
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:55|
+[LCD] |TIME LEFT: 01:00|
 [KEY RED_RELEASE]

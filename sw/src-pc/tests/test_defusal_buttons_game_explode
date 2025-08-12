@@ -46,25 +46,28 @@ C,C,B,1,B,B,C,RED,DELAY=4000,DELAY=1000,RED_RELEASE,DELAY=54000,DELAY=1000,DELAY
 [LCD] |1               |
 [DELAY 4000]
 [LCD] |----------------|
-[LCD] |ARMING  00:56   |
+[LCD] |ARMING  01:00   |
 [LCD] |XXXXXXXXXXXX5   |
 [DELAY 1000]
 [GM_defusal_buttons] ARMING -> ARMED
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:55|
+[LCD] |TIME LEFT: 01:00|
 [KEY RED_RELEASE]
 [DELAY 54000]
 [LCD] |----------------|
 [LCD] |     ARMED      |
-[LCD] |TIME LEFT: 00:01|
+[LCD] |TIME LEFT: 00:06|
 [DELAY 1000]
+[LCD] |----------------|
+[LCD] |     ARMED      |
+[LCD] |TIME LEFT: 00:05|
+[DELAY 120000]
 [GM_defusal_buttons] EXPLODED
 [GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
 [LCD] |----------------|
 [LCD] |    EXPLODED    |
 [LCD] |TIME LEFT: 00:00|
-[DELAY 120000]
 [KEY RED]
 [DELAY 5000]
 [KEY RED_RELEASE]
