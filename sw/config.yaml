@@ -1,5 +1,24 @@
+#
+# Board
+#
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+#
+# esphome core
+#
+
+external_components:
+  - source:
+      type: local
+      path: mycomponents
+
 esphome:
-  name: kms-ant-v2
+  name: ant
+  name_add_mac_suffix: true
   includes:
     - common
   on_boot:
@@ -19,19 +38,60 @@ esphome:
 logger:
   level: DEBUG
 
-esp32:
-  board: esp32-c3-devkitm-1
-  framework:
-    type: esp-idf
-
 preferences:
   flash_write_interval: 10s
 
+mdns:
+    disabled: true
+
+#
+# OTA config
+#
+
+wifi:
+  id: mywifi
+  enable_on_boot: false
+
+  ap:
+    password: 100decibel
+    ap_timeout: 10s
+
+ota:
+  - platform: web_server
+    on_begin:
+      then:
+        - lambda: |-
+            id(my_display).print(0, 0, "Updating");
+            id(my_display).print(0, 1, "");
+    on_progress:
+      then:
+        - lambda: |-
+            id(my_display).print(0, 0, "Updating");
+            id(my_display).printf(0, 1, "%0.1f%%", x);
+    on_end:
+      then:
+        - lambda: |-
+            id(my_display).print(0, 0, "Updating");
+            id(my_display).print(0, 1, "Finished");
+    on_error:
+      then:
+        - lambda: |-
+            id(my_display).print(0, 0, "Updating");
+            id(my_display).printf(0, 1, "Error %d", x);
+
+web_server:
+  port: 80
+  index_html_include: ./src-esphome/index.html
+ 
+# 
+# Prop hardware
+#
+
 globals:
-  id: g_siren_level # 1-9
-  type: int
-  restore_value: true
-  initial_value: "9"
+  - id: g_siren_level # 1-9
+    type: int
+    restore_value: true
+    initial_value: "9"
 
 output:
   - platform: ledc
@@ -273,6 +333,19 @@ script:
           id: siren
           level: 0
 
+  - id: s_start_ota
+    then:
+      lambda: |-
+        id(mywifi).enable();
+        antg.ota_info.ssid = wifi::global_wifi_component->get_ap().get_ssid();
+        antg.ota_info.psk = wifi::global_wifi_component->get_ap().get_password();
+        antg.ota_info.ip = wifi::global_wifi_component->wifi_soft_ap_ip().str();
+
+  - id: s_stop_ota
+    then:
+      lambda: |-
+        id(mywifi).disable();
+
   - id: s_handle_actions
     then:
       lambda: |-
@@ -288,6 +361,12 @@ script:
           if (actions & ACTION_START_BUZZER) {
             ant_buzzer_t *b = &antg.buzzer_params;
             id(s_start_buzzer)->execute(b->duration, b->level, b->tone);
+          }
+          if (actions & ACTION_START_OTA) {
+            id(s_start_ota)->execute();
+          }
+          if (actions & ACTION_STOP_OTA) {
+            id(s_stop_ota)->execute();
           }
         }
 

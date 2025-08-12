@@ -3,4 +3,5 @@
 /.local/
 /.platformio/
 /.venv/
+/__pycache__/
 /pc-build/build/

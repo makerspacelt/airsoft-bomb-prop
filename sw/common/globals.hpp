@@ -26,6 +26,8 @@ constexpr unsigned char KEY_YELLOW_RELEASE = 'Y';
 constexpr unsigned char KEY_RESET = 'X';  // e(x)it / reset
 constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 
+#define ANT_VERSION "2.0.0"
+
 #define HARD_RESET_KEY_HOLD_DURATION 10000
 #define KEY_C_LONG_HOLD_DURATION 10000
 #define BTN_TEAM_SHORT_HOLD_DURATION 5000
@@ -52,6 +54,8 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 #define ACTION_SAVE_SIREN_LEVEL 2
 #define ACTION_START_SIREN 4
 #define ACTION_START_BUZZER 8
+#define ACTION_START_OTA 16
+#define ACTION_STOP_OTA 32
 
 struct ant_siren_t {
   int delay = 0;
@@ -64,6 +68,12 @@ struct ant_buzzer_t {
   int duration = BUZZER_DURATION;
   int tone = BUZZER_TONE;
   float level = BUZZER_LEVEL;
+};
+
+struct ant_ota_t {
+  std::string ssid;
+  std::string psk;
+  std::string ip;
 };
 
 struct ant_settings_t {
@@ -82,6 +92,7 @@ public:
 
   ant_siren_t siren_params = {};
   ant_buzzer_t buzzer_params = {};
+  ant_ota_t ota_info = {};
   ant_settings_t settings = {};
 
   void clear_actions() { actions = 0; }
@@ -111,4 +122,8 @@ public:
       actions |= ACTION_SAVE_SIREN_LEVEL;
     }
   }
+
+  void action_start_ota() { actions |= ACTION_START_OTA; }
+
+  void action_stop_ota() { actions |= ACTION_STOP_OTA; }
 };

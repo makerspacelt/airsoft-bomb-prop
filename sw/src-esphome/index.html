@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KMS ANT update</title>
+    <style>
+      * { font-size: 18px; }
+      html, body { height: 100%; margin: 0; }
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+      }
+      section { margin: 1rem 0; }
+      input, button { width: 100%; padding: 4px; }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      a:visited { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>
+        KMS ANT firmware update
+        <br>
+        <a href="http://armory.makerspace.lt/">http://armory.makerspace.lt</a>
+      </h1>
+      <ol>
+        <li>Select the <strong>ant-firmware.bin</strong> file.
+        <li>Click <strong>Update</strong>.
+      </ol>
+      <form method="post" action="/update" enctype="multipart/form-data">
+        <section><input type="file" name="update" /></section>
+        <section><button type="submit">Update</button></section>
+      </form>
+    </main>
+  </body>
+</html>
