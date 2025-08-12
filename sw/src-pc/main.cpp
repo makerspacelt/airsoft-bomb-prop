@@ -7,7 +7,7 @@
 #include <thread>
 #include <unistd.h>
 
-#include "../common/gm_manager.hpp"
+#include "../src-common/gm_manager.hpp"
 #include "mock_esphome.hpp"
 
 #define TICK_INTERACTIVE 50

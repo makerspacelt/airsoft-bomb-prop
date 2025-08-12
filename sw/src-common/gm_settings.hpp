@@ -6,7 +6,7 @@
 #ifdef ESP_PLATFORM
 #include "esphome.h"
 #else
-#include "../pc-build/mock_esphome.hpp"
+#include "../src-pc/mock_esphome.hpp"
 #endif
 
 class GameSettingsSiren {

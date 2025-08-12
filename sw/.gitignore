@@ -1,7 +1,9 @@
+# esphome generated stuff
 /.cache/
-/.esphome/
 /.local/
+/.esphome/
 /.platformio/
-/.venv/
 /__pycache__/
-/pc-build/build/
+/src-esphome/.esphome/
+# pc build files
+/src-pc/build/

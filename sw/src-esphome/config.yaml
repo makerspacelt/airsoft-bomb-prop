@@ -20,7 +20,7 @@ esphome:
   name: ant
   name_add_mac_suffix: true
   includes:
-    - common
+    - ../src-common
   on_boot:
     - then:
         lambda: |-
@@ -81,7 +81,7 @@ ota:
 
 web_server:
   port: 80
-  index_html_include: ./src-esphome/index.html
+  index_html_include: ./index.html
  
 # 
 # Prop hardware

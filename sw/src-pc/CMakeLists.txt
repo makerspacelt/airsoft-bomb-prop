@@ -16,11 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter -O3")
 
 set(SRCS
-    # ../common/globals.cpp
-    # ../common/gm_countdown.cpp
-    # ../common/gm_settings.cpp
-    # ../common/gm_manager.cpp
-    ../common/utilities.cpp
+    ../src-common/utilities.cpp
     main.cpp
 )
 

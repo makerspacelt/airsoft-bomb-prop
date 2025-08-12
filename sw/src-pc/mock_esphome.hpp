@@ -11,8 +11,7 @@
 // NOLINTBEGIN(misc-definitions-in-headers)
 class ScriptHandleActions {
 public:
-  void execute() {
-  };
+  void execute() {};
 } *s_handle_actions;
 // NOLINTEND(misc-definitions-in-headers)
 
