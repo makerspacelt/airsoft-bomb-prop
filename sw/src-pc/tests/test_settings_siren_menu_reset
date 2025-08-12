@@ -15,7 +15,7 @@ C,A,C,C,B,RESET,C,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  Back          |
+[LCD] |  OTA update    |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
@@ -36,7 +36,7 @@ C,A,C,C,B,RESET,C,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  Back          |
+[LCD] |  OTA update    |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
