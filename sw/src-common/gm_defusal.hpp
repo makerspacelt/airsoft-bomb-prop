@@ -22,9 +22,9 @@ private:
   std::string bomb_code = "";
   std::string bomb_code_user = "";
   int failed_code_count = 0;
-  uint32_t bad_code_ms_remaining = 0;
+  int32_t bad_code_ms_remaining = 0;
 
-  void disp_time_left(esphome::lcd_base::LCDDisplay &disp, uint32_t bomb_ms_remaining) {
+  void disp_time_left(esphome::lcd_base::LCDDisplay &disp, int32_t bomb_ms_remaining) {
     disp.printf(0, 1, "TIME LEFT:% 6s", format_time_remaining(bomb_ms_remaining).c_str());
   }
 
@@ -164,9 +164,9 @@ public:
   bool armed = false;
   bool finished = false;
 
-  uint32_t bomb_ms_remaining = 0;
+  int32_t bomb_ms_remaining = 0;
 
-  void start_game(std::string code, uint32_t bomb_time_ms) {
+  void start_game(std::string code, int32_t bomb_time_ms) {
     armed = false;
     finished = false;
     ESP_LOGI("GM_defusal_code", "START");
@@ -232,7 +232,7 @@ private:
 
   uint32_t key_press_at = 0;
 
-  void disp_time_left(esphome::lcd_base::LCDDisplay &disp, uint32_t bomb_ms_remaining) {
+  void disp_time_left(esphome::lcd_base::LCDDisplay &disp, int32_t bomb_ms_remaining) {
     disp.printf(0, 1, "TIME LEFT:% 6s", format_time_remaining(bomb_ms_remaining).c_str());
   }
 
@@ -342,9 +342,9 @@ public:
   bool armed = false;
   bool finished = false;
 
-  uint32_t bomb_ms_remaining = 0;
+  int32_t bomb_ms_remaining = 0;
 
-  void start_game(uint32_t bomb_time_ms) {
+  void start_game(int32_t bomb_time_ms) {
     armed = false;
     finished = false;
     ESP_LOGI("GM_defusal_buttons", "START");
@@ -416,8 +416,8 @@ private:
 
   int delay_min = 0;
   int bomb_min = 0;
-  uint32_t delay_ms_remaining = 0;
-  uint32_t bomb_ms_total = 0;
+  int32_t delay_ms_remaining = 0;
+  int32_t bomb_ms_total = 0;
   uint32_t last_bomb_buzzer_at = 0;
   std::string bomb_code = "";
 
