@@ -56,6 +56,9 @@ private:
       ESP_LOGI("GameManager", "Siren for %dms at %dHz level %f with %dms delay", s->duration, s->tone, s->level,
                s->delay);
     }
+    if (actions & ACTION_STOP_SIREN) {
+      ESP_LOGI("GameManager", "Stopping siren");
+    }
     if (actions & ACTION_START_BUZZER) {
       ant_buzzer_t *b = &antg.buzzer_params;
       ESP_LOGI("GameManager", "Buzzer for %dms at %dHz", b->duration, b->tone);
@@ -186,6 +189,7 @@ private:
 
     if (key == KEY_RESET) {
       antg.action_buzzer(BUZZER_TONE_SPECIAL, BUZZER_DURATION_SPECIAL);
+      antg.action_stop_siren();
       ESP_LOGI("GameManager", "Hard reset");
       current_game = MODE_NONE;
     }
