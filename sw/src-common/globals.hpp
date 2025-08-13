@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utilities.hpp"
+#include <string>
 #include <cstdint>
 
 constexpr unsigned char KEY_0 = '0';
@@ -117,9 +117,19 @@ public:
   }
 
   void action_set_siren_level(uint8_t level_user, bool save = true) {
-    // Best levels: from 0.0004 to 0.01. We set the level to 1.0 if user sets max volume just in case.
-    settings.siren_level = level_user == 9 ? 1.0 : scale((float)level_user, 1.0, 9.0, 0.0004, 0.1);
-    settings.siren_level_user = level_user;
+    switch (level_user) {
+      case 1: // low
+        settings.siren_level = 0.0005;
+        settings.siren_level_user = 1;
+        break;
+      case 2: // medium
+        settings.siren_level = 0.0015;
+        settings.siren_level_user = 2;
+        break;
+      default: // high
+        settings.siren_level = 1.0;
+        settings.siren_level_user = 3;
+    }
     if (save) {
       actions |= ACTION_SAVE_SIREN_LEVEL;
     }

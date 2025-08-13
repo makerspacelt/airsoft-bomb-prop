@@ -20,12 +20,12 @@ C,A,C,C,B,B,C,D
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
-[LCD] |> Siren level: 9|
+[LCD] |> Level: HIGH   |
 [LCD] |  Test (wait 5s)|
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Siren level: 9|
+[LCD] |  Level: HIGH   |
 [LCD] |> Test (wait 5s)|
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz

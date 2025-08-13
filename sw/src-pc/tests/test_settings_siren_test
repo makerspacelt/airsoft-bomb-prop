@@ -1,4 +1,4 @@
-C,A,C,C,B,C,A,1,B,C
+C,A,C,C,B,C,DELAY=3500,DELAY=1000,DELAY=100,DELAY=400,DELAY=4900,DELAY=100,A,1,B,C,DELAY=5000
 [LCD] |----------------|
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
@@ -20,32 +20,63 @@ C,A,C,C,B,C,A,1,B,C
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
-[LCD] |> Siren level: 9|
+[LCD] |> Level: HIGH   |
 [LCD] |  Test (wait 5s)|
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Siren level: 9|
+[LCD] |  Level: HIGH   |
 [LCD] |> Test (wait 5s)|
 [KEY C]
-[GameManager] Siren for 5000ms at 1220Hz level 1.000000 with 5000ms delay
 [GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> Test in 5.0s  |
+[DELAY 3500]
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> Test in 1.5s  |
+[DELAY 1000]
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> Test in 0.5s  |
+[DELAY 100]
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> Test in 0.4s  |
+[DELAY 400]
+[GameManager] Siren for 5000ms at 1220Hz level 1.000000 with 0ms delay
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> SIREN ACTIVE  |
+[DELAY 4900]
+[DELAY 100]
+[LCD] |----------------|
+[LCD] |  Level: HIGH   |
+[LCD] |> Test (wait 5s)|
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |> Siren level: 9|
+[LCD] |> Level: HIGH   |
 [LCD] |  Test (wait 5s)|
 [KEY 1]
 [GameManager] Buzzer for 100ms at 1000Hz
-[GameManager] Saving siren level: 0.000400 (user level 1)
+[GameManager] Saving siren level: 0.000500 (user level 1)
 [LCD] |----------------|
-[LCD] |> Siren level: 1|
+[LCD] |> Level: LOW    |
 [LCD] |  Test (wait 5s)|
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Siren level: 1|
+[LCD] |  Level: LOW    |
 [LCD] |> Test (wait 5s)|
 [KEY C]
-[GameManager] Siren for 5000ms at 200Hz level 0.000400 with 5000ms delay
 [GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |  Level: LOW    |
+[LCD] |> Test in 5.0s  |
+[DELAY 5000]
+[GameManager] Siren for 5000ms at 1220Hz level 0.000500 with 0ms delay
+[LCD] |----------------|
+[LCD] |  Level: LOW    |
+[LCD] |> SIREN ACTIVE  |
