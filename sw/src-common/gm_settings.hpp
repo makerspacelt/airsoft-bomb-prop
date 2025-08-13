@@ -1,9 +1,10 @@
 #pragma once
 
 #include "globals.hpp"
-#include "utilities.hpp"
 #include "gm_settings_ota.hpp"
 #include "gm_settings_siren.hpp"
+#include "gm_settings_test_mode.hpp"
+#include "utilities.hpp"
 
 #ifdef ESP_PLATFORM
 #include "esphome.h"
@@ -13,7 +14,7 @@
 
 class GameSettings {
 private:
-  enum class STATE { TOP, SIREN, OTA };
+  enum class STATE { TOP, SIREN, OTA, TEST };
   STATE state = STATE::TOP;
 
   enum class MENU { SIREN, OTA, BACK, COUNT };
@@ -22,9 +23,10 @@ private:
   AntGlobals &antg;
   GameSettingsSiren siren_settings;
   GameSettingsOTA ota_update;
+  GameSettingsTestMode test_mode;
 
 public:
-  GameSettings(AntGlobals &antg) : antg(antg), siren_settings(antg), ota_update(antg) {}
+  GameSettings(AntGlobals &antg) : antg(antg), siren_settings(antg), ota_update(antg), test_mode(antg) {}
 
   void init() {
     state = STATE::TOP;
@@ -52,6 +54,7 @@ public:
       break;
     case STATE::OTA:   ota_update.display_update(disp); break;
     case STATE::SIREN: siren_settings.display_update(disp); break;
+    case STATE::TEST:  test_mode.display_update(disp); break;
     }
   }
 
@@ -76,6 +79,10 @@ public:
         }
         break;
       case KEY_D: antg.action_exit_game(); break;
+      case KEY_5:
+        state = STATE::TEST;
+        test_mode.init();
+        break;
       }
       break;
     case STATE::OTA:
@@ -90,6 +97,12 @@ public:
         state = STATE::TOP;
       }
       break;
+    case STATE::TEST:
+      test_mode.handle_key(key);
+      if (!test_mode.active) {
+        state = STATE::TOP;
+      }
+      break;
     }
   }
 
@@ -98,6 +111,12 @@ public:
     case STATE::TOP:   break;
     case STATE::OTA:   ota_update.clock(now, delta); break;
     case STATE::SIREN: siren_settings.clock(now, delta); break;
+    case STATE::TEST:
+      test_mode.clock(now, delta);
+      if (!test_mode.active) {
+        state = STATE::TOP;
+      }
+      break;
     }
   }
 };

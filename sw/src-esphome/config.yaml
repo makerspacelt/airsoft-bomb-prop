@@ -333,6 +333,12 @@ script:
           id: siren
           level: 0
 
+  - id: s_stop_siren
+    then:
+      - output.set_level:
+          id: siren
+          level: 0
+
   - id: s_start_ota
     then:
       lambda: |-
@@ -357,6 +363,9 @@ script:
           if (actions & ACTION_START_SIREN) {
             ant_siren_t *s = &antg.siren_params;
             id(s_start_siren)->execute(s->delay, s->duration, s->level, s->tone);
+          }
+          if (actions & ACTION_STOP_SIREN) {
+            id(s_stop_siren)->execute();
           }
           if (actions & ACTION_START_BUZZER) {
             ant_buzzer_t *b = &antg.buzzer_params;

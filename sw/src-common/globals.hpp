@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <cstdint>
+#include <string>
 
 constexpr unsigned char KEY_0 = '0';
 constexpr unsigned char KEY_1 = '1';
@@ -55,9 +55,10 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 #define ACTION_EXIT_GAME 1
 #define ACTION_SAVE_SIREN_LEVEL 2
 #define ACTION_START_SIREN 4
-#define ACTION_START_BUZZER 8
-#define ACTION_START_OTA 16
-#define ACTION_STOP_OTA 32
+#define ACTION_STOP_SIREN 8
+#define ACTION_START_BUZZER 16
+#define ACTION_START_OTA 32
+#define ACTION_STOP_OTA 64
 
 struct ant_siren_t {
   int delay = 0;
@@ -105,10 +106,11 @@ public:
     siren_params.delay = delay;
     siren_params.duration = duration;
     siren_params.level = settings.siren_level;
-    // Only low frequency works at <= 0.004 level. Higher levels work best at 1220Hz.
-    siren_params.tone = siren_params.level <= 0.0004 ? 200 : 1220;
+    siren_params.tone = 1220;
     actions |= ACTION_START_SIREN;
   }
+
+  void action_stop_siren() { actions |= ACTION_STOP_SIREN; }
 
   void action_buzzer(int tone = BUZZER_TONE, int duration = BUZZER_DURATION) {
     buzzer_params.duration = duration;
@@ -118,17 +120,17 @@ public:
 
   void action_set_siren_level(uint8_t level_user, bool save = true) {
     switch (level_user) {
-      case 1: // low
-        settings.siren_level = 0.0005;
-        settings.siren_level_user = 1;
-        break;
-      case 2: // medium
-        settings.siren_level = 0.0015;
-        settings.siren_level_user = 2;
-        break;
-      default: // high
-        settings.siren_level = 1.0;
-        settings.siren_level_user = 3;
+    case 1: // low
+      settings.siren_level = 0.001;
+      settings.siren_level_user = 1;
+      break;
+    case 2: // medium
+      settings.siren_level = 0.002;
+      settings.siren_level_user = 2;
+      break;
+    default: // high
+      settings.siren_level = 1.0;
+      settings.siren_level_user = 3;
     }
     if (save) {
       actions |= ACTION_SAVE_SIREN_LEVEL;
