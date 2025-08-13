@@ -4,6 +4,7 @@ help:
 	@echo "  fw       - build esphome firmware"
 	@echo "  test     - compile the pc build and run integration tests"
 	@echo "  interact - compile the pc build and run it in interactive mode"
+	@echo "  format   - format project's C++ code using clang-format"
 
 flash:
 	src-esphome/esphome.sh run src-esphome/config.yaml
@@ -18,3 +19,5 @@ test:
 interact:
 	src-pc/run.sh
 
+format:
+	clang-format -i src-common/*.cpp src-common/*.hpp src-pc/*.cpp src-pc/*.hpp
