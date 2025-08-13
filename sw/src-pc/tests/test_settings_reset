@@ -24,6 +24,7 @@ C,A,C,B,RESET,C
 [LCD] |> OTA update    |
 [KEY RESET]
 [GameManager] Hard reset
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |  Respawn timer |

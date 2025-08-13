@@ -9,4 +9,5 @@ DELAY=1999,DELAY=1,RESET
 [LCD] |  Domination    |
 [KEY RESET]
 [GameManager] Hard reset
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz

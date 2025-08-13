@@ -53,12 +53,13 @@ C,B,C,B,1,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=5000,DELAY=50000,C_LONG,DELAY=500
 [LCD] |TIME LEFT: 00:50|
 [LCD] |T1:5     T2:0   |
 [DELAY 50000]
-[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
 [LCD] |----------------|
 [LCD] |DOMINATION ENDED|
 [LCD] |T1:5     T2:0   |
 [KEY C_LONG]
 [GM_domination] Restarting the game
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |TIME LEFT: 01:00|

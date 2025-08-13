@@ -69,7 +69,7 @@ C,B,C,9,9,9,B,9,9,9,B,C,DELAY=59949900,DELAY=59940000
 [LCD] |TIME LEFT:999:00|
 [LCD] |T1:0     T2:0   |
 [DELAY 59940000]
-[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 0ms delay
+[GameManager] Siren for 12000ms at 1220Hz level 1.000000 with 5000ms delay
 [LCD] |----------------|
 [LCD] |DOMINATION ENDED|
 [LCD] |T1:0     T2:0   |

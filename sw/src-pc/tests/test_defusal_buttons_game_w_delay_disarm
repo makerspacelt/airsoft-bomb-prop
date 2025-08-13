@@ -103,6 +103,7 @@ C,C,1,B,1,B,B,C,DELAY=59000,DELAY=1000,RED,DELAY=4000,DELAY=1000,RED_RELEASE,YEL
 [KEY C_LONG]
 [GM_defusal] Restarting the game
 [GM_defusal_buttons] -> PRE START
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] | PREP FOR GAME  |

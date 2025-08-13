@@ -110,6 +110,7 @@ C,B,B,C,C,DELAY=10000,RED,DELAY=63,DELAY=63,DELAY=63,DELAY=63,DELAY=63,DELAY=468
 [LCD] |1017     999999 |
 [KEY RESET]
 [GameManager] Hard reset
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |  Domination    |

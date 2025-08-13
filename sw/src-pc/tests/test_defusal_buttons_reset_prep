@@ -50,6 +50,7 @@ C,C,1,B,1,B,B,C,DELAY=2000,RESET,C,B,B,B,C
 [LCD] |     00:58      |
 [KEY RESET]
 [GameManager] Hard reset
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |> Defusal       |

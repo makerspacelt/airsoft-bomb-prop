@@ -29,6 +29,7 @@ C,B,B,C,C,RESET,C
 [LCD] |0        0      |
 [KEY RESET]
 [GameManager] Hard reset
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |  Domination    |

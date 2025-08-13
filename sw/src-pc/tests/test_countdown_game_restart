@@ -55,6 +55,7 @@ C,B,B,B,C,B,1,B,C,DELAY=1200000,C_LONG
 [LCD] |                |
 [KEY C_LONG]
 [GM_countdown] Restarting the game
+[GameManager] Stopping siren
 [GameManager] Buzzer for 400ms at 2200Hz
 [LCD] |----------------|
 [LCD] |  GAME STARTED  |
