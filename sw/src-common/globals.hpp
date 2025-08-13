@@ -28,6 +28,8 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 
 #define ANT_VERSION "2.0.0"
 
+#define GM_DEFUSAL_MAX_CODE_LEN 6 // max defusal bomb code length
+
 #define HARD_RESET_KEY_HOLD_DURATION 10000
 #define KEY_C_LONG_HOLD_DURATION 10000
 #define BTN_TEAM_SHORT_HOLD_DURATION 5000
