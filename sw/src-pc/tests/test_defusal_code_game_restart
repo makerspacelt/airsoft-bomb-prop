@@ -3,6 +3,7 @@ C,C,B,1,B,0,B,C,0,#,DELAY=60000,C_LONG,0,#,DELAY=60000
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
 [KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |

@@ -3,6 +3,7 @@ C,b,b,b,c,1,2,3,*,9,9,9,0,B,3,2,*,9,8,7
 [LCD] |   KMS ANT V2   |
 [LCD] |  makerspace.lt |
 [KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Defusal       |
 [LCD] |  Domination    |

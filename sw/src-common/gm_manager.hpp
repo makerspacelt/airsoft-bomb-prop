@@ -114,24 +114,32 @@ private:
     }
   }
 
+  void key_buzzer(unsigned char key) {
+    // Activate buzzer for key presses
+    switch (key) {
+    case KEY_C: antg.action_buzzer(BUZZER_TONE_C); break;
+    case KEY_D: antg.action_buzzer(BUZZER_TONE_D); break;
+    case KEY_C_LONG:
+    case KEY_RED:
+    case KEY_RED_RELEASE:
+    case KEY_YELLOW:
+    case KEY_YELLOW_RELEASE:
+      // Do not buzz for long C press or for short RED/YELLOW button press.
+      // Individual handlers will buzz if there is an action attached to these presses.
+      break;
+    default: antg.action_buzzer(BUZZER_TONE);
+    }
+  }
+
   void handle_key_splash(unsigned char key) {
+    key_buzzer(key);
+
     // Immediate switch to MENU on any key press
     state = STATE::MENU;
   }
 
   void handle_key_menu(unsigned char key) {
-    // Activate buzzer for key presses
-    switch (key) {
-    case KEY_C: antg.action_buzzer(BUZZER_TONE_C); break;
-    case KEY_D: antg.action_buzzer(BUZZER_TONE_D); break;
-    case KEY_RED:
-    case KEY_RED_RELEASE:
-    case KEY_YELLOW:
-    case KEY_YELLOW_RELEASE:
-      // Do not buzz for short RED/YELLOW button press.
-      break;
-    default: antg.action_buzzer(BUZZER_TONE);
-    }
+    key_buzzer(key);
 
     // Long press timings
     switch (key) {
@@ -181,8 +189,6 @@ private:
       ESP_LOGI("GameManager", "Hard reset");
       current_game = MODE_NONE;
     }
-
-    handle_actions();
   }
 
   void clock_splash(uint32_t now, uint32_t delta) {
@@ -219,7 +225,6 @@ private:
     case MODE_NONE:           break;
     }
 
-    handle_actions();
     clock_last_update_ms = now;
   }
 
@@ -247,6 +252,7 @@ public:
     case STATE::SPLASH: handle_key_splash(key); break;
     case STATE::MENU:   handle_key_menu(key); break;
     }
+    handle_actions();
   }
 
   void clock(uint32_t now, uint32_t delta) {
@@ -254,5 +260,6 @@ public:
     case STATE::SPLASH: clock_splash(now, delta); break;
     case STATE::MENU:   clock_menu(now, delta); break;
     }
+    handle_actions();
   }
 };
