@@ -11,6 +11,7 @@ flash:
 
 fw:
 	src-esphome/esphome.sh compile src-esphome/config.yaml
+	@ls -l src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
 
 test:
 	src-pc/build.sh
