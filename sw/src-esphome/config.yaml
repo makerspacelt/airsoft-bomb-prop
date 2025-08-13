@@ -42,7 +42,7 @@ preferences:
   flash_write_interval: 10s
 
 mdns:
-    disabled: true
+  disabled: true
 
 #
 # OTA config
@@ -61,29 +61,19 @@ ota:
     on_begin:
       then:
         - lambda: |-
-            id(my_display).print(0, 0, "Updating");
-            id(my_display).print(0, 1, "");
-    on_progress:
-      then:
-        - lambda: |-
-            id(my_display).print(0, 0, "Updating");
-            id(my_display).printf(0, 1, "%0.1f%%", x);
-    on_end:
-      then:
-        - lambda: |-
-            id(my_display).print(0, 0, "Updating");
-            id(my_display).print(0, 1, "Finished");
+            id(my_display).print(0, 0, "    Updating    ");
+            id(my_display).print(0, 1, "    firmware    ");
     on_error:
       then:
         - lambda: |-
-            id(my_display).print(0, 0, "Updating");
-            id(my_display).printf(0, 1, "Error %d", x);
+            id(my_display).print(0, 0,  "    Updating    ");
+            id(my_display).printf(0, 1, "   Error %d    ", x);
 
 web_server:
   port: 80
   index_html_include: ./index.html
- 
-# 
+
+#
 # Prop hardware
 #
 
