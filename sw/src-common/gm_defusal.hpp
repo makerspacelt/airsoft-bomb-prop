@@ -1,9 +1,9 @@
 #pragma once
 
 #include "globals.hpp"
-#include "utilities.hpp"
 #include "gm_defusal_buttons.hpp"
 #include "gm_defusal_code.hpp"
+#include "utilities.hpp"
 
 #ifdef ESP_PLATFORM
 #include "esphome.h"
@@ -231,7 +231,7 @@ public:
       break;
     case STATE::DEFUSAL_BUTTONS:
       gm_defusal_buttons.clock(now, delta);
-      if (gm_defusal_code.armed && !gm_defusal_buttons.finished) {
+      if (gm_defusal_buttons.armed && !gm_defusal_buttons.finished) {
         bomb_buzzer(100 * (float)gm_defusal_buttons.bomb_ms_remaining / bomb_ms_total, now);
       }
       break;
