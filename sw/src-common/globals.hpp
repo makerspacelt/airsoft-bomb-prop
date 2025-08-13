@@ -125,7 +125,7 @@ public:
       settings.siren_level_user = 1;
       break;
     case 2: // medium
-      settings.siren_level = 0.002;
+      settings.siren_level = 0.004;
       settings.siren_level_user = 2;
       break;
     default: // high
