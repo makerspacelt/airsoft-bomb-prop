@@ -141,7 +141,7 @@ private:
     game_ms_remaining -= delta;
     if (game_ms_remaining <= 0) {
       state = STATE::FINISHED;
-      antg.action_siren(SIREN_DURATION_GAME_END);
+      antg.action_siren(SIREN_DURATION_GAME_END, SIREN_GAME_END_DELAY);
       return;
     }
 
