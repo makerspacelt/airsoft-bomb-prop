@@ -290,7 +290,7 @@ script:
       duration: int
       level: float
       tone: int
-    mode: restart
+    mode: single
     then:
       - output.ledc.set_frequency:
           id: buzzer
