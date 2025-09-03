@@ -26,16 +26,16 @@ jobs:
     - name: pc build and tests
       run: cd sw && make test
 
-    - name: esphome build
+    - name: esphome-build
       uses: esphome/build-action@v7.0.0
       with:
         yaml-file: sw/src-esphome/config.yaml
         version: 2025.7.5
         complete-manifest: true
 
-    - name: save esphome firmware
+    - name: esphome-save
       uses: actions/upload-artifact@v4
       with:
         name: esphome-firmware
-        path: ${{ steps.build.outputs.name }}
+        path: ${{ steps.esphome-build.outputs.name }}
 
