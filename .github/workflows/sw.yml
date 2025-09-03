@@ -6,6 +6,8 @@ on:
     paths:
       - "sw/**"
       - ".github/workflows/sw.yml"
+    tags:
+        - "v*.*.*"
   pull_request:
     branches: ["master"]
     paths:
@@ -22,6 +24,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: set version in header
+        run: cd sw && make version
 
       - name: code formatting
         run: cd sw && make check
