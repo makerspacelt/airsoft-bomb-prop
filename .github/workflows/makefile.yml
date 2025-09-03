@@ -1,0 +1,25 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: code formatting
+      run: cd sw && make check
+
+    - name: pc build and tests
+      run: cd sw && make test
+
+    - name: esphome build
+      run: make fw
+
