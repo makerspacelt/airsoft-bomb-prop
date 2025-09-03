@@ -11,6 +11,10 @@ on:
     paths:
       - "sw/**"
       - ".github/workflows/sw.yml"
+  workflow_dispatch: # manual trigger
+
+env:
+  ESPHOME_VERSION: 2025.7.5
 
 jobs:
   build:
@@ -25,45 +29,36 @@ jobs:
       - name: pc build and tests
         run: cd sw && make test
 
-      - name: esphome build
-        id: esphome-build
-        uses: esphome/build-action@v7.0.0
-        with:
-          yaml-file: sw/src-esphome/config.yaml
-          version: 2025.7.5
-          complete-manifest: true
-
-      - name: cache esphome downloads
+      - name: cache esphome
         uses: actions/cache@v4
         with:
-          key: ${{ runner.os }}-esphome-${{ inputs.version }}-platformio
+          key: ${{ runner.os }}-esphome-${{ env.ESPHOME_VERSION }}
           path: |
+            ~/.cache/pip
             ~/.platformio
-            ~/.esphome/platformio
+
+      - name: install esphome
+        run: pip install esphome==${{ env.ESPHOME_VERSION }}
+
+      - name: esphome fw
+        run: cd sw && esphome compile src-esphome/config.yaml
 
       - name: save firmware.factory.bin
         uses: actions/upload-artifact@v4
         with:
           name: firmware.factory.bin
-          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
+          path: sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
 
       - name: save firmware.ota.bin
         uses: actions/upload-artifact@v4
         with:
           name: firmware.ota.bin
-          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
+          path: sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
 
-      - name: save manifest.json
-        uses: actions/upload-artifact@v4
-        with:
-          name: manifest.json
-          path: ${{ steps.esphome-build.outputs.name }}/manifest.json
-
-      - name: release
+      - name: release if tag
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
           files: |
-            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
-            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
-            ${{ steps.esphome-build.outputs.name }}/manifest.json
+            sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
+            sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
