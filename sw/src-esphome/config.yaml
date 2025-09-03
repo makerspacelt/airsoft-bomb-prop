@@ -21,6 +21,7 @@ esphome:
   name_add_mac_suffix: true
   includes:
     - ../src-common
+    - esphome-entry.hpp
   on_boot:
     - then:
         lambda: |-
