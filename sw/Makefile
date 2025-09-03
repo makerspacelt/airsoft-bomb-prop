@@ -1,3 +1,5 @@
+DEVICE=/dev/ttyACM0
+
 help:
 	@echo "make targets:"
 	@echo "  flash    - build and flash esphome firmware, then open log monitoring"
@@ -7,11 +9,14 @@ help:
 	@echo "  format   - format project's C++ code using clang-format"
 
 flash:
-	src-esphome/esphome.sh run src-esphome/config.yaml
+	src-esphome/esphome.sh run --device ${DEVICE} src-esphome/config.yaml
 
 fw:
 	src-esphome/esphome.sh compile src-esphome/config.yaml
-	@ls -l src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
+	@echo "Factory firmware:"
+	@ls -lh ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
+	@echo "OTA firmware:"
+	@ls -lh ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
 
 test:
 	src-pc/build.sh
