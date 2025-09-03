@@ -59,4 +59,3 @@ std::string format_progress_bar(float ratio) {
 
   return result;
 }
-
