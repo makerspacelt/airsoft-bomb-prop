@@ -13,10 +13,12 @@ flash:
 
 fw:
 	src-esphome/esphome.sh compile src-esphome/config.yaml
+	@echo
 	@echo "Factory firmware:"
-	@ls -lh ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
+	@ls ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
+	@echo
 	@echo "OTA firmware:"
-	@ls -lh ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
+	@ls ${PWD}/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
 
 test:
 	src-pc/build.sh
