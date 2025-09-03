@@ -1,0 +1,47 @@
+C,A,C,5,1,RED,RED_RELEASE,*,DELAY=4999,DELAY=1
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Respawn timer |
+[LCD] |> Settings      |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren settings|
+[LCD] |  OTA update    |
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |   TEST  MENU   |
+[LCD] |                |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |   TEST  MENU   |
+[LCD] |Key: 1          |
+[KEY RED]
+[LCD] |----------------|
+[LCD] |   TEST  MENU   |
+[LCD] |Key: r          |
+[KEY RED_RELEASE]
+[LCD] |----------------|
+[LCD] |   TEST  MENU   |
+[LCD] |Key: R          |
+[KEY *]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |   TEST  MENU   |
+[LCD] |Key: *          |
+[DELAY 4999]
+[DELAY 1]
+[LCD] |----------------|
+[LCD] |> Siren settings|
+[LCD] |  OTA update    |
