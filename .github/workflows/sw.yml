@@ -36,21 +36,34 @@ jobs:
       - name: cache esphome downloads
         uses: actions/cache@v4
         with:
+          key: ${{ runner.os }}-esphome-${{ inputs.version }}-platformio
           path: |
             ~/.platformio
             ~/.esphome/platformio
 
-      - uses: actions/upload-artifact@v4
+      - name: save firmware.factory.bin
+        uses: actions/upload-artifact@v4
         with:
           name: firmware.factory.bin
           path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
 
-      - uses: actions/upload-artifact@v4
+      - name: save firmware.ota.bin
+        uses: actions/upload-artifact@v4
         with:
           name: firmware.ota.bin
           path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
 
-      - uses: actions/upload-artifact@v4
+      - name: save manifest.json
+        uses: actions/upload-artifact@v4
         with:
           name: manifest.json
           path: ${{ steps.esphome-build.outputs.name }}/manifest.json
+
+      - name: release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          files: |
+            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
+            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
+            ${{ steps.esphome-build.outputs.name }}/manifest.json
