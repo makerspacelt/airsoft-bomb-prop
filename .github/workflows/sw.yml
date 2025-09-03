@@ -6,6 +6,8 @@ on:
     paths:
       - "sw/**"
       - ".github/workflows/sw.yml"
+    tags:
+        - "v*.*.*"
   pull_request:
     branches: ["master"]
     paths:
