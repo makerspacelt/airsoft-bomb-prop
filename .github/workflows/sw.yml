@@ -2,41 +2,48 @@ name: Software CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
-      - 'sw/**'
-      - '.github/workflows/sw.yml'
+      - "sw/**"
+      - ".github/workflows/sw.yml"
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
-      - 'sw/**'
-      - '.github/workflows/sw.yml'
+      - "sw/**"
+      - ".github/workflows/sw.yml"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: code formatting
-      run: cd sw && make check
+      - name: code formatting
+        run: cd sw && make check
 
-    - name: pc build and tests
-      run: cd sw && make test
+      - name: pc build and tests
+        run: cd sw && make test
 
-    - name: esphome build
-      id: esphome-build
-      uses: esphome/build-action@v7.0.0
-      with:
-        yaml-file: sw/src-esphome/config.yaml
-        version: 2025.7.5
-        complete-manifest: true
+      - name: esphome build
+        id: esphome-build
+        uses: esphome/build-action@v7.0.0
+        with:
+          yaml-file: sw/src-esphome/config.yaml
+          version: 2025.7.5
+          complete-manifest: true
 
-    - name: save esphome firmware
-      uses: actions/upload-artifact@v4
-      with:
-        name: esphome-firmware
-        path: ${{ steps.esphome-build.outputs.name }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware.factory.bin
+          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware.ota.bin
+          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manifest.json
+          path: ${{ steps.esphome-build.outputs.name }}/manifest.json
