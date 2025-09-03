@@ -31,3 +31,9 @@ jobs:
         version: 2025.7.5
         complete-manifest: true
 
+    - name: save esphome firmware
+      uses: actions/upload-artifact@v4
+      with:
+        name: esphome-firmware
+        path: ${{ steps.build.outputs.name }}
+
