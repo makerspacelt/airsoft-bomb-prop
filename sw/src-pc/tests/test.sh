@@ -18,10 +18,11 @@ if [ -t 1 ]; then
     C_RESET=$(tput sgr0)
 fi
 
+passed=0
 failed=0
 
 for f in test_*; do
-    if [ "$TEST_PATTERN" ] && ! echo "$f" | grep -qP "$TEST_PATTERN"; then
+    if [ "$TEST_PATTERN" ] && ! { echo "$f" | grep -qP "$TEST_PATTERN"; }; then
         continue
     fi
     test_sequence=$(sed  -n '1p;q' "$f")
@@ -39,9 +40,14 @@ for f in test_*; do
         echo "$delta"
         echo ""
         failed=$((failed+1))
+    else
+        passed=$((passed+1))
     fi
 done
 
 if [ $failed -eq 0 ]; then
-    echo "$C_GREEN+ All tests passed$C_RESET"
+    echo "${C_GREEN}PASS: $passed tests passed$C_RESET"
+else
+    echo "${C_RED}FAIL: $failed tests failed$C_RESET"
+    exit 1
 fi
