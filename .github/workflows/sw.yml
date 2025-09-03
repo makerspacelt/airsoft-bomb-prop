@@ -5,10 +5,12 @@ on:
     branches: [ "master" ]
     paths:
       - 'sw/**'
+      - '.github/workflows/sw.yml'
   pull_request:
     branches: [ "master" ]
     paths:
       - 'sw/**'
+      - '.github/workflows/sw.yml'
 
 jobs:
   build:
