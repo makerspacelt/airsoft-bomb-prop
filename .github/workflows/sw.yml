@@ -26,14 +26,15 @@ jobs:
     - name: pc build and tests
       run: cd sw && make test
 
-    - name: esphome-build
+    - name: esphome build
+      id: esphome-build
       uses: esphome/build-action@v7.0.0
       with:
         yaml-file: sw/src-esphome/config.yaml
         version: 2025.7.5
         complete-manifest: true
 
-    - name: esphome-save
+    - name: save esphome firmware
       uses: actions/upload-artifact@v4
       with:
         name: esphome-firmware
