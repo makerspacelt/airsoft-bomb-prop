@@ -33,6 +33,13 @@ jobs:
           version: 2025.7.5
           complete-manifest: true
 
+      - name: cache esphome downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            ~/.esphome/platformio
+
       - uses: actions/upload-artifact@v4
         with:
           name: firmware.factory.bin
