@@ -1,0 +1,80 @@
+C,A,A,C,1,B,5,B,B,C,DELAY=59000,DELAY=1000,DELAY=4000,DELAY=1000,DELAY=60000,DELAY=5000
+[LCD] |----------------|
+[LCD] |   KMS ANT V2   |
+[LCD] |  makerspace.lt |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Respawn timer |
+[LCD] |> Settings      |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Timer         |
+[LCD] |> Respawn timer |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |>Standby min 0  |
+[LCD] | Respawn sec 0  |
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |>Standby min 1  |
+[LCD] | Respawn sec 0  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] | Standby min 1  |
+[LCD] |>Respawn sec 0  |
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] | Standby min 1  |
+[LCD] |>Respawn sec 5  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] | Respawn sec 5  |
+[LCD] |>Use siren?: N  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] | Use siren?: N  |
+[LCD] |>START          |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |    STAND BY    |
+[LCD] |      01:00     |
+[DELAY 59000]
+[LCD] |----------------|
+[LCD] |    STAND BY    |
+[LCD] |      00:01     |
+[DELAY 1000]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |   GO! GO! GO!  |
+[LCD] |      00:05     |
+[DELAY 4000]
+[LCD] |----------------|
+[LCD] |   GO! GO! GO!  |
+[LCD] |      00:01     |
+[DELAY 1000]
+[LCD] |----------------|
+[LCD] |    STAND BY    |
+[LCD] |      01:00     |
+[DELAY 60000]
+[GameManager] Buzzer for 5000ms at 1000Hz
+[LCD] |----------------|
+[LCD] |   GO! GO! GO!  |
+[LCD] |      00:05     |
+[DELAY 5000]
+[LCD] |----------------|
+[LCD] |    STAND BY    |
+[LCD] |      01:00     |
