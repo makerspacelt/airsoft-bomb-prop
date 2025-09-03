@@ -73,6 +73,7 @@ C,C,B,1,B,B,C,RED,DELAY=5000,RED_RELEASE,DELAY=60000,C_LONG,RED,DELAY=5000,RED_R
 [LCD] |1               |
 [DELAY 5000]
 [GM_defusal_buttons] ARMING -> ARMED
+[GameManager] Buzzer for 100ms at 1500Hz
 [LCD] |----------------|
 [LCD] |     ARMED      |
 [LCD] |TIME LEFT: 01:00|

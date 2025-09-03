@@ -56,10 +56,12 @@ C,C,B,1,B,B,C,RED,DELAY=4000,DELAY=1000,RED_RELEASE,DELAY=54000,DELAY=1000,DELAY
 [LCD] |TIME LEFT: 01:00|
 [KEY RED_RELEASE]
 [DELAY 54000]
+[GameManager] Buzzer for 100ms at 1500Hz
 [LCD] |----------------|
 [LCD] |     ARMED      |
 [LCD] |TIME LEFT: 00:06|
 [DELAY 1000]
+[GameManager] Buzzer for 100ms at 1500Hz
 [LCD] |----------------|
 [LCD] |     ARMED      |
 [LCD] |TIME LEFT: 00:05|
