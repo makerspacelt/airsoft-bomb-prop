@@ -47,5 +47,7 @@ version:
 
 release:
 	@if [ ! "$(VERSION)" ]; then echo; echo "Please specify the release version like this:"; echo '  make release VERSION=2.0.1'; echo; exit 1; fi
+	@if ! echo "$(VERSION)" | grep -qP "^\d+\.\d+\.\d+$$"; then echo "ERROR: VERSION must be x.y.z where x,y,z are all digits"; exit 1; fi
+	@make version VERSION=$(VERSION)
 	@git tag -a -m v$(VERSION) v$(VERSION)
-	@git push origin $(VERSION)
+	@git push origin v$(VERSION)
