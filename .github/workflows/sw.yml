@@ -3,8 +3,12 @@ name: Software CI
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'sw/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'sw/**'
 
 jobs:
   build:
@@ -25,6 +29,5 @@ jobs:
       with:
         yaml-file: sw/src-esphome/config.yaml
         version: 2025.7.5
-        platform: linux/amd64
         complete-manifest: true
 
