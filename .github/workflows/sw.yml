@@ -1,0 +1,69 @@
+name: Software CI
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "sw/**"
+      - ".github/workflows/sw.yml"
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "sw/**"
+      - ".github/workflows/sw.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: code formatting
+        run: cd sw && make check
+
+      - name: pc build and tests
+        run: cd sw && make test
+
+      - name: esphome build
+        id: esphome-build
+        uses: esphome/build-action@v7.0.0
+        with:
+          yaml-file: sw/src-esphome/config.yaml
+          version: 2025.7.5
+          complete-manifest: true
+
+      - name: cache esphome downloads
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-esphome-${{ inputs.version }}-platformio
+          path: |
+            ~/.platformio
+            ~/.esphome/platformio
+
+      - name: save firmware.factory.bin
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware.factory.bin
+          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
+
+      - name: save firmware.ota.bin
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware.ota.bin
+          path: ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
+
+      - name: save manifest.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: manifest.json
+          path: ${{ steps.esphome-build.outputs.name }}/manifest.json
+
+      - name: release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          files: |
+            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.factory.bin
+            ${{ steps.esphome-build.outputs.name }}/${{ steps.esphome-build.outputs.name }}.ota.bin
+            ${{ steps.esphome-build.outputs.name }}/manifest.json
