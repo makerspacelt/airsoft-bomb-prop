@@ -11259,7 +11259,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical"
+		(property "Footprint" "!custom:Potentiometer_Bourns_TC33X_Vertical"
 			(at 191.77 41.91 0)
 			(effects
 				(font

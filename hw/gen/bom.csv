@@ -13,7 +13,7 @@
 "12","Resistor","R","R2,R3,R6,R7,R8,R9","1k","R_0805_2012Metric_Pad1.20x1.40mm_HandSolder","6"," ","~"
 "13","Resistor","R","R4,R5,R10,R11","4k7","R_0805_2012Metric_Pad1.20x1.40mm_HandSolder","4"," ","~"
 "14","Resistor","R","R17","30k","R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","1"," ","~"
-"15","Potentiometer","R_Potentiometer","RV1","10k","Potentiometer_Bourns_3296W_Vertical","1"," ","~"
+"15","Potentiometer","R_Potentiometer","RV1","10k","Potentiometer_Bourns_TC33X_Vertical","1"," ","~"
 "16","1.5A 35V Adjustable Linear Regulator, SOT-223","LM317_SOT-223","U4","LM317_SOT-223","SOT-223-3_TabPin2","1"," ","http://www.ti.com/lit/ds/symlink/lm317.pdf"
 "17","8 Bit Port/Expander to I2C Bus, DIP/SOIC-16","PCF8574","U1,U2","PCF8574","SOIC-16W_7.5x10.3mm_P1.27mm","2"," ","http://www.nxp.com/docs/en/data-sheet/PCF8574_PCF8574A.pdf"
 "18","https://pricing.snapeda.com/parts/ESP32-C3%20SuperMini_TH/Espressif%20Systems/view-part?ref=eda Check availability","ESP32-C3_SUPERMINI","U3","~","MODULE_ESP32-C3_SUPERMINI","1"," ",""

@@ -1,0 +1,303 @@
+(footprint "Potentiometer_Bourns_TC33X_Vertical"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "Potentiometer, Bourns, TC33X, Vertical, https://www.bourns.com/pdfs/TC33.pdf")
+	(tags "Potentiometer Bourns TC33X Vertical")
+	(property "Reference" "RV1"
+		(at 0 -2.5 180)
+		(layer "F.SilkS")
+		(uuid "39ab4e7d-c889-4afb-9bfe-375ec4f97c4c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "10k"
+		(at 0 2.5 180)
+		(layer "F.Fab")
+		(uuid "093f03e3-e79b-4a42-820b-d382143ff156")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "Potentiometer_SMD:Potentiometer_Bourns_TC33X_Vertical"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b1f2624f-0f16-4419-a26d-cfbfbd97b1dc")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2f9edabc-5129-4a4f-9f5b-bc8793031a68")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Potentiometer"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fb57235a-51f2-4d0a-b48a-50d68c18b8a9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.6 -1.8)
+		(end -2.6 -1.1)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4c8abf7f-68df-4234-bc4f-4d799542318f")
+	)
+	(fp_line
+		(start -2.1 -0.2)
+		(end -2.1 0.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "40914f52-6ec0-49d1-97c7-d6c636072813")
+	)
+	(fp_line
+		(start -1.9 -1.8)
+		(end -2.6 -1.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2d344b4b-92a3-4ea2-9ead-9cc56d7dd84c")
+	)
+	(fp_line
+		(start -1 -1.6)
+		(end 1.9 -1.6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6c6a2663-a0ac-4926-8298-23abc9ff7165")
+	)
+	(fp_line
+		(start -1 1.6)
+		(end 1.9 1.6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b86edfad-b394-4686-96d3-d247aa4b793c")
+	)
+	(fp_line
+		(start 1.9 -1.6)
+		(end 1.9 -1)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "887fac55-bd3b-4f3d-9ead-c53b56691066")
+	)
+	(fp_line
+		(start 1.9 1.6)
+		(end 1.9 1)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8156c663-d223-43ff-8b7f-b09873e99690")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.8 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "Dwgs.User")
+		(uuid "d5aa7125-cdd8-470b-a16e-de34f32ffa4f")
+	)
+	(fp_line
+		(start -2.65 -1.85)
+		(end 2.45 -1.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "33c1fdda-4fab-4647-8e66-1d4f75a1b81d")
+	)
+	(fp_line
+		(start -2.65 1.85)
+		(end -2.65 -1.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2e3a2802-aa32-45de-bfb0-cd8d98bebbdb")
+	)
+	(fp_line
+		(start 2.45 -1.85)
+		(end 2.45 1.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "15946041-1e4b-4d1b-8d92-4744396ebc0a")
+	)
+	(fp_line
+		(start 2.45 1.85)
+		(end -2.65 1.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "35c63dbe-9cb1-472b-b660-60506dd9cc8d")
+	)
+	(fp_line
+		(start -2 -0.75)
+		(end -2 1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c2593a89-2dab-400f-9f75-18b73ff74bfc")
+	)
+	(fp_line
+		(start -2 1.5)
+		(end 1.8 1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c7cac48e-25c8-42da-b418-3a344ded3b0d")
+	)
+	(fp_line
+		(start -1.25 -1.5)
+		(end -2 -0.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "380f2a0b-a9ab-4d25-b2d4-e1596d664916")
+	)
+	(fp_line
+		(start 1.8 -1.5)
+		(end -1.25 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "39d88b12-6944-4ffd-bc5f-78618f3ac6b0")
+	)
+	(fp_line
+		(start 1.8 1.5)
+		(end 1.8 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0e9cff8d-48a4-4ca8-b6ad-ac6c973f5856")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.5 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "d087c581-a4db-44e6-8f87-97d884dee145")
+	)
+	(fp_text user "Wiper may be\nanywhere within\ncircle shown"
+		(at -0.15 -0.8 180)
+		(layer "Cmts.User")
+		(uuid "25aa4a2a-5ed1-4b0e-8ad3-607e342a1ca4")
+		(effects
+			(font
+				(size 0.15 0.15)
+				(thickness 0.02)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(uuid "c8605d76-e777-4b89-8d79-5f72d86d9a22")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.105)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.8 -1)
+		(size 1.2 1.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "9650ee5d-f69b-437c-ace9-c54926ed123b")
+	)
+	(pad "2" smd rect
+		(at 1.45 0)
+		(size 1.5 1.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "9f0765a8-62ee-49b3-996c-5f161c086e5e")
+	)
+	(pad "3" smd rect
+		(at -1.8 1)
+		(size 1.2 1.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "0514a629-6fb9-45b9-9fa6-9ec59a9e2b0f")
+	)
+	(model "${KIPRJMOD}/3d/snapmagic/TC33X/TC33X-2-203E.STEP"
+		(offset
+			(xyz -0.2 0 0.1)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)
