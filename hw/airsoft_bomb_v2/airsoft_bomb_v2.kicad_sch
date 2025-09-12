@@ -3466,6 +3466,169 @@
 				)
 			)
 		)
+		(symbol "Device:D"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:R"
 			(pin_numbers hide)
 			(pin_names
@@ -5993,6 +6156,16 @@
 	)
 	(wire
 		(pts
+			(xy 63.5 219.71) (xy 77.47 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47906846-c1e1-419b-9a5f-9d1994b2eb71")
+	)
+	(wire
+		(pts
 			(xy 72.39 217.17) (xy 72.39 209.55)
 		)
 		(stroke
@@ -6130,16 +6303,6 @@
 			(type default)
 		)
 		(uuid "5c33a83e-d127-4afd-a758-684ac477521e")
-	)
-	(wire
-		(pts
-			(xy 68.58 219.71) (xy 77.47 219.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f522eff-1140-4ffa-bc81-65b1f5882ae1")
 	)
 	(wire
 		(pts
@@ -6503,6 +6666,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 217.17) (xy 72.39 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a55e8f25-0089-4110-9f4b-9195e142ec5a")
+	)
+	(wire
+		(pts
 			(xy 121.92 148.59) (xy 105.41 148.59)
 		)
 		(stroke
@@ -6750,16 +6923,6 @@
 			(type default)
 		)
 		(uuid "cbce998f-f39e-4ec5-8552-b9d2c3eeaabe")
-	)
-	(wire
-		(pts
-			(xy 68.58 217.17) (xy 72.39 217.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc1271fe-da20-4ecb-aa2b-5aa2f0aa02f6")
 	)
 	(wire
 		(pts
@@ -7446,6 +7609,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C49678"
+			(at 177.8 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b3428245-7dff-43fd-b9ad-3c87a4122e79")
 		)
@@ -7647,6 +7819,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 168.91 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "66975b52-4a54-4b58-acb0-254f3ec833fb")
 		)
@@ -7712,6 +7893,15 @@
 			)
 		)
 		(property "Description" "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
+			(at 203.2 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C8545"
 			(at 203.2 102.87 0)
 			(effects
 				(font
@@ -7793,6 +7983,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 198.12 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b57430c9-5875-47b1-a62d-fbd1303b6639")
 		)
@@ -7852,6 +8051,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 198.12 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17477"
 			(at 198.12 190.5 0)
 			(effects
 				(font
@@ -7922,6 +8130,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 121.92 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17673"
 			(at 121.92 142.24 0)
 			(effects
 				(font
@@ -8057,6 +8274,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x10, script generated"
+			(at 307.34 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 307.34 138.43 0)
 			(effects
 				(font
@@ -8359,6 +8585,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C7605"
+			(at 165.1 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "c0b6ad53-3b23-4840-8fd7-42fc2f1da3e3")
 		)
@@ -8528,6 +8763,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 58.42 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17513"
 			(at 58.42 148.59 0)
 			(effects
 				(font
@@ -8737,6 +8981,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 168.91 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "26ad46fa-2a3e-473a-872d-49389adbf4c8")
 		)
@@ -8799,6 +9052,15 @@
 			)
 		)
 		(property "Description" "8 Bit Port/Expander to I2C Bus, DIP/SOIC-16"
+			(at 88.9 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C7605"
 			(at 88.9 73.66 0)
 			(effects
 				(font
@@ -8986,6 +9248,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 172.72 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "35706fba-016b-48a2-a380-7e2c6e075807")
 		)
@@ -9056,6 +9327,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 303.53 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "airsoft_bomb_v2"
 				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
@@ -9110,6 +9390,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 146.05 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17513"
 			(at 146.05 69.85 0)
 			(effects
 				(font
@@ -9178,6 +9467,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 193.04 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17513"
 			(at 193.04 102.87 0)
 			(effects
 				(font
@@ -9323,6 +9621,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 303.53 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
@@ -9380,6 +9687,15 @@
 			)
 		)
 		(property "Description" "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
+			(at 182.88 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C8545"
 			(at 182.88 215.9 0)
 			(effects
 				(font
@@ -9453,6 +9769,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 63.5 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17513"
 			(at 63.5 134.62 0)
 			(effects
 				(font
@@ -9589,6 +9914,15 @@
 			)
 		)
 		(property "Description" "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
+			(at 182.88 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C8545"
 			(at 182.88 196.85 0)
 			(effects
 				(font
@@ -9804,6 +10138,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 111.76 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "7"
 			(uuid "9ad1dcf1-1c81-4be8-a659-054cadf191d6")
 		)
@@ -9888,6 +10231,15 @@
 			)
 		)
 		(property "Description" "https://pricing.snapeda.com/parts/ESP32-C3%20SuperMini_TH/Espressif%20Systems/view-part?ref=eda Check availability"
+			(at 87.63 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 87.63 151.13 0)
 			(effects
 				(font
@@ -10066,6 +10418,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 110.49 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C49678"
 			(at 110.49 214.63 0)
 			(effects
 				(font
@@ -10408,6 +10769,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 204.47 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "57f0c86c-b97c-4cf1-bdba-bab649782e3d")
 		)
@@ -10469,6 +10839,15 @@
 			)
 		)
 		(property "Description" "1.5A 35V Adjustable Linear Regulator, SOT-223"
+			(at 96.52 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C6187"
 			(at 96.52 209.55 0)
 			(effects
 				(font
@@ -10542,6 +10921,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 303.53 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 303.53 64.77 0)
 			(effects
 				(font
@@ -10673,6 +11061,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 53.34 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17513"
 			(at 53.34 134.62 0)
 			(effects
 				(font
@@ -11149,6 +11546,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 198.12 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "993904d0-5224-494f-ab21-1d2d0b433e87")
 		)
@@ -11278,6 +11684,15 @@
 			)
 		)
 		(property "Description" "Potentiometer"
+			(at 191.77 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C719176"
 			(at 191.77 41.91 0)
 			(effects
 				(font
@@ -11423,6 +11838,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17513"
+			(at 113.03 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9306fc16-818c-4790-905b-9453040e8cd6")
 		)
@@ -11483,6 +11907,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 168.91 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17673"
 			(at 168.91 102.87 0)
 			(effects
 				(font
@@ -11553,6 +11986,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x16, script generated"
+			(at 307.34 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 307.34 104.14 0)
 			(effects
 				(font
@@ -11807,6 +12249,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 129.54 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d062e7a6-8606-4cde-80fd-c5143db4ad48")
 		)
@@ -11869,6 +12320,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x16, script generated"
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 232.41 74.93 0)
 			(effects
 				(font
@@ -11989,6 +12449,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 172.72 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "cdd0ac84-8291-481a-bb12-81dca9390481")
 		)
@@ -12058,6 +12527,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C7432784"
+			(at 191.77 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7fca6545-61dc-41e6-b73b-ff8bffe38404")
 		)
@@ -12078,9 +12556,9 @@
 		(at 179.07 107.95 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c80b2325-fcaf-450c-868e-950277b9e8a6")
 		(property "Reference" "R18"
@@ -12120,6 +12598,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 179.07 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17621"
 			(at 179.07 107.95 0)
 			(effects
 				(font
@@ -12197,6 +12684,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 207.01 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "35e05d53-f784-4411-b89a-c6136d6d94dd")
 		)
@@ -12214,7 +12710,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Socket")
-		(at 63.5 219.71 180)
+		(at 58.42 219.71 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12222,7 +12718,7 @@
 		(dnp no)
 		(uuid "d0ff3e88-9d10-4b6b-8d18-dbe497d611a8")
 		(property "Reference" "J6"
-			(at 64.135 212.09 0)
+			(at 59.055 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12230,7 +12726,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02_Socket"
-			(at 63.5 214.122 0)
+			(at 58.42 214.122 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12238,7 +12734,7 @@
 			)
 		)
 		(property "Footprint" "!custom:PhoenixContact_MC_1,5_2-G-3.5_1x02_P3.50mm_Horizontal_with_plug"
-			(at 63.5 219.71 0)
+			(at 58.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12247,7 +12743,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 63.5 219.71 0)
+			(at 58.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12256,7 +12752,16 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 63.5 219.71 0)
+			(at 58.42 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 58.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12331,6 +12836,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17477"
+			(at 198.12 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "6140768f-8d8f-4322-9f5c-b17191167c68")
 		)
@@ -12391,6 +12905,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 160.02 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17673"
 			(at 160.02 102.87 0)
 			(effects
 				(font
@@ -12485,9 +13008,9 @@
 		(at 187.96 107.95 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "dfa304aa-541b-4ef9-ba8b-aa882d6b993e")
 		(property "Reference" "R17"
@@ -12527,6 +13050,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 187.96 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 187.96 107.95 0)
 			(effects
 				(font
@@ -12616,6 +13148,100 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D")
+		(at 67.31 217.17 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ed6f4ced-bb3e-4010-ac61-1205686a9b53")
+		(property "Reference" "D1"
+			(at 67.31 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D"
+			(at 67.31 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-123"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C8598"
+			(at 67.31 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "685fb378-a6e8-48e6-ad5a-d2c45a62f394")
+		)
+		(pin "1"
+			(uuid "455d3a1c-07fc-47f3-a035-b73e61933afd")
+		)
+		(instances
+			(project ""
+				(path "/57bad168-84d4-400d-bfdf-e1c1b50005bc"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 82.55 214.63 0)
 		(unit 1)
@@ -12661,6 +13287,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 82.55 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C7432784"
 			(at 82.55 214.63 0)
 			(effects
 				(font
@@ -12803,6 +13438,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C17673"
+			(at 160.02 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "22c727b1-9e28-4388-9169-e365f1f80ab7")
 		)
@@ -12863,6 +13507,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 160.02 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C17673"
 			(at 160.02 110.49 0)
 			(effects
 				(font
@@ -12932,6 +13585,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 77.47 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C7432784"
 			(at 77.47 214.63 0)
 			(effects
 				(font
