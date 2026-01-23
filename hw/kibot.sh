@@ -12,7 +12,7 @@ function run_kibot() {
 	time docker run --rm -it \
 	--volume "$(pwd):/tmp/workdir" \
 	--workdir "/tmp/workdir" \
-	setsoft/kicad_auto:ki8 \
+	setsoft/kicad_auto:ki9 \
 	/bin/bash -c "groupadd -g$gid u; useradd -u$uid -g$gid -d/tmp u; su u -c 'cd airsoft_bomb_v2 && kibot -c .kibot.yaml $*'"
 }
 
