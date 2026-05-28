@@ -7,6 +7,8 @@
 #include <thread>
 #include <unistd.h>
 
+#define ANT_VERSION "{VER}"
+
 #include "../src-common/gm_manager.hpp"
 #include "mock_esphome.hpp"
 

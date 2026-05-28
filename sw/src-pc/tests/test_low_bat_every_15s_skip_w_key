@@ -1,6 +1,6 @@
 DELAY=30000,BAT=10,DELAY=0,BAT=9,C,DELAY=2000,DELAY=15000
 [LCD] |----------------|
-[LCD] |KMS ANT V2.1.0  |
+[LCD] |KMS ANT V{VER}  |
 [LCD] |makerspace.lt   |
 [DELAY 30000]
 [LCD] |----------------|

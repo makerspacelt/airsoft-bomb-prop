@@ -1,6 +1,6 @@
 C,A,C,C,B,B,B,B,A,A,A,A
 [LCD] |----------------|
-[LCD] |KMS ANT V2.1.0  |
+[LCD] |KMS ANT V{VER}  |
 [LCD] |makerspace.lt   |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz

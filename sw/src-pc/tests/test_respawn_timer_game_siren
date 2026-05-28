@@ -1,6 +1,6 @@
 C,A,A,C,1,B,5,B,C,B,C,DELAY=59000,DELAY=1000,DELAY=4000,DELAY=1000,DELAY=60000,DELAY=5000
 [LCD] |----------------|
-[LCD] |KMS ANT V2.1.0  |
+[LCD] |KMS ANT V{VER}  |
 [LCD] |makerspace.lt   |
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
