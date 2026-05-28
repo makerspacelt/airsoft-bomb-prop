@@ -136,11 +136,11 @@ public:
   void action_set_siren_level(uint8_t level_user, bool save = true) {
     switch (level_user) {
     case 1: // low
-      settings.siren_level = 0.001;
+      settings.siren_level = 0.005;
       settings.siren_level_user = 1;
       break;
     case 2: // medium
-      settings.siren_level = 0.004;
+      settings.siren_level = 0.01;
       settings.siren_level_user = 2;
       break;
     default: // high
