@@ -1,4 +1,4 @@
-C,A,C,B,B,B,A,A,A,A
+C,A,C,B,B,B,B,A,A,A,A,A
 [LCD] |----------------|
 [LCD] |KMS ANT V2.1.0  |
 [LCD] |makerspace.lt   |
@@ -16,39 +16,49 @@ C,A,C,B,B,B,A,A,A,A
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
 [LCD] |  Siren settings|
+[LCD] |> Bat. voltage  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bat. voltage  |
 [LCD] |> OTA update    |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  OTA Update    |
+[LCD] |  OTA update    |
 [LCD] |> Back          |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  OTA Update    |
+[LCD] |  OTA update    |
 [LCD] |> Back          |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Siren settings|
+[LCD] |  Bat. voltage  |
 [LCD] |> OTA update    |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Siren settings|
+[LCD] |> Bat. voltage  |
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  OTA Update    |
+[LCD] |> Siren settings|
+[LCD] |  Bat. voltage  |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  OTA update    |
 [LCD] |> Back          |

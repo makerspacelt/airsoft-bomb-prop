@@ -1,0 +1,15 @@
+BAT=10,DELAY=0,C,DELAY=14999,DELAY=1
+[LCD] |----------------|
+[LCD] |KMS ANT V2.1.0  |
+[LCD] |makerspace.lt   |
+[BAT 10.0V 3%]
+[DELAY 0]
+[LCD] |----------------|
+[LCD] |LOW BATTERY     |
+[LCD] |3%      10.0 V  |
+[KEY C]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[DELAY 14999]
+[DELAY 1]

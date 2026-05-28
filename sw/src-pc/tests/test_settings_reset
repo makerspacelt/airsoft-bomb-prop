@@ -16,12 +16,12 @@ C,A,C,B,RESET,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
 [LCD] |  Siren settings|
-[LCD] |> OTA update    |
+[LCD] |> Bat. voltage  |
 [KEY RESET]
 [GameManager] Hard reset
 [GameManager] Stopping siren
@@ -33,4 +33,4 @@ C,A,C,B,RESET,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |

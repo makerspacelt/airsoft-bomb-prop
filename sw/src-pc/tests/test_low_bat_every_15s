@@ -1,0 +1,27 @@
+DELAY=30000,BAT=10,DELAY=0,DELAY=2000,DELAY=15000,DELAY=2000
+[LCD] |----------------|
+[LCD] |KMS ANT V2.1.0  |
+[LCD] |makerspace.lt   |
+[DELAY 30000]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[BAT 10.0V 3%]
+[DELAY 0]
+[GameManager] Buzzer for 100ms at 2200Hz
+[LCD] |----------------|
+[LCD] |LOW BATTERY     |
+[LCD] |3%      10.0 V  |
+[DELAY 2000]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[DELAY 15000]
+[GameManager] Buzzer for 100ms at 2200Hz
+[LCD] |----------------|
+[LCD] |LOW BATTERY     |
+[LCD] |3%      10.0 V  |
+[DELAY 2000]
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |

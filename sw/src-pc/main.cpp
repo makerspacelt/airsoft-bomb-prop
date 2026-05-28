@@ -55,7 +55,11 @@ void process_test_sequence(const std::string &sequence) {
     // Convert token to uppercase for case-insensitivity
     std::transform(token.begin(), token.end(), token.begin(), [](unsigned char c) { return std::toupper(c); });
 
-    if (token.rfind("DELAY=", 0) == 0) {
+    if (token.rfind("BAT=", 0) == 0) {
+      int battery_voltage = std::stoi(token.substr(4));
+      antg.set_battery_voltage(battery_voltage);
+      printf("[BAT %.1fV %d%%]\n", antg.battery_voltage, antg.battery_pct);
+    } else if (token.rfind("DELAY=", 0) == 0) {
       int delay_ms = std::stoi(token.substr(6));
       printf("[DELAY %d]\n", delay_ms);
       cur_millis += delay_ms;

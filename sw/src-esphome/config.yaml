@@ -82,7 +82,7 @@ globals:
   - id: g_siren_level # 1-9
     type: int
     restore_value: true
-    initial_value: "9"
+    initial_value: '9'
 
 output:
   - platform: ledc
@@ -157,7 +157,7 @@ binary_sensor:
   - platform: matrix_keypad
     keypad_id: mykeypad
     id: key_star
-    key: "*"
+    key: '*'
     on_press:
       lambda: |-
         game_manager.hard_reset_press_at = millis();
@@ -193,7 +193,7 @@ matrix_keypad:
     - pin:
         pcf8574: pcf8574_hub
         number: 7
-  keys: "D#0*C987B654A321"
+  keys: 'D#0*C987B654A321'
   has_diodes: false
   on_key:
     - lambda: |-
@@ -208,7 +208,7 @@ i2c:
     frequency: 300kHz
 
 pcf8574:
-  - id: "pcf8574_hub"
+  - id: 'pcf8574_hub'
     address: 0x20
     pcf8575: false
 
@@ -285,6 +285,25 @@ display:
     lambda: |-
       game_manager.display_update(it);
 
+sensor:
+  # NOTE: voltage divider is only present in PCB revision v2.1+
+  - platform: adc
+    pin: GPIO00
+    id: adc_voltage
+    update_interval: 300ms
+    filters:
+      - median:
+          window_size: 7
+          send_every: 3
+          send_first_at: 3
+      - calibrate_linear:
+          - 0.664 -> 10.60
+          - 0.000 -> 0
+    on_value:
+      then:
+        lambda: |-
+          antg.set_battery_voltage(x);
+
 script:
   - id: s_start_buzzer
     parameters:
@@ -312,6 +331,7 @@ script:
       tone: int
     mode: restart
     then:
+      - lambda: antg.siren_active = true;
       - delay: !lambda return delay;
       - output.ledc.set_frequency:
           id: siren
@@ -323,6 +343,7 @@ script:
       - output.set_level:
           id: siren
           level: 0
+      - lambda: antg.siren_active = false;
 
   - id: s_stop_siren
     then:

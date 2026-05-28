@@ -27,6 +27,8 @@ fi
 exec $container_cmd run --rm -it \
     -e PLATFORMIO_SETTING_ENABLE_TELEMETRY=0 \
     -e PLATFORMIO_BUILD_CACHE_DIR=/config/.platformio/build-cache \
+    -v "esphome-platformio-cache-$ESPHOME_VERSION:/root/.platformio" \
+    -v "esphome-home-cache-$ESPHOME_VERSION:/root/.cache" \
     -v "$PWD/..:/config" \
     "${args[@]}" \
     ghcr.io/esphome/esphome:$ESPHOME_VERSION \

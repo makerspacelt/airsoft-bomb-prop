@@ -60,6 +60,10 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 #define ACTION_START_OTA 32
 #define ACTION_STOP_OTA 64
 
+#define BATTERY_MAX_VOLTAGE 4.2 * 3
+#define BATTERY_MIN_VOLTAGE 3.3 * 3
+#define BATTERY_LOW_PCT 20
+
 struct ant_siren_t {
   int delay = 0;
   int duration = SIREN_DURATION_GAME_START;
@@ -97,6 +101,17 @@ public:
   ant_buzzer_t buzzer_params = {};
   ant_ota_t ota_info = {};
   ant_settings_t settings = {};
+
+  bool siren_active = false;
+  float battery_voltage = BATTERY_MAX_VOLTAGE;
+  int battery_pct = 100;
+
+  void set_battery_voltage(float voltage) {
+    battery_voltage = voltage;
+    battery_pct = 100 - 100 * (BATTERY_MAX_VOLTAGE - voltage) / (BATTERY_MAX_VOLTAGE - BATTERY_MIN_VOLTAGE);
+    if (battery_pct < 0)
+      battery_pct = 0;
+  }
 
   void clear_actions() { actions = 0; }
 

@@ -1,4 +1,4 @@
-C,A,C,B,B,C,C
+C,A,C,B,B,B,C,C
 [LCD] |----------------|
 [LCD] |KMS ANT V2.1.0  |
 [LCD] |makerspace.lt   |
@@ -16,16 +16,21 @@ C,A,C,B,B,C,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
 [LCD] |  Siren settings|
+[LCD] |> Bat. voltage  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bat. voltage  |
 [LCD] |> OTA update    |
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  OTA Update    |
+[LCD] |  OTA update    |
 [LCD] |> Back          |
 [KEY C]
 [GameManager] Exiting game
@@ -37,4 +42,4 @@ C,A,C,B,B,C,C
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |

@@ -16,7 +16,7 @@ C,A,C,5,1,RED,RED_RELEASE,*,DELAY=4999,DELAY=1
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |
 [KEY 5]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
@@ -44,4 +44,4 @@ C,A,C,5,1,RED,RED_RELEASE,*,DELAY=4999,DELAY=1
 [DELAY 1]
 [LCD] |----------------|
 [LCD] |> Siren settings|
-[LCD] |  OTA update    |
+[LCD] |  Bat. voltage  |

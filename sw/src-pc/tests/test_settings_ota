@@ -1,0 +1,50 @@
+C,A,C,B,B,C,DELAY=10000,C,C,C
+[LCD] |----------------|
+[LCD] |KMS ANT V2.1.0  |
+[LCD] |makerspace.lt   |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Defusal       |
+[LCD] |  Domination    |
+[KEY A]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Respawn timer |
+[LCD] |> Settings      |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |> Siren settings|
+[LCD] |  Bat. voltage  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Siren settings|
+[LCD] |> Bat. voltage  |
+[KEY B]
+[GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Bat. voltage  |
+[LCD] |> OTA update    |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |SSID:           |
+[LCD] |PASS:           |
+[DELAY 10000]
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |Browse to IP:   |
+[LCD] |                |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |Version: 2.1.0  |
+[LCD] |> Back          |
+[KEY C]
+[GameManager] Buzzer for 100ms at 1400Hz
+[LCD] |----------------|
+[LCD] |  Bat. voltage  |
+[LCD] |> OTA update    |

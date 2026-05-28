@@ -14,10 +14,10 @@
 
 class GameSettings {
 private:
-  enum class STATE { TOP, SIREN, OTA, TEST };
+  enum class STATE { TOP, SIREN, VOLTAGE, OTA, TEST };
   STATE state = STATE::TOP;
 
-  enum class MENU { SIREN, OTA, BACK, COUNT };
+  enum class MENU { SIREN, VOLTAGE, OTA, BACK, COUNT };
   MENU menu = MENU::SIREN;
 
   AntGlobals &antg;
@@ -39,14 +39,18 @@ public:
       switch (menu) {
       case MENU::SIREN:
         disp.printf(0, 0, "> Siren settings");
-        disp.printf(0, 1, "  OTA update");
+        disp.printf(0, 1, "  Bat. voltage");
+        break;
+      case MENU::VOLTAGE:
+        disp.printf(0, 0, "  Siren settings");
+        disp.printf(0, 1, "> Bat. voltage");
         break;
       case MENU::OTA:
-        disp.printf(0, 0, "  Siren settings");
+        disp.printf(0, 0, "  Bat. voltage");
         disp.printf(0, 1, "> OTA update");
         break;
       case MENU::BACK:
-        disp.printf(0, 0, "  OTA Update");
+        disp.printf(0, 0, "  OTA update");
         disp.printf(0, 1, "> Back");
         break;
       case MENU::COUNT: break;
@@ -55,6 +59,10 @@ public:
     case STATE::OTA:   ota_update.display_update(disp); break;
     case STATE::SIREN: siren_settings.display_update(disp); break;
     case STATE::TEST:  test_mode.display_update(disp); break;
+    case STATE::VOLTAGE:
+      disp.print(0, 0, "BATTERY:");
+      disp.printf(0, 1, "%d%%      %.1f V", antg.battery_pct, antg.battery_voltage);
+      break;
     }
   }
 
@@ -74,8 +82,9 @@ public:
           state = STATE::OTA;
           ota_update.init();
           break;
-        case MENU::BACK:  antg.action_exit_game(); break;
-        case MENU::COUNT: break;
+        case MENU::VOLTAGE: state = STATE::VOLTAGE; break;
+        case MENU::BACK:    antg.action_exit_game(); break;
+        case MENU::COUNT:   break;
         }
         break;
       case KEY_D: antg.action_exit_game(); break;
@@ -103,14 +112,16 @@ public:
         state = STATE::TOP;
       }
       break;
+    case STATE::VOLTAGE: state = STATE::TOP; break;
     }
   }
 
   void clock(uint32_t now, uint32_t delta) {
     switch (state) {
-    case STATE::TOP:   break;
-    case STATE::OTA:   ota_update.clock(now, delta); break;
-    case STATE::SIREN: siren_settings.clock(now, delta); break;
+    case STATE::TOP:     break;
+    case STATE::OTA:     ota_update.clock(now, delta); break;
+    case STATE::SIREN:   siren_settings.clock(now, delta); break;
+    case STATE::VOLTAGE: break;
     case STATE::TEST:
       test_mode.clock(now, delta);
       if (!test_mode.active) {

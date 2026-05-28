@@ -20,12 +20,19 @@ private:
   // COUNT is used as a placeholder for the last value and also as an unselected gamemode.
   static constexpr MODE MODE_NONE = MODE::COUNT;
 
-  enum class STATE { SPLASH, MENU };
+  enum class STATE { SPLASH, MENU, LOW_BATTERY };
   STATE state = STATE::SPLASH;
   uint32_t splash_start_time = 0;
 
   MODE menu = MODE::DEFUSAL;
   MODE current_game = MODE_NONE;
+
+  static constexpr uint32_t LOW_BATTERY_DISPLAY_INTERVAL = 15000;
+  static constexpr uint32_t LOW_BATTERY_DISPLAY_DURATION = 2000;
+  static constexpr uint32_t LOW_BATTERY_BUZZER_INTERVAL = 500;
+  uint32_t last_low_battery_buzzer_at = 0;
+  uint32_t low_battery_display_start_at = 0;
+  uint32_t low_battery_display_end_at = 0;
 
   AntGlobals &antg;
   GameModeDefusal gm_defusal;
@@ -117,6 +124,11 @@ private:
     }
   }
 
+  void display_low_battery(esphome::lcd_base::LCDDisplay &disp) {
+    disp.print(0, 0, "LOW BATTERY  ");
+    disp.printf(0, 1, "%d%%      %.1f V", antg.battery_pct, antg.battery_voltage);
+  }
+
   void key_buzzer(unsigned char key) {
     // Activate buzzer for key presses
     switch (key) {
@@ -195,6 +207,22 @@ private:
     }
   }
 
+  void handle_key_low_battery(unsigned char key) { state = STATE::MENU; }
+
+  void clock_low_battery(uint32_t now, uint32_t delta) {
+    if (now >= low_battery_display_end_at) {
+      // enough time has passed, exit low battery state
+      state = STATE::MENU;
+    } else if (antg.battery_pct > 0) {
+      // enable low battery buzzer, but only if >0%
+      // (do not want to discharge it even more, also do not want beeping when powered via USB)
+      if (now - last_low_battery_buzzer_at >= LOW_BATTERY_BUZZER_INTERVAL) {
+        antg.action_buzzer(BUZZER_TONE_SPECIAL);
+        last_low_battery_buzzer_at = now;
+      }
+    }
+  }
+
   void clock_splash(uint32_t now, uint32_t delta) {
     if (now - splash_start_time >= 2000) {
       state = STATE::MENU;
@@ -246,23 +274,38 @@ public:
 
   void display_update(esphome::lcd_base::LCDDisplay &disp) {
     switch (state) {
-    case STATE::SPLASH: display_splash(disp); break;
-    case STATE::MENU:   display_menu(disp); break;
+    case STATE::SPLASH:      display_splash(disp); break;
+    case STATE::MENU:        display_menu(disp); break;
+    case STATE::LOW_BATTERY: display_low_battery(disp); break;
     }
   }
 
   void handle_key(unsigned char key) {
     switch (state) {
-    case STATE::SPLASH: handle_key_splash(key); break;
-    case STATE::MENU:   handle_key_menu(key); break;
+    case STATE::SPLASH:      handle_key_splash(key); break;
+    case STATE::MENU:        handle_key_menu(key); break;
+    case STATE::LOW_BATTERY: handle_key_low_battery(key); break;
     }
     handle_actions();
   }
 
   void clock(uint32_t now, uint32_t delta) {
+    if (antg.battery_pct <= BATTERY_LOW_PCT && state != STATE::LOW_BATTERY && !antg.siren_active) {
+      // Periodically flash low battery screen if not in a game and siren is not active
+      if (state == STATE::SPLASH ||
+          (state == STATE::MENU && (current_game == MODE_NONE || current_game == MODE::SETTINGS))) {
+        if (now >= low_battery_display_start_at) {
+          low_battery_display_end_at = now + LOW_BATTERY_DISPLAY_DURATION;
+          low_battery_display_start_at = low_battery_display_end_at + LOW_BATTERY_DISPLAY_INTERVAL;
+          state = STATE::LOW_BATTERY;
+        }
+      }
+    }
+
     switch (state) {
-    case STATE::SPLASH: clock_splash(now, delta); break;
-    case STATE::MENU:   clock_menu(now, delta); break;
+    case STATE::SPLASH:      clock_splash(now, delta); break;
+    case STATE::MENU:        clock_menu(now, delta); break;
+    case STATE::LOW_BATTERY: clock_low_battery(now, delta); break;
     }
     handle_actions();
   }
