@@ -1,7 +1,7 @@
 DELAY=1999,DELAY=1,RESET
 [LCD] |----------------|
-[LCD] |   KMS ANT V2   |
-[LCD] |  makerspace.lt |
+[LCD] |KMS ANT V2.1.0  |
+[LCD] |makerspace.lt   |
 [DELAY 1999]
 [DELAY 1]
 [LCD] |----------------|

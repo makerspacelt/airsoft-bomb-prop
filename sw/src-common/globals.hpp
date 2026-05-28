@@ -26,7 +26,7 @@ constexpr unsigned char KEY_YELLOW_RELEASE = 'Y';
 constexpr unsigned char KEY_RESET = 'X';  // e(x)it / reset
 constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 
-#define ANT_VERSION "2.0.0"
+#define ANT_VERSION "2.1.0"
 
 #define GM_DEFUSAL_MAX_CODE_LEN 6 // max defusal bomb code length
 

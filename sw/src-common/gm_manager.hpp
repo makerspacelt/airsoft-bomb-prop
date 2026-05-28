@@ -72,8 +72,8 @@ private:
   }
 
   void display_splash(esphome::lcd_base::LCDDisplay &disp) {
-    disp.print(0, 0, "   KMS ANT V2   ");
-    disp.print(0, 1, "  makerspace.lt ");
+    disp.printf(0, 0, "KMS ANT V%s", ANT_VERSION);
+    disp.print(0, 1, "makerspace.lt   ");
   }
 
   void display_menu(esphome::lcd_base::LCDDisplay &disp) {
