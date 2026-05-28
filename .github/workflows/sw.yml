@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: set version in header
         run: cd sw && make version
@@ -35,7 +35,7 @@ jobs:
         run: cd sw && make test
 
       - name: cache esphome
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           key: ${{ runner.os }}-esphome-${{ env.ESPHOME_VERSION }}
           path: |
@@ -49,13 +49,13 @@ jobs:
         run: cd sw && esphome compile src-esphome/config.yaml
 
       - name: save firmware.factory.bin
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: firmware.factory.bin
           path: sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.factory.bin
 
       - name: save firmware.ota.bin
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: firmware.ota.bin
           path: sw/src-esphome/.esphome/build/ant/.pioenvs/ant/firmware.ota.bin
