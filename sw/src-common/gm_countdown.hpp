@@ -11,8 +11,6 @@
 
 class GameModeCountdown {
 private:
-  static constexpr uint8_t MINUTES_MAX_LEN = 3;
-
   enum class STATE { SETUP, INVALID_INPUT, PRE_START, RUNNING, FINISHED };
   enum class MENU { DELAY_MIN, GAME_MIN, START, BACK, COUNT };
 
@@ -76,8 +74,8 @@ private:
     case KEY_8:
     case KEY_9:
       switch (menu) {
-      case MENU::DELAY_MIN: delay_min = append_digit(key, delay_min, MINUTES_MAX_LEN); break;
-      case MENU::GAME_MIN:  game_min = append_digit(key, game_min, MINUTES_MAX_LEN); break;
+      case MENU::DELAY_MIN: delay_min = append_digit(key, delay_min, 999); break;
+      case MENU::GAME_MIN:  game_min = append_digit(key, game_min, 999); break;
       default:              break;
       }
       break;

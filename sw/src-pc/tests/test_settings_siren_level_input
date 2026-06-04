@@ -1,4 +1,4 @@
-C,A,C,C,0,1,1,2,3,4,5,6,7,8,9,0
+C,A,C,C,0,1,*,9,9,1,0,0,5,0
 [LCD] |----------------|
 [LCD] |KMS ANT V{VER}  |
 [LCD] |makerspace.lt   |
@@ -20,42 +20,64 @@ C,A,C,C,0,1,1,2,3,4,5,6,7,8,9,0
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
-[LCD] |> Level: HIGH   |
+[LCD] |> Level: 100 %  |
 [LCD] |  Test (wait 5s)|
 [KEY 0]
 [GameManager] Buzzer for 100ms at 1000Hz
-[KEY 1]
-[GameManager] Buzzer for 100ms at 1000Hz
-[GameManager] Saving siren level: 0.005000 (user level 1)
+[GameManager] Saving siren level: 0.002000 (user level 0)
 [LCD] |----------------|
-[LCD] |> Level: LOW    |
+[LCD] |> Level: 0 %    |
 [LCD] |  Test (wait 5s)|
 [KEY 1]
 [GameManager] Buzzer for 100ms at 1000Hz
-[GameManager] Saving siren level: 0.005000 (user level 1)
-[KEY 2]
-[GameManager] Buzzer for 100ms at 1000Hz
-[GameManager] Saving siren level: 0.010000 (user level 2)
+[GameManager] Saving siren level: 0.002010 (user level 1)
 [LCD] |----------------|
-[LCD] |> Level: MEDIUM |
+[LCD] |> Level: 1 %    |
 [LCD] |  Test (wait 5s)|
-[KEY 3]
+[KEY *]
 [GameManager] Buzzer for 100ms at 1000Hz
-[GameManager] Saving siren level: 1.000000 (user level 3)
 [LCD] |----------------|
-[LCD] |> Level: HIGH   |
+[LCD] |> Level: 0 %    |
 [LCD] |  Test (wait 5s)|
-[KEY 4]
-[GameManager] Buzzer for 100ms at 1000Hz
-[KEY 5]
-[GameManager] Buzzer for 100ms at 1000Hz
-[KEY 6]
-[GameManager] Buzzer for 100ms at 1000Hz
-[KEY 7]
-[GameManager] Buzzer for 100ms at 1000Hz
-[KEY 8]
-[GameManager] Buzzer for 100ms at 1000Hz
 [KEY 9]
 [GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.004462 (user level 9)
+[LCD] |----------------|
+[LCD] |> Level: 9 %    |
+[LCD] |  Test (wait 5s)|
+[KEY 9]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.990000 (user level 99)
+[LCD] |----------------|
+[LCD] |> Level: 99 %   |
+[LCD] |  Test (wait 5s)|
+[KEY 1]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.002010 (user level 1)
+[LCD] |----------------|
+[LCD] |> Level: 1 %    |
+[LCD] |  Test (wait 5s)|
 [KEY 0]
 [GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.005204 (user level 10)
+[LCD] |----------------|
+[LCD] |> Level: 10 %   |
+[LCD] |  Test (wait 5s)|
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 1.000000 (user level 100)
+[LCD] |----------------|
+[LCD] |> Level: 100 %  |
+[LCD] |  Test (wait 5s)|
+[KEY 5]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.002566 (user level 5)
+[LCD] |----------------|
+[LCD] |> Level: 5 %    |
+[LCD] |  Test (wait 5s)|
+[KEY 0]
+[GameManager] Buzzer for 100ms at 1000Hz
+[GameManager] Saving siren level: 0.181099 (user level 50)
+[LCD] |----------------|
+[LCD] |> Level: 50 %   |
+[LCD] |  Test (wait 5s)|

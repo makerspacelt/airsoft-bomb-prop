@@ -2,7 +2,7 @@
 
 #include <string>
 
-int append_digit(char digit_to_append, int current_value, long unsigned int max_len);
+int append_digit(char digit_to_append, int current_value, int max_value);
 std::string format_time_remaining(int milliseconds);
 std::string format_progress_bar(float percent);
 

@@ -11,9 +11,6 @@
 
 class GameModeRespawnTimer {
 private:
-  static constexpr uint16_t STANDBY_MAX_LEN = 3;
-  static constexpr uint8_t RESPAWN_MAX_LEN = 2;
-
   enum class STATE { SETUP, INVALID_INPUT_STANDBY, INVALID_INPUT_RESPAWN, GAME_STANDBY, GAME_RESPAWN };
   enum class MENU { STANDBY_MIN, RESPAWN_SEC, USE_SIREN, START, BACK, COUNT };
 
@@ -106,8 +103,8 @@ private:
     case KEY_8:
     case KEY_9:
       switch (menu) {
-      case MENU::STANDBY_MIN: standby_min = append_digit(key, standby_min, STANDBY_MAX_LEN); break;
-      case MENU::RESPAWN_SEC: respawn_sec = append_digit(key, respawn_sec, RESPAWN_MAX_LEN); break;
+      case MENU::STANDBY_MIN: standby_min = append_digit(key, standby_min, 999); break;
+      case MENU::RESPAWN_SEC: respawn_sec = append_digit(key, respawn_sec, 99); break;
       default:                break;
       }
       break;

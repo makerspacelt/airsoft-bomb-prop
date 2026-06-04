@@ -2,13 +2,15 @@
 
 #include "utilities.hpp"
 
-int append_digit(char digit_to_append, int current_value, long unsigned int max_len) {
+int append_digit(char digit_to_append, int current_value, int max_value) {
   // Appends digit to the current value.
-  // If value is 0 or exceeds max length, overrides it with digit.
-  if (current_value == 0 || std::to_string(current_value).length() >= max_len) {
+  // If value is 0 or exceeds max_value, overrides it with digit.
+  // Returns new value.
+  int new_value = current_value * 10 + (digit_to_append - '0');
+  if (current_value == 0 || new_value > max_value) {
     return digit_to_append - '0';
   }
-  return current_value * 10 + (digit_to_append - '0');
+  return new_value;
 }
 
 std::string format_time_remaining(int milliseconds) {

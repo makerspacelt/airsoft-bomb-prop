@@ -16,8 +16,6 @@ class GameModeDefusal {
   // * GameModeDefusalCode, if bomb code was entered
   // * GameModeDefusalButtons, if no bomb code was entered
 private:
-  static constexpr uint32_t MINUTES_MAX_LEN = 3;
-
   enum class STATE { SETUP, INVALID_INPUT, PRE_START, DEFUSAL_CODE, DEFUSAL_BUTTONS };
   enum class MENU { DELAY_MIN, BOMB_MIN, BOMB_CODE, START, BACK, COUNT };
 
@@ -58,8 +56,8 @@ private:
   void handle_key_setup(unsigned char key) {
     if (key >= KEY_0 && key <= KEY_9) {
       switch (menu) {
-      case MENU::DELAY_MIN: delay_min = append_digit(key, delay_min, MINUTES_MAX_LEN); break;
-      case MENU::BOMB_MIN:  bomb_min = append_digit(key, bomb_min, MINUTES_MAX_LEN); break;
+      case MENU::DELAY_MIN: delay_min = append_digit(key, delay_min, 999); break;
+      case MENU::BOMB_MIN:  bomb_min = append_digit(key, bomb_min, 999); break;
       case MENU::BOMB_CODE:
         if (bomb_code.length() >= GM_DEFUSAL_MAX_CODE_LEN) {
           bomb_code = "";

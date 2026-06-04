@@ -129,12 +129,12 @@ public:
     case KEY_9:
       switch (menu) {
       case MENU::LEVEL:
-        siren_level = append_digit(key, siren_level, 3);
+        siren_level = append_digit(key, siren_level, 100);
         if (siren_level > 100)
           siren_level = 100;
         antg.action_set_siren_level(siren_level);
         break;
-      case MENU::TEST:  siren_test_delay_sec = append_digit(key, siren_test_delay_sec, 1); break;
+      case MENU::TEST:  siren_test_delay_sec = append_digit(key, siren_test_delay_sec, 9); break;
       case MENU::BACK:  break;
       case MENU::COUNT: break;
       }
