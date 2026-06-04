@@ -18,17 +18,9 @@ private:
   MENU menu = MENU::LEVEL;
 
   int siren_test_delay_sec = 5; // 1-9
-  uint8_t siren_level = 0;
+  int siren_level = 0;
   uint32_t siren_test_start_at = 0;
   uint32_t siren_test_end_at = 0;
-
-  std::string fmt_siren_level(uint8_t level) {
-    switch (level) {
-    case 1:  return "LOW";
-    case 2:  return "MEDIUM";
-    default: return "HIGH";
-    }
-  }
 
   void reset_test() {
     state = STATE::MENU;
@@ -44,7 +36,7 @@ private:
       disp.printf(0, row, line.c_str(), siren_test_delay_sec);
       break;
     case STATE::TEST_DELAY: {
-      float delay_sec = (siren_test_start_at - esphome::millis()) / 1000.0;
+      float delay_sec = (siren_test_start_at - esphome::millis()) / 1000.0f;
       line += "Test in %.1fs";
       disp.printf(0, row, line.c_str(), delay_sec);
       break;
@@ -72,11 +64,11 @@ public:
   void display_update(esphome::lcd_base::LCDDisplay &disp) {
     switch (menu) {
     case MENU::LEVEL:
-      disp.printf(0, 0, "> Level: %s", fmt_siren_level(siren_level).c_str());
+      disp.printf(0, 0, "> Level: %d %%", siren_level);
       disp_test_line(disp, 1, false);
       break;
     case MENU::TEST:
-      disp.printf(0, 0, "  Level: %s", fmt_siren_level(siren_level).c_str());
+      disp.printf(0, 0, "  Level: %d %%", siren_level);
       disp_test_line(disp, 1, true);
       break;
     case MENU::BACK:
@@ -105,13 +97,7 @@ public:
       break;
     case KEY_C:
       switch (menu) {
-      case MENU::LEVEL:
-        siren_level++;
-        if (siren_level > 3) {
-          siren_level = 1;
-        }
-        antg.action_set_siren_level(siren_level);
-        break;
+      case MENU::LEVEL: break;
       case MENU::TEST:
         siren_test_start_at = esphome::millis() + siren_test_delay_sec * 1000;
         siren_test_end_at = siren_test_start_at + SIREN_DURATION_TEST;
@@ -125,7 +111,9 @@ public:
       }
       break;
     case KEY_STAR:
-      if (menu == MENU::TEST) {
+      if (menu == MENU::LEVEL) {
+        siren_level = 0;
+      } else if (menu == MENU::TEST) {
         siren_test_delay_sec = 5;
       }
       break;
@@ -141,16 +129,12 @@ public:
     case KEY_9:
       switch (menu) {
       case MENU::LEVEL:
-        if (key >= KEY_1 && key <= KEY_3) {
-          siren_level = key - KEY_0;
-          antg.action_set_siren_level(siren_level);
-        }
+        siren_level = append_digit(key, siren_level, 3);
+        if (siren_level > 100)
+          siren_level = 100;
+        antg.action_set_siren_level(siren_level);
         break;
-      case MENU::TEST:
-        if (key != KEY_0) {
-          siren_test_delay_sec = append_digit(key, siren_test_delay_sec, 1);
-        }
-        break;
+      case MENU::TEST:  siren_test_delay_sec = append_digit(key, siren_test_delay_sec, 1); break;
       case MENU::BACK:  break;
       case MENU::COUNT: break;
       }

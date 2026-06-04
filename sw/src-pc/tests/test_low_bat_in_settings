@@ -20,7 +20,7 @@ C,A,C,C,BAT=10,DELAY=0,DELAY=2000,A,C,DELAY=15000
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
-[LCD] |> Level: HIGH   |
+[LCD] |> Level: 100 %  |
 [LCD] |  Test (wait 5s)|
 [BAT 10.0V 3%]
 [DELAY 0]
@@ -29,7 +29,7 @@ C,A,C,C,BAT=10,DELAY=0,DELAY=2000,A,C,DELAY=15000
 [LCD] |3%      10.0 V  |
 [DELAY 2000]
 [LCD] |----------------|
-[LCD] |> Level: HIGH   |
+[LCD] |> Level: 100 %  |
 [LCD] |  Test (wait 5s)|
 [KEY A]
 [GameManager] Buzzer for 100ms at 1000Hz

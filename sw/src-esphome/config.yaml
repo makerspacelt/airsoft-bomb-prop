@@ -23,13 +23,28 @@ esphome:
     - ../src-common
     - esphome-entry.hpp
   on_boot:
-    - then:
+    - priority: -100
+      then:
         lambda: |-
           id(siren).turn_on();
           id(siren).set_level(0);
           id(buzzer).turn_on();
           id(buzzer).set_level(0);
-          antg.action_set_siren_level(id(g_siren_level), false);
+
+          bool save_siren_level = false;
+          if (id(g_boot_version) == "") {
+            // v2.0.0 did not have g_boot_version and was using low/med/high for siren level.
+            // Thus if g_boot_version is empty, we are on v2.0.0 and want to migrate siren level to percentage-based setting.
+            int prev_siren_level = id(g_siren_level);
+            if (prev_siren_level == 1) id(g_siren_level) = 15;
+            else if (prev_siren_level == 2) id(g_siren_level) = 30;
+            else id(g_siren_level) = 100;
+            save_siren_level = true;
+            ESP_LOGI("Boot", "Migrated siren level setting from %d to %d%%", prev_siren_level, id(g_siren_level));
+          }
+          antg.action_set_siren_level(id(g_siren_level), save_siren_level);
+          id(g_boot_version) = ANT_VERSION;
+          ESP_LOGI("Boot", "Booted ANT v%s", ANT_VERSION);
   on_shutdown:
     - then:
         lambda: |-
@@ -79,10 +94,16 @@ web_server:
 #
 
 globals:
-  - id: g_siren_level # 1-9
+  - id: g_siren_level  # 1-100%
     type: int
     restore_value: true
-    initial_value: '9'
+    initial_value: '100'
+
+  - id: g_boot_version  # last booted version
+    type: std::string
+    restore_value: true
+    max_restore_data_length: 15
+    initial_value: ""
 
 output:
   - platform: ledc

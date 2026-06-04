@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <cstdint>
 #include <string>
 
@@ -42,7 +43,12 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 #define SIREN_DURATION_TEST 5000
 #define SIREN_GAME_END_DELAY 5000
 
-#define BUZZER_LEVEL 0.5
+#define SIREN_LVL_LOW 0.002f
+#define SIREN_LVL_HIGH 0.99f
+#define SIREN_PCT_MAX 99
+#define SIREN_LVL_EXPONENT 2.5f
+
+#define BUZZER_LEVEL 0.5f
 
 #define BUZZER_DURATION 100
 #define BUZZER_DURATION_TEAM_SWITCH 5000
@@ -62,14 +68,14 @@ constexpr unsigned char KEY_C_LONG = 'N'; // (n)ew / restart game
 #define ACTION_START_OTA 32
 #define ACTION_STOP_OTA 64
 
-#define BATTERY_MAX_VOLTAGE 4.2 * 3
-#define BATTERY_MIN_VOLTAGE 3.3 * 3
+#define BATTERY_MAX_VOLTAGE (4.2f * 3)
+#define BATTERY_MIN_VOLTAGE (3.3f * 3)
 #define BATTERY_LOW_PCT 20
 
 struct ant_siren_t {
   int delay = 0;
   int duration = SIREN_DURATION_GAME_START;
-  float level = 0.0004;
+  float level = SIREN_LVL_HIGH;
   int tone = 1220;
 };
 
@@ -86,8 +92,8 @@ struct ant_ota_t {
 };
 
 struct ant_settings_t {
-  int siren_level_user = 9; // overwritten on boot from flash by esphome
-  float siren_level = 1.0;
+  int siren_level_user = 100; // overwritten on boot from flash by esphome
+  float siren_level = 1.0f;
 };
 
 class AntGlobals {
@@ -135,19 +141,17 @@ public:
     actions |= ACTION_START_BUZZER;
   }
 
-  void action_set_siren_level(uint8_t level_user, bool save = true) {
-    switch (level_user) {
-    case 1: // low
-      settings.siren_level = 0.005;
-      settings.siren_level_user = 1;
-      break;
-    case 2: // medium
-      settings.siren_level = 0.01;
-      settings.siren_level_user = 2;
-      break;
-    default: // high
-      settings.siren_level = 1.0;
-      settings.siren_level_user = 3;
+  void action_set_siren_level(int pct, bool save = true) {
+    if (pct >= 100) {
+      settings.siren_level = 1.0f;
+      settings.siren_level_user = 100;
+    } else if (pct <= 0) {
+      settings.siren_level = 0.002f;
+      settings.siren_level_user = 0;
+    } else {
+      settings.siren_level =
+          SIREN_LVL_LOW + (SIREN_LVL_HIGH - SIREN_LVL_LOW) * powf((float)pct / SIREN_PCT_MAX, SIREN_LVL_EXPONENT);
+      settings.siren_level_user = pct;
     }
     if (save) {
       actions |= ACTION_SAVE_SIREN_LEVEL;

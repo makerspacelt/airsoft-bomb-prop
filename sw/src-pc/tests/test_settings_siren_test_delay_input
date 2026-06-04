@@ -20,59 +20,62 @@ C,A,C,C,B,0,1,1,2,3,4,5,6,7,8,9
 [KEY C]
 [GameManager] Buzzer for 100ms at 1400Hz
 [LCD] |----------------|
-[LCD] |> Level: HIGH   |
+[LCD] |> Level: 100 %  |
 [LCD] |  Test (wait 5s)|
 [KEY B]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 5s)|
 [KEY 0]
 [GameManager] Buzzer for 100ms at 1000Hz
+[LCD] |----------------|
+[LCD] |  Level: 100 %  |
+[LCD] |> Test (wait 0s)|
 [KEY 1]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 1s)|
 [KEY 1]
 [GameManager] Buzzer for 100ms at 1000Hz
 [KEY 2]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 2s)|
 [KEY 3]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 3s)|
 [KEY 4]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 4s)|
 [KEY 5]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 5s)|
 [KEY 6]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 6s)|
 [KEY 7]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 7s)|
 [KEY 8]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 8s)|
 [KEY 9]
 [GameManager] Buzzer for 100ms at 1000Hz
 [LCD] |----------------|
-[LCD] |  Level: HIGH   |
+[LCD] |  Level: 100 %  |
 [LCD] |> Test (wait 9s)|
