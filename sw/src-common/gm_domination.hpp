@@ -122,8 +122,15 @@ private:
       disp.printf(0, 0, "TIME LEFT:% 6s", format_time_remaining(game_ms_remaining).c_str());
       disp.printf(0, 1, "%s", format_progress_bar(ratio).c_str());
     } else {
+      // Points are shown in minutes. To make it clear that a zone is currently
+      // captured and points are accumulating (since the minute counter no longer
+      // ticks every second), blink the colon of the holding team twice per
+      // second.
+      bool colon_on = (esphome::millis() % 500) < 250;
+      char red_colon = (team_active == 1 && !colon_on) ? ' ' : ':';
+      char yellow_colon = (team_active == 2 && !colon_on) ? ' ' : ':';
       disp.printf(0, 0, "TIME LEFT:% 6s", format_time_remaining(game_ms_remaining).c_str());
-      disp.printf(0, 1, "T1:%-4d  T2:%-4d", team_red_time / 1000, team_yellow_time / 1000);
+      disp.printf(0, 1, "T1%c%-4d  T2%c%-4d", red_colon, team_red_time / 60000, yellow_colon, team_yellow_time / 60000);
     }
   }
 
@@ -167,7 +174,7 @@ private:
   // === FINISHED STATE ===
   void display_finished(esphome::lcd_base::LCDDisplay &disp) {
     disp.printf(0, 0, "DOMINATION ENDED");
-    disp.printf(0, 1, "T1:%-4d  T2:%-4d", team_red_time / 1000, team_yellow_time / 1000);
+    disp.printf(0, 1, "T1:%-4d  T2:%-4d", team_red_time / 60000, team_yellow_time / 60000);
   }
 
   void handle_key_finished(unsigned char key) {
